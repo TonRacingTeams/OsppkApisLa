@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'NotoSanlao';
+	src: url('../font/NotoSansLao-Regular.ttf'); 
+}
+body{
+    font-family: NotoSanlao;
+}
