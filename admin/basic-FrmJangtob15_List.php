@@ -140,7 +140,8 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmJangtob15_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
 
 
@@ -149,9 +150,11 @@ input[type=text] {
 
                 </div>
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 180%">
+                  <table class='table table-bordered' style="width: 1863%">
                     <thead>
                       <tr align='center'>
+                      <th>ແກ້ໄຂ</th>
+                    <th>ລົບ</th>
                         <th>ລ/ດ</th>
                         <th>ລະຫັດເອກະສານ</th>
                         <th>ເລກທີຄຳສັ່ງ</th>
@@ -170,7 +173,7 @@ input[type=text] {
                 
                 @$start=$_POST['start'];
               
-                $sql = "SELECT * FROM KHT_Order_Aryut  WHERE 1=1";
+                $sql = "SELECT * FROM KHT_Order_Aryut";
                 $query = sqlsrv_query( $conn, $sql );
 
               
@@ -181,6 +184,16 @@ input[type=text] {
 
                     <tbody id="users">
                         <tr>
+
+
+                        <td>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmJangtob15_List.php?Order_ID=<?php echo $result['Order_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
                         <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Order_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Order_No"]; ?></td>

@@ -4,14 +4,25 @@
 
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 142%">
                     <thead>
                    
                     <tr align='center'>
-                    <th>ລະຫັດໝວດ</th>
-                    <th>ລະຫັດ</th>
-                    <th>ຊື</th>
-                    <th>ເນື້ອໃນ</th>
+                    <th>ລຳດັບ</th>
+                    
+                    <th>ມາດຕາ</th>
+                    <th>ໝວດ</th>
+                    <th>ປະເພດ ຫຼື ສະຖານະຂອງການກະທຳຜິດ</th>
+                    
+                    <th>ຈຳນວນຄະດີ</th>
+                    <th>ຈຳນວນຜູ້ຕ້ອງຫາ</th>
+                    <th>ອາຊີບ</th>
+                    <th>ອາຍຸສະເລ່ຍ</th>
+                    <th>ຊາຍ</th>
+                    <th>ຍີງ</th>
+                    <th>ສາເຫດ ແລະ ເງື່ອນໄຂທີ່ພາໃຫ້ກະທຳຜີດ</th>
+                    <th>ອຸປະກອນ ແລະ ພາຫະນະທີ່ຮັບໃຊ້ເຂົ້າໃນການກະທຳຜີດ</th>
+                    <th>ໝາຍເຫດ</th>
                 
                 
                     </tr>
@@ -19,23 +30,24 @@
                    
                 <?php
                 include 'server/connect.php';
-                $Law_ID=$_POST['Law_ID'];
+                $Law_No=$_POST['Law_No'];
+                $Group_No=$_POST['Group_No'];
             
             
               
-              
+                if($Law_No==""){$Law_No="";}
+                else{ $Law_No="and (KHT_Rpt_SumByLaw.Law_No like N'%$Law_No%' or KHT_Rpt_SumByLaw.Law_No like N'$Law_No%')";}
 
 
-          
 
-                if($Law_ID==""){$Law_ID="";}
-                else{ $Law_ID="and (Civ_Laws.Law_ID like N'%$Law_ID%' or Civ_Laws.Law_ID like N'$Law_ID%')";}
+                if($Group_No==""){$Group_No="";}
+                else{ $Group_No="and (KHT_Rpt_SumByLaw.Group_No like N'%$Group_No%' or KHT_Rpt_SumByLaw.Group_No like N'$Group_No%')";}
 
         
 
 
                 $i=1;
-                $sql = "select *from Civ_Laws where 1=1 $Law_ID";
+                $sql = "SELECT * FROM KHT_Rpt_SumByLaw WHERE 1=1 $Law_No $Group_No";
                 $query = sqlsrv_query( $conn, $sql );
 
                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -46,10 +58,23 @@
                     <tbody>
 
                     <tr>  
-                    <td><?PHP echo $result["Group_ID"]; ?></td>
-                    <td><?PHP echo $result["Law_ID"]; ?></td>
-                    <td><?PHP echo $result["Law_Name"]; ?></td>
-                    <td><?PHP echo $result["Item_Name"]; ?></td>
+
+
+                <td><?PHP echo $result["Group_ID"]; ?></td>
+              
+                <td><?PHP echo $result["Law_No"]; ?></td>
+                <td><?PHP echo $result["Group_No"]; ?></td>
+                <td><?PHP echo $result["Law_Name"]; ?></td>
+
+                <td><?PHP echo $result["Case_Qty"]; ?></td>
+                <td><?PHP echo $result["Pers_Qty"]; ?></td>
+                <td><?PHP echo $result["Profesional"]; ?></td>
+                <td><?PHP echo $result["Age"]; ?></td>
+                <td><?PHP echo $result["Female"]; ?></td>
+                <td><?PHP echo $result["Male"]; ?></td>
+                <td><?PHP echo $result["Resion"]; ?></td>
+                <td><?PHP echo $result["Used_Tool"]; ?></td>
+                <td><?PHP echo $result["Remark"]; ?></td>
                     </tr>
 
                     </tbody>

@@ -13,9 +13,14 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-				var Law_ID=$("#Law_ID").val();
+				var Law_No=$("#Law_No").val();
+        var Group_No=$("#Group_No").val();
+
+
+        //  alert('hellow');
 				$.post("search_lawslnsert.php",{
-					Law_ID:Law_ID
+					Law_No:Law_No,
+          Group_No:Group_No
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -76,12 +81,21 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                  <div class="col-lg-3">
 
-                  <lable>ຄົ້ນຫາລະຫັດ</lable>
-    
-                  <input type="text" class="form-control" id="Law_ID"  placeholder="ຄົ້ນຫາລະຫັດ"  name="Law_ID">
-                </div>
+
+                <div class="col-lg-3">
+                   <lable>ມາດຕາ</lable>
+                    <input type="text" class="form-control " id="Law_No"   name="Law_No">	
+                  </div>
+
+
+
+                  <div class="col-lg-3">
+                   <lable>ໝວດ</lable>
+                    <input type="text" class="form-control " id="Group_No"   name="Group_No">	
+                  </div>
+
+
                 <div class="col-lg-3"><br>
                 <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
                 </div>
@@ -91,16 +105,24 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 142%">
                 <thead>
                 <tr align='center'>
                 <th>ລຳດັບ</th>
-                <th>ລາຍການ</th>
-                <th>ປີ</th>
-                <th>ເດືອນ 1</th>
-                <th>ເດືອນ 2</th>
-                <th>ເດືອນ 3</th>
-                <th>ເດືອນ 4</th>
+                    
+                    <th>ມາດຕາ</th>
+                    <th>ໝວດ</th>
+                    <th>ປະເພດ ຫຼື ສະຖານະຂອງການກະທຳຜິດ</th>
+                    
+                    <th>ຈຳນວນຄະດີ</th>
+                    <th>ຈຳນວນຜູ້ຕ້ອງຫາ</th>
+                    <th>ອາຊີບ</th>
+                    <th>ອາຍຸສະເລ່ຍ</th>
+                    <th>ຊາຍ</th>
+                    <th>ຍີງ</th>
+                    <th>ສາເຫດ ແລະ ເງື່ອນໄຂທີ່ພາໃຫ້ກະທຳຜີດ</th>
+                    <th>ອຸປະກອນ ແລະ ພາຫະນະທີ່ຮັບໃຊ້ເຂົ້າໃນການກະທຳຜີດ</th>
+                    <th>ໝາຍເຫດ</th>
               
                
                 </tr>
@@ -108,7 +130,7 @@ input[type=text] {
                    
                 <?php
                  include 'server/connect.php';  
-                 $sql = "SELECT * FROM KHT_Rpt_Terms ORDER BY Order_No ASC";
+                 $sql = "SELECT * FROM KHT_Rpt_SumByLaw";
                  $query = sqlsrv_query( $conn, $sql );
   
                
@@ -119,13 +141,23 @@ input[type=text] {
                 <tbody id="users">
                 <tr>
               
-                <td><?PHP echo $result["Order_No"]; ?></td>
-                <td><?PHP echo $result["Description"]; ?></td>
-                <td><?PHP echo $result["Years"]; ?></td>
-                <td><?PHP echo $result["M1"]; ?></td>
-                <td><?PHP echo $result["M2"]; ?></td>
-                <td><?PHP echo $result["M3"]; ?></td>
-                <td><?PHP echo $result["M4"]; ?></td>
+
+                
+                <td><?PHP echo $result["Group_ID"]; ?></td>
+                
+                <td><?PHP echo $result["Law_No"]; ?></td>
+                <td><?PHP echo $result["Group_No"]; ?></td>
+                <td><?PHP echo $result["Law_Name"]; ?></td>
+
+                <td><?PHP echo $result["Case_Qty"]; ?></td>
+                <td><?PHP echo $result["Pers_Qty"]; ?></td>
+                <td><?PHP echo $result["Profesional"]; ?></td>
+                <td><?PHP echo $result["Age"]; ?></td>
+                <td><?PHP echo $result["Female"]; ?></td>
+                <td><?PHP echo $result["Male"]; ?></td>
+                <td><?PHP echo $result["Resion"]; ?></td>
+                <td><?PHP echo $result["Used_Tool"]; ?></td>
+                <td><?PHP echo $result["Remark"]; ?></td>
               
               </tr>
                 </tbody>

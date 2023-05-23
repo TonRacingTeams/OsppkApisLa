@@ -3,9 +3,11 @@
     
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 636%">
                     <thead>
                     <tr align='center'>
+                    <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                         <th>ລຳດັບ</th>
                         <th>ລະຫັດຄະດີ</th>
                         <th>ເລກທີຂາອອກ</th>
@@ -44,11 +46,11 @@
 
               
 
-                if($Item_No==""){$b="";}
-                else{ $b="and (KHT_AppOutPh.Item_No like N'%$Item_No%' or KHT_AppOutPh.Item_No like N'$Item_No%')";}
+                if($Item_No==""){$a="";}
+                else{ $a="and (KHT_AppOutPh.Item_No like N'%$Item_No%' or KHT_AppOutPh.Item_No like N'$Item_No%')";}
 
-                if($Item_ID==""){$d="";}
-                else{ $d="and (KHT_AppOutPh.Item_ID like N'%$Item_ID%' or KHT_AppOutPh.Item_ID like N'$Item_ID%')";}
+                if($Item_ID==""){$b="";}
+                else{ $b="and (KHT_AppOutPh.Item_ID like N'%$Item_ID%' or KHT_AppOutPh.Item_ID like N'$Item_ID%')";}
 
 
                 if($In_No==""){$d="";}
@@ -58,7 +60,7 @@
 
 
                 $i=1;
-                $sql = "SELECT * FROM KHT_AppOutPh WHERE 1=1 $btw $d ";
+                $sql = "SELECT * FROM KHT_AppOutPh WHERE 1=1 $btw $a $b $d ";
                 $query = sqlsrv_query( $conn, $sql );
 
                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -68,6 +70,18 @@
 
                     <tbody id="users">
                         <tr>
+
+
+                        <td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_frmreturnqut_list.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
                         <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_No"]; ?></td>
@@ -90,14 +104,6 @@
                         <td align='center'><?PHP echo $result["Staff_Respond"]; ?></td>
                         
                       
-                        
-                     
-                        <td align='center'>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
-                        </td>
-                        <td align='center'>
-                        <a href="pages/delete_frmreturnqut_list.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
-                        </td>
                      
                       </tr>
                     </tbody>

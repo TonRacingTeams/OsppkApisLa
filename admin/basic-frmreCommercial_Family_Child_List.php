@@ -98,7 +98,7 @@ input[type=text] {
                 
 
                 <div class="input-group">
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
 
                     <?php
@@ -109,7 +109,7 @@ input[type=text] {
                     value="<?php  echo date('Y-m-01');?>" > 
                    </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                    <lable>ຫາວັນທີເດືອນປີ</lable>
 
                    <?php
@@ -119,12 +119,12 @@ input[type=text] {
                  
                   </div>
 
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                    <lable>ລະຫັດເອກະສານ</lable>
                     <input type="text" class="form-control " id="Item_ID"   name="Item_ID">	
                   </div>
 
-                   <div class="col-lg-2">
+                   <div class="col-lg-3">
                    <lable>ເລກທີຂາເຂົ້າ</lable>
                     <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
                   </div>
@@ -135,7 +135,7 @@ input[type=text] {
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
                   
-                    <a href="#" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                    <a href="app/add_frmreCommercial_Family_Child_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                    
                   </div>
                   </div>
@@ -146,9 +146,11 @@ input[type=text] {
 
                 </div>
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 180%">
+                  <table class='table table-bordered' style="width: 724%">
                     <thead>
                       <tr align='center'>
+                      <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                         <th>ລຳດັບ</th>
                         <th>ເລກທີເອກະສານ</th>
                         <th>ເລກທີຂາເຂົ້າ</th>
@@ -181,6 +183,19 @@ input[type=text] {
 
                     <tbody id="users">
                         <tr>
+
+
+                        <td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_frmrequesttrueIn.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+
                         <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_No"]; ?></td>
@@ -198,12 +213,7 @@ input[type=text] {
                         <td><?PHP echo $result["Cnt"]; ?></td>
                         
                  
-                        <td align='center'>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
-                        </td>
-                        <td align='center'>
-                        <a href="pages/delete_frmrequesttrueIn.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
-                        </td>
+                        
 
                     </tr>
                     </tbody>

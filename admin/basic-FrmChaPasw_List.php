@@ -14,16 +14,23 @@ include 'head.php';
      // alert(start);
 			$("#search").click(function(){
 
-				var start=$("#start").val();
-				var end=$("#end").val();
-        var Item_No=$("#Item_No").val();
-        var Item_sam=$("#Item_sam").val();
+				// var start=$("#start").val();
+				// var end=$("#end").val();
+        var Group_ID=$("#Group_ID").val();
+        var Group_No=$("#Group_No").val();
+        var Law_ID=$("#Law_ID").val();
+        var Law_No=$("#Law_No").val();
+
+
+
      //   alert(start);
 				$.post("search_frmtouIn.php",{
-					start:start,
-					end:end,
-          Item_No:Item_No,
-          Item_sam:Item_sam
+					// start:start,
+					// end:end,
+          Group_ID:Group_ID,
+          Group_No:Group_No,
+          Law_ID:Law_ID,
+          Law_No:Law_No
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -92,35 +99,48 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                  <div class="col-lg-3">
-                   <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
+                  <!-- <div class="col-lg-3"> -->
+                   <!-- <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable> -->
 
-                    <?php
+                    <!-- <?php
                      @$start=$_POST['start'];
-                    ?>
+                    ?> -->
 
-                    <input type="date" class="form-control " id="start"   name="start" 
+                    <!-- <input type="date" class="form-control " id="start"   name="start" 
                     value="<?php  echo date('Y-m-01');?>" > 
-                   </div>
+                   </div> -->
 
-                    <div class="col-lg-3">
-                   <lable>ຫາວັນທີເດືອນປີ</lable>
+                    <!-- <div class="col-lg-3">
+                   <lable>ຫາວັນທີເດືອນປີ</lable> -->
 
-                   <?php
+                   <!-- <?php
                      @$end=$_POST['end'];
-                    ?>
-                  <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
+                    ?> -->
+                  <!-- <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
                  
-                  </div>
+                  </div> -->
 
                    <div class="col-lg-2">
-                   <lable>ເລກທີຂາເຂົ້າ</lable>
-                    <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
+                   <lable>ລຳດັບ</lable>
+                    <input type="text" class="form-control " id="Group_ID"   name="Group_ID" >	
                   </div>
 
                   <div class="col-lg-2">
-                   <lable>ເລກທີສຳນວນ</lable>
-                    <input type="text" class="form-control " id="Item_sam"   name="Item_sam">	
+                   <lable>ລະຫັດໝວດ</lable>
+                    <input type="text" class="form-control " id="Group_No"   name="Group_No">	
+                  </div>
+
+
+
+
+                  <div class="col-lg-2">
+                   <lable>ໝວດ</lable>
+                    <input type="text" class="form-control " id="Law_ID"   name="Law_ID" >	
+                  </div>
+
+                  <div class="col-lg-2">
+                   <lable>ລະຫັດມາດຕາ</lable>
+                    <input type="text" class="form-control " id="Law_No"   name="Law_No">	
                   </div>
 
 
@@ -137,13 +157,13 @@ input[type=text] {
 
 
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 300%">
+                  <table class='table table-bordered' style="width: 100%">
                     <thead>
                       <tr align='center'>
                         <th>ລຳດັບ</th>
                         <th>ລະຫັດໝວດ</th>
                         <th>ໝວດ</th>
-                        <th>ລະຫັດໝາດຕາ</th>
+                        <th>ລະຫັດມາດຕາ</th>
                         <th>ມາດຕາ</th>
                         <th>ຈຳນວນ</th>
                         <th>ເລືອກ</th>

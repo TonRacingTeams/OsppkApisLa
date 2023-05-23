@@ -10,41 +10,27 @@ include 'head.php';
 
 <script>
 		$(function(){
-
-       $('.radio').change(function() {
-             $('#select2').prop('disabled', !$(this).is('.ປະຈຳງວດ'));
-             $('#select3').prop('disabled', !$(this).is('.ລວມງວດ'));
-         });
-
-
-         $('.radios').change(function() {
-             $('#select1').prop('disabled', !$(this).is('.ລາຍເດືອນ'));
-             $('#select2').prop('enable', !$(true).is('.ປະຈຳງວດ'));
-             $('#select3').prop('disabled', !$(this).is('.ລວມງວດ'));
-         }
-         );
-
-         $('.louie').change(function() {
-             $('#select1').prop('disabled', !$(this).is('.ລາຍເດືອນ'));
-             $('#select2').prop('disabled', !$(true).is('.ປະຈຳງວດ'));
-             $('#select3').prop('enable', !$(this).is('.ລວມງວດ'));
-         }
-         );
-
-
+//  alert('hellow');
         $("#search").click(function(){
-				var start=$("#start").val();
-  
-				$.post("search_years.php",{
-					start:start
+          var start=$("#start").val();
+				var end=$("#end").val();
+        var Item_ID=$("#Item_ID").val();
+        var Deci_No=$("#Deci_No").val();
+        var Full_Name=$("#Full_Name").val();
+
+
+  //  alert('hellow');
+				$.post("search_years3.php",{
+					start:start,
+					end:end,
+          Item_ID:Item_ID,
+          Deci_No:Deci_No,
+          Full_Name:Full_Name
 				},
 				function(output){
 					$("#show").html(output).slideDown();
 				});
 			});
-
-
-
 		});
 	</script>
 
@@ -83,10 +69,10 @@ input[type=text] {
      
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h5>ຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກ </h5>
+            <h5>ຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກ</h5>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item">ຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກ </li>
+              <li class="breadcrumb-item">ຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກ</li>
 
            
             
@@ -98,71 +84,53 @@ input[type=text] {
           
           <div class="row">
             <!-- Datatables -->
-            <div class="col-lg-20">
+            <div class="col-lg-12">
               <div class="card mb-0" style='border: 2px solid #8640bf; border-radius: 8px;'>
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                <div class="col-lg-3">
-
-                <lable>ຄົ້ນຫາຕາມປີ</lable>
-
-                <input type="text" class="form-control" id="start"   name="start"   value="<?php  echo date('Y');?>" >
-
-                </div>
-
                 <div class="col-lg-2">
-                <input type="radio" class="radio" name="type">
-                   <lable>ລາຍເດືອນ</lable>
-                    <select  type="text" id="select1" class="form-control">	
-                    <option value="0">ທັງໝົດ</option>
-                    <option value="M1">ເດືອນ 1</option>
-                    <option value="M2">ເດືອນ 2</option>
-                    <option value="M3">ເດືອນ 3</option>
-                    <option value="M4">ເດືອນ 4</option>
-                    <option value="M5">ເດືອນ 5</option>
-                    <option value="M6">ເດືອນ 6</option>
-                    <option value="M7">ເດືອນ 7</option>
-                    <option value="M8">ເດືອນ 8</option>
-                    <option value="M9">ເດືອນ 9</option>
-                    <option value="M10">ເດືອນ 10</option>
-                    <option value="M11">ເດືອນ 11</option>
-                    <option value="M12">ເດືອນ 12</option>
+                   <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
 
-                    </select>
+                    <?php
+                     @$start=$_POST['start'];
+                    ?>
+
+                    <input type="date" class="form-control " id="start"   name="start" 
+                    value="<?php  echo date('Y-m-01');?>" > 
+                   </div>
+
+                    <div class="col-lg-2">
+                   <lable>ຫາວັນທີເດືອນປີ</lable>
+
+                   <?php
+                     @$end=$_POST['end'];
+                    ?>
+                  <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
+                 
                   </div>
 
                    <div class="col-lg-2">
-                   <input type="radio" name="type" class="radios" value="1">
-                   <lable>ປະຈຳງວດ</lable>
-                    <select  type="text" class="form-control " id="select2" name="select2" >	
-                    <option value="0">ທັງໝົດ</option>
-                    <option value="1">ງວດ 1 (ເດືອນ 1-3)</option>
-                    <option value="2">ງວດ 2 (ເດືອນ 4-6)</option>
-                    <option value="3">ງວດ 3 (ເດືອນ 7-9)</option>
-                    <option value="4">ງວດ 4 (ເດືອນ 10-12)</option>
-                    
-                    </select>
+                   <lable>ລະຫັດລາຍການ</lable>
+                    <input type="text" class="form-control " id="Item_ID"   name="Item_ID" >	
                   </div>
 
-                  <div class="col-lg-2">
-                  <input type="radio" class="louie"  name="type" >
-                  <lable>ລວມງວດ</lable>
-                 
-                   
-                    <select  type="text" class="form-control " id="select3"   name="select3" >	
-                    <option value="0">ໝົດປີ</option>
-                    <option value="1">ເດືອນ 3</option>
-                    <option value="2">ເດືອນ 6</option>
-                    <option value="3">ເດືອນ 9</option>
-                  
-                    </select>
+
+                  <div class="col-lg-3">
+                   <lable>ເລກທີ</lable>
+                    <input type="text" class="form-control " id="Deci_No"   name="Deci_No">	
+                  </div>
+
+
+                  <div class="col-lg-3">
+                   <lable>ຊື່ ແລະ ນາມສະກຸນ</lable>
+                    <input type="text" class="form-control " id="Full_Name"   name="Full_Name">	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                   
+                    <a href="app/add_FrmRptCrm_Yearly3.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                     </div>
                   </div>
 
@@ -172,26 +140,35 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 130%">
+                <table class='table table-bordered' style="width: 236%">
                 <thead>
                 <tr align="center">
+                <th>ໂຫຼດ</th>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລຳດັບ</th>
-                        <th>ລະຫັດການຕັດສິນ</th>
-                        <th>ວັນເດືອນປີບັນທຶກ</th>
-                        <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                        <th>ວັນເດືອນປີເກີດ</th>
-                        <th>ເພດ</th>
-                        <th>ສັນຊາດ</th>
-                        <th>ຄຳຕັດສິນເລກທີ</th>
-                        <th>ວັນທີ</th>
-                        <th>ສຳນວນຄະດີຢູ່ນຳພາກສ່ວນ</th>
-                        <th>ຈຳນວນທາງແພ່ງ</th>
-                        <th>ຈ່າຍແລ້ວ</th>
-                        <th>ຍັງເຫຼືອ</th>
-                        <th>ຈຳນວນຄ່າປັບໃໝ</th>
-                        <th>ຈ່າຍແລ້ວ</th>
-                        <th>ຍັງເຫຼືອ</th>
-                        <th>ແຂວງ</th>
+                <th>ລະຫັດລາຍການ</th>
+                <th>ວັນເດືອນປີຕັດສີນ</th>
+                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
+                
+                <th>ວັນເດືອນປີເກີດ</th>
+                <th>ສັນຊາດ</th>
+                <th>ເພດ</th>
+                <th>ເລກທີ</th>
+                <th>ວັນທີ</th>
+                
+                <th>ຂໍ້ຫາການກະທຳຜີດ</th>
+                <th>ສຳນວນຄະດີ</th>
+                
+
+                <th>ທາງແພ່ງ(ຈຳນວນ)</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຍັງເຫຼືອ</th>
+
+                <th>ຄ່າປັບໄໝ(ຈຳນວນລວມ)</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຍັງເຫຼືອ</th>
+                <th>ໝາຍເຫດ</th>
                
                 </tr>
                 </thead>
@@ -200,7 +177,7 @@ input[type=text] {
                 include 'server/connect.php';
                 $i=0;  
                 $d = date("Y"); 
-                $sql = "SELECT * FROM KHT_Decision_Ph WHERE 1=1";
+                $sql = "SELECT * FROM KHT_Decision_Ph";
                 $query = sqlsrv_query( $conn, $sql );
 
               
@@ -211,32 +188,41 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr> 
-                  
-                
 
-                <td align='center'><?PHP echo $i; ?></td>
-                        <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
+                <td align='center'>
+           
+           <a href="cv/<?PHP echo $result["Item_ID"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
+      
+           </td>
+
+           <td align='center'>
+      
+           <a href="pages/Update_FrmRptCrm_Yearly3.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+           
+           </td>
+           <td align='center'>
+           <a href="pages/Delete_FrmRptCrm_Yearly3.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+           </td>
+
+                        <td><?PHP echo $result["item_Cnt"]; ?></td>
+                        <td><?PHP echo $result["Item_ID"]; ?></td>
                         
                         
                         <?php
                         $date=$result["Item_Date"];
                         ?>
-                        <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                        <td align='center'><?PHP echo $result["Full_Name"]; ?></td>
+                        <td><?PHP echo date_format($date,'d/m/Y');?></td>
+                        <td><?PHP echo $result["Full_Name"]; ?></td>
                         <?php
                         $dates=$result["Date_Birth"];
                         ?>
-                        <td align='center'><?PHP echo date_format($dates,'d/m/Y');?></td>
-                        <td align='center'><?PHP echo $result["Gender"]; ?></td>
-                        <td align='center'><?PHP echo $result["Nationality"]; ?></td>
+                        <td><?PHP echo date_format($dates,'d/m/Y');?></td>
+
+                        <td><?PHP echo $result["Nationality"]; ?></td>
+                        <td><?PHP echo $result["Gender"]; ?></td>
                         
                         
-
-
-                        
-
-                        <td align='center'><?PHP echo $result["Deci_No"]; ?></td>
-
+                        <td><?PHP echo $result["Deci_No"]; ?></td>
 
 
                         <?php
@@ -245,23 +231,19 @@ input[type=text] {
                         <td align='center'><?PHP echo date_format($dates,'d/m/Y');?></td>
 
 
-
-                        <td align='center'><?PHP echo $result["Data_holding"]; ?></td>
+                        <td><?PHP echo $result["Phatibus"]; ?></td>
+                        <td><?PHP echo $result["Data_holding"]; ?></td>
                         
 
-
-                        <td align='center'><?PHP echo $result["Pheng_Total"]; ?></td>
-
-
-
-
-                        <td align='center'><?PHP echo $result["Pheng_Paid"]; ?></td>
-                        <td align='center'><?PHP echo $result["Pheng_Remain"]; ?></td>
-                        <td align='center'><?PHP echo $result["Penaty_Tatol"]; ?></td>
-
-                        <td align='center'><?PHP echo $result["Penaty_Paid"]; ?></td>
-                        <td align='center'><?PHP echo $result["Penaty_Remain"]; ?></td>
-                        <td align='center'><?PHP echo $result["Prov_ID"]; ?></td>
+                        
+                        
+                        <td><?PHP echo $result["Pheng_Total"]; ?></td>
+                        <td><?PHP echo $result["Pheng_Paid"]; ?></td>
+                        <td><?PHP echo $result["Pheng_Remain"]; ?></td>
+                        <td><?PHP echo $result["Penaty_Tatol"]; ?></td>
+                        <td><?PHP echo $result["Penaty_Paid"]; ?></td>
+                        <td><?PHP echo $result["Penaty_Remain"]; ?></td>
+                        <td><?PHP echo $result["Remark"]; ?></td>
 
                
 

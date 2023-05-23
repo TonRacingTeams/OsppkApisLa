@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
     include '../server/connect.php'; 
 
 	if(is_array($_FILES)){
@@ -36,4 +36,4 @@
 
 	sqlsrv_close($conn);
 	
-?>
+?> -->

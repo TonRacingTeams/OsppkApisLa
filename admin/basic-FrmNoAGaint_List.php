@@ -15,6 +15,8 @@ include 'head.php';
 				var aa=$("#start").val();
 				var bb=$("#end").val();
         var numberID=$("#numberID").val();
+        var Alleged_Name=$("#Alleged_Name").val();
+        var Alleged_latname=$("#Alleged_latname").val();
 
 
         //  alert('hellow');
@@ -22,7 +24,9 @@ include 'head.php';
 				$.post("search_FrmNoAGaint_List.php",{
 					start:aa,
 					end:bb,
-          numberID:numberID
+          numberID:numberID,
+          Alleged_Name:Alleged_Name,
+          Alleged_latname:Alleged_latname
          
 				},
 				function(output){
@@ -69,10 +73,10 @@ input[type=text] {
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h5>ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂ້ແລ້ວ</h5>
+            <h5>ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂແລ້ວ</h5>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item">ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂ້ແລ້ວ</li>
+              <li class="breadcrumb-item">ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂແລ້ວ</li>
             
             </ol>
           </div>
@@ -118,6 +122,16 @@ input[type=text] {
                     <input type="text" class="form-control " id="numberID"   name="numberID" >	
                   </div>
 
+                  <div class="col-lg-2">
+                   <lable>ຊື່</lable>
+                    <input type="text" class="form-control " id="Alleged_Name"   name="Alleged_Name" >	
+                  </div>
+
+                  <div class="col-lg-2">
+                   <lable>ນາມສະກຸນ</lable>
+                    <input type="text" class="form-control " id="Alleged_latname"   name="Alleged_latname" >	
+                  </div>
+
 
 
 
@@ -125,7 +139,8 @@ input[type=text] {
                   
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmNoAGaint_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>  
+                  </div>
                   </div>
 
 
@@ -135,11 +150,13 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 180%">
+                <table class='table table-bordered' style="width: 136%">
                 <thead>
                 <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
-                <th>ເລກນັບ</th>
+                <th>ລະຫັດຄະດີ</th>
                 <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
@@ -161,7 +178,7 @@ input[type=text] {
                 include 'server/connect.php';
                 $i=0;              
                 @$start=$_POST['start'];    
-                $sql = "SELECT *FROM  KHT_alleged WHERE 1=1";
+                $sql = "SELECT * FROM  KHT_alleged";
                 $query = sqlsrv_query( $conn, $sql );
 
               
@@ -172,6 +189,18 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?numberID=<?PHP echo $result["numberID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmNoAGaint_List.php?numberID=<?php echo $result['numberID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["numberID"]; ?></td>

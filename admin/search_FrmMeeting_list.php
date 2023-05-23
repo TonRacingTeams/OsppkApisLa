@@ -9,33 +9,56 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table  class='table table-bordered' style="width: 100%">
+                <table  class='table table-bordered' style="width: 236%">
                     <thead>
                     <tr align='center'>
-                    <th>No</th>
-                <th>ເລກນັບ</th>
-                <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
-                <th>ຊື່</th>
+                    <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
+                <th>ລະຫັດ</th>
+                <th>ຊື່ນັກໂທດ</th>
                 <th>ນາມສະກຸນ</th>
-
-                <th>ວັນເດືອນປີໝົດໂທດ</th>
-                <th>ອາຍຸເລາກະທຳຜິດ</th>
+                <th>ອາຍຸເວລາກະທຳຜິດ</th>
                 <th>ເພດ</th>
                 <th>ສັນຊາດ</th>
-                <th>ອາຊີບ</th>
+
+
+                <th>ກ່ອນຖືກ(ອາຊີບ)</th>
                 <th>ບ້ານ</th>
                 <th>ເມືອງ</th>
                 <th>ແຂວງ</th>
-                <th>ຂໍ້ຫາການກະທໍາຜິດ</th>
+                
                 <th>ສານຕັດສິນລົງໂທດ</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນລວມ)</th>
-                <th>ຄ່າປັບໃໝ(ຈ່າຍແລ້ວ)</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນຜ່ອນ)</th>
-                <th>ຄ່າປັບໃໝ(ຍັງເຫຼືອ) </th>
+                <th>ຂໍ້ຫາການກະທຳຜິດ</th>
+                <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
+
+
+                <th>ໄດ້ຮັບການຜ່ອນໂທດ(ຈຳນວນຄັ້ງ)</th>
+                <th>ຈຳນວນປີ</th>
+                <th>ຈັກເດືອນ</th>
+                <th>ປະເພດດັດສ້າງ</th>
+
+
+                <th>ທາງແພ່ງ(ສະກຸນເງີນ)</th>
+                <th>ຈຳນວນລວມ</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຍັງເຫຼືອ</th>
+                <th>ວັນເດືອນປີໝົດໂທດ</th>
+
+
+
+
+                <th>ຄ່າປັບໄໝ(ຈຳນວນລວມ)</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຈຳນວນຜ່ອນ</th>
+                <th>ຍັງເຫຼືອ</th>
                 <th>ໝາຍເຫດ</th>
-                <th>ວັນທີ່ຖືກໂອນ</th>
+                
                     </tr>
                 </thead>
+
+
+                <!-- ປ່ອຍຕົວຕາມມາດຕາ 105 -->
                    
                 <?php
                 include 'server/connect.php';
@@ -61,20 +84,26 @@ date_default_timezone_set("Asia/Bangkok");
                 ?>
                     <tbody id="users">
                 <tr>
-                <td align='center'><?PHP echo $i; ?></td>
+
+
+                <td>
+                        <a href="#?ConvietID=<?PHP echo $result["ConvietID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmMeeting_List.php?ConvietID=<?php echo $result['ConvietID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+                        <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["ConvietID"]; ?></td>
-                <?php
-                $date=$result["Kok_Dtouch"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
                 <td align='center'><?PHP echo $result["Kok_Name"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_surname"]; ?></td>
 
-                <?php
-                $date=$result["Brithday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
 
                 <td align='center'><?PHP echo $result["Kok_timemake"]; ?></td>
@@ -84,19 +113,36 @@ date_default_timezone_set("Asia/Bangkok");
                 <td align='center'><?PHP echo $result["befor_Village"]; ?></td>
                 <td align='center'><?PHP echo $result["befor_District"]; ?></td>
                 <td align='center'><?PHP echo $result["befor_Province"]; ?></td>
-                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
+                
                 <td align='center'><?PHP echo $result["Kok_punish"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_wrong"]; ?></td>
+                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
+
+
+                <?php
+                $date=$result["Kok_Dtouch"];
+                ?>
+                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
+
+                <td align='center'><?PHP echo $result["Con_count"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_year"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_month"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_Datefor"]; ?></td>
+
+                <td align='center'><?PHP echo $result["rates"]; ?></td>
+                <td align='center'><?PHP echo $result["Total"]; ?></td>
+                <td align='center'><?PHP echo $result["Paid"]; ?></td>
+                <td align='center'><?PHP echo $result["Beleft"]; ?></td>
+
+                <?php
+                $date=$result["Brithday"];
+                ?>
+                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
                 <td align='center'><?PHP echo $result["Kok_Total"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Paid"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Slacken"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Beleft"]; ?></td>
-                
-
-                <?php
-                $date=$result["Con_penMonth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td align='center'><?PHP echo $result["Remark"]; ?></td>
                 
               </tr>
                 </tbody>

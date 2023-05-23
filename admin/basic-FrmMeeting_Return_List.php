@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<!-- ອະໄພຍະໂທດປ່ອຍຕົວເນື່ອງໃນໂອກາດວັນຊາດທີ 2 ທັນວາ -->
+
 <head>
 
 <?php
@@ -12,15 +15,17 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-				var aa=$("#start").val();
-				var bb=$("#end").val();
+				var start=$("#start").val();
+				var end=$("#end").val();
         var slacken_nameID=$("#slacken_nameID").val();
+        var nemeral=$("#nemeral").val();
 
         //  alert('hellow');
-				$.post("search_cancel.php",{
-					start:aa,
-					end:bb,
-          slacken_nameID:slacken_nameID
+				$.post("search_FrmMeeting_Return_List.php",{
+					start:start,
+					end:end,
+          slacken_nameID:slacken_nameID,
+          nemeral:nemeral
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -105,14 +110,21 @@ input[type=text] {
 
 
                   <div class="col-lg-2">
-                   <lable>ເລກນັບ</lable>
+                   <lable>ລະຫັດ</lable>
                     <input type="text" class="form-control " id="slacken_nameID"   name="slacken_nameID" >	
+                  </div>
+
+
+                  <div class="col-lg-2">
+                   <lable>ເລກທີ</lable>
+                    <input type="text" class="form-control " id="nemeral"   name="nemeral" >	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmMeeting_Return_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>  
+                  </div>
                   </div>
 
                 </div><br>
@@ -123,39 +135,54 @@ input[type=text] {
 
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 200%">
+                <table class='table table-bordered' style="width: 336%">
                 <thead>
                 <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
-                <th>ເລກນັບ</th>
-                <th>ວັນທີຖືກຈັບ</th>
+                <th>ລະຫັດ</th>
+                <th>ເລກທີ</th>
+                <th>ລົງວັນທີ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
-                <th>ວັນເດືອນປີເກີດ</th>
+
                 <th>ອາຍຸເວລາກະທຳຜິດ</th>
                 <th>ເພດ</th>
                 <th>ສັນຊາດ</th>
-                <th>ອາຊີບ</th>
+
+                <th>ກ່ອນຖືກຈັບ(ອາຊີບ)</th>
                 <th>ບ້ານ</th>
                 <th>ເມືອງ</th>
                 <th>ແຂວງ </th>
-                <th>ຂໍ້ຫາການເຮັດຜິດ</th>
-                <th>ຄຳຕັດສິນ</th>
-                <th>ໄດ້ຮັບຜ່ອນໂທດ(ຈຳນວນລວມ)</th>
+                <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
+                <th>ລາຍລະອຽດການກະທຳຜິດ</th>
+                <th>ຂໍ້ຫາການກະທຳຜິດ</th>
+                <th>ໄລຍະຜ່ອນໂທດ</th>
+
+
                 <th>ໄດ້ຮັບຜ່ອນໂທດ(ຈຳນວນຄັ້ງ)</th>
-                <th>ໄດ້ຮັບຜ່ອນໂທດ(ຈຳນວນປີ)</th>
-                <th>ໄດ້ຮັບຜ່ອນໂທດ(ຈຳນວນເດືອນ)</th>
+                <th>ຈຳນວນປີ</th>
+                <th>ຈຳນວນເດືອນ</th>
+                <th>ສານຕັດສິນລົງໂທດ</th>
+                <th>ປະຕິບັດໂທດແລ້ວຈັກປີ</th>
                 <th>ໂທດທີ່ຍັງເຫຼືອ</th>
                 <th>ປະເພດດັດສ້າງ</th>
-                <th>ອະໄຟຍະໂທດ</th>
-                <th>ທາງແພ່ງ(ຈຳນວນລວມ)</th>
+                <th>ອະໄພຍະໂທດປີ</th>
+
+
+                <th>ທາງແພ່ງ(ສະກຸນເງີນ)</th>
+                <th>ຈຳນວນລວມ</th>
                 <th>ຈ່າຍແລ້ວ</th>
                 <th>ຍັງເຫຼືອ</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນລວມ)</th>
+                
+
+                <th>ຄ່າປັບໄໝ(ຈຳນວນລວມ)</th>
                 <th>ຈ່າຍແລ້ວ</th>
                 <th>ຍັງເຫຼືອ</th>
+                <th>ຈຳນວນຜ່ອນ</th>
                 <th>ໝາຍເຫດ</th>
-                <th>ວັນທີ່ຖືກໂອນ</th>
+                
                 
                
                 </tr>
@@ -165,7 +192,7 @@ input[type=text] {
 
                 $i=0; 
                 include 'server/connect.php';
-                $stmt = "SELECT * FROM  KHT_slacken WHERE 1=1";
+                $stmt = "SELECT * FROM  KHT_slacken";
                 $query  = sqlsrv_query($conn,$stmt);
 
                 while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
@@ -175,53 +202,67 @@ input[type=text] {
                 <tbody id="users">
                 <tr>
 
+                <td>
+                        <a href="#?slacken_nameID=<?PHP echo $result["slacken_nameID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmMeeting_Return_List.php?slacken_nameID=<?php echo $result['slacken_nameID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["slacken_nameID"]; ?></td>
+                <td align='center'><?PHP echo $result["nemeral"]; ?></td>
                 <?php
-                $date=$result["slacken_day_to_be_arrested"];
+                $date=$result["Birthday"];
                 ?>
                 <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
 
                 <td align='center'><?PHP echo $result["slacken_name"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_Lat"]; ?></td>
 
-                <?php
-                $date=$result["Birthday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
 
                 <td align='center'><?PHP echo $result["action_false"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_sex"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_NationNm"]; ?></td>
+
+
                 <td align='center'><?PHP echo $result["slacken_first_job_to_bearrested"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_Village"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_DistrictBorn"]; ?></td>
                 <td align='center'><?PHP echo $result["slacken_ProvinceBorn"]; ?></td>
+                <?php
+                $date=$result["slacken_day_to_be_arrested"];
+                ?>
+                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
                 <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["slacken_to_judge"]; ?></td>
+                <td align='center'><?PHP echo $result["slacken_charge"]; ?></td>
+                <td align='center'><?PHP echo $result["comment"]; ?></td>
                 <td align='center'><?PHP echo $result["items_time"]; ?></td>
                 <td align='center'><?PHP echo $result["items_year"]; ?></td>
                 <td align='center'><?PHP echo $result["items_Month"]; ?></td>
+
+
+                <td align='center'><?PHP echo $result["slacken_to_judge"]; ?></td>
                 <td align='center'><?PHP echo $result["to_act_year"]; ?></td>
                 <td align='center'><?PHP echo $result["penalty_yet"]; ?></td>
 
-
                 <td align='center'><?PHP echo $result["Type_penalty"]; ?></td>
                 <td align='center'><?PHP echo $result["ApaiyaTol"]; ?></td>
+
+                <td align='center'><?PHP echo $result["rates"]; ?></td>
                 <td align='center'><?PHP echo $result["Cltotal"]; ?></td>
                 <td align='center'><?PHP echo $result["Clpaid"]; ?></td>
                 <td align='center'><?PHP echo $result["Clin_debt"]; ?></td>
+
                 <td align='center'><?PHP echo $result["total"]; ?></td>
                 <td align='center'><?PHP echo $result["paid"]; ?></td>
+                <td align='center'><?PHP echo $result["yat"]; ?></td>
                 <td align='center'><?PHP echo $result["in_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_charge"]; ?></td>
-                <?php
-                $date=$result["slac_penMonth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-            
+                <td align='center'><?PHP echo $result["Remark"]; ?></td>
                 
               </tr>
                 </tbody>
@@ -232,211 +273,8 @@ input[type=text] {
                 </table>
                 </div>
 
-              </div>
-			  
-			  
-			  
-        <div class="mid" id='show_data'>
-			          <div class="col-lg-12">
-                <div id='show1' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
-                <thead>
-                <tr align='center'>
-                <th>ລະຫັດ</th>
-                <th>ໝວດທີ</th>
-                <th>ມາດຕາການກະທຳຜິດ</th>
-                <th>ເນື້ອໃນ</th>
-                
-               
-                </tr>
-                </thead>
-                   
-                <?php
-
-
-$i=0; 
-include 'server/connect.php';
-$stmt = "SELECT * FROM  KHT_slacken WHERE 1=1";
-$query  = sqlsrv_query($conn,$stmt);
-
-
-                while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-                { 
-                ?>
-
-                <tbody id="users">
-                <tr>
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["slacken_nameID"]; ?></td>
-                <?php
-                $date=$result["slacken_day_to_be_arrested"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-                <td align='center'><?PHP echo $result["slacken_name"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_Lat"]; ?></td>
-
-                <?php
-                $date=$result["Birthday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-
-                <td align='center'><?PHP echo $result["action_false"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_NationNm"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_first_job_to_bearrested"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_DistrictBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_ProvinceBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["slacken_to_judge"]; ?></td>
-                <td align='center'><?PHP echo $result["items_time"]; ?></td>
-                <td align='center'><?PHP echo $result["items_year"]; ?></td>
-                <td align='center'><?PHP echo $result["items_Month"]; ?></td>
-                <td align='center'><?PHP echo $result["to_act_year"]; ?></td>
-                <td align='center'><?PHP echo $result["penalty_yet"]; ?></td>
-
-
-                <td align='center'><?PHP echo $result["Type_penalty"]; ?></td>
-                <td align='center'><?PHP echo $result["ApaiyaTol"]; ?></td>
-                <td align='center'><?PHP echo $result["Cltotal"]; ?></td>
-                <td align='center'><?PHP echo $result["Clpaid"]; ?></td>
-                <td align='center'><?PHP echo $result["Clin_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["total"]; ?></td>
-                <td align='center'><?PHP echo $result["paid"]; ?></td>
-                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_charge"]; ?></td>
-                <?php
-                $date=$result["slac_penMonth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                
-              </tr>
-                </tbody>
-                <?PHP
-            
-                } 
-                ?>
-                </table>
                 </div>
               </div>
-            </div>
-			
-			
-			
-			
-			<br><br>
-			
-	  		 <div class="row" id='show_data'>
-            <!-- Datatables -->
-            <div class="col-lg-10">
-             
-            
-              <div id='show2' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
-                <thead>
-                <tr align='center'>
-                <th>ລະດັບ</th>
-                <th>ລະຫັດຄະດີ</th>
-                <th>ຖືກຫາວ່າ</th>
-                <th>ໂຈດທາງອາຍາ</th>
-                <th>ໂຈດທາງແພ່ງ</th>
-                <th>ຜູ້ຮັບຜິດຊອບທາງແພ່ງ</th>
-                <th>ຈຳເລີຍ</th>
-                <th>ຄຳອະພີພາກສາຂອງສານ</th>
-                <th>Cnt</th>
-                </tr>
-                </thead>
-                   
-                <?php
-                $i=0; 
-                include 'server/connect.php';
-                $stmt = "SELECT * FROM  KHT_slacken WHERE 1=1";
-                $query  = sqlsrv_query($conn,$stmt);
-                while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-                { 
-                ?>
-
-                <tbody id="users">
-                <tr>
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["slacken_nameID"]; ?></td>
-                <?php
-                $date=$result["slacken_day_to_be_arrested"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-                <td align='center'><?PHP echo $result["slacken_name"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_Lat"]; ?></td>
-
-                <?php
-                $date=$result["Birthday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-
-                <td align='center'><?PHP echo $result["action_false"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_NationNm"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_first_job_to_bearrested"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_DistrictBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_ProvinceBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["slacken_to_judge"]; ?></td>
-                <td align='center'><?PHP echo $result["items_time"]; ?></td>
-                <td align='center'><?PHP echo $result["items_year"]; ?></td>
-                <td align='center'><?PHP echo $result["items_Month"]; ?></td>
-                <td align='center'><?PHP echo $result["to_act_year"]; ?></td>
-                <td align='center'><?PHP echo $result["penalty_yet"]; ?></td>
-
-
-                <td align='center'><?PHP echo $result["Type_penalty"]; ?></td>
-                <td align='center'><?PHP echo $result["ApaiyaTol"]; ?></td>
-                <td align='center'><?PHP echo $result["Cltotal"]; ?></td>
-                <td align='center'><?PHP echo $result["Clpaid"]; ?></td>
-                <td align='center'><?PHP echo $result["Clin_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["total"]; ?></td>
-                <td align='center'><?PHP echo $result["paid"]; ?></td>
-                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["slacken_charge"]; ?></td>
-                <?php
-                $date=$result["slac_penMonth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                
-                </tr>
-                </tbody>
-                <?PHP
-            
-                } 
-                ?>
-                </table>
-              </div>
-
-              
-			  
-            </div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		
-			
           </div>
      
         </div>

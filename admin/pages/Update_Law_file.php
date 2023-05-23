@@ -8,7 +8,7 @@ include 'head.php';
 ?>
 
 
-<script>
+<!-- <script>
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
@@ -21,13 +21,13 @@ include 'head.php';
 				});
 			});
 		});
-	</script>
+	</script> -->
 
 
 
 
 
-<script>
+<!-- <script>
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
@@ -40,7 +40,7 @@ include 'head.php';
 				});
 			});
 		});
-	</script>
+	</script> -->
 
 
 <style>

@@ -118,18 +118,21 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmRevise_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 180%">
+                <table class='table table-bordered' style="width: 236%">
                 <thead>
                 <tr align='center'>
-                <th>No</th>
-                <th>ເລກນັບ</th>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
+                <th>ລະຫັດຄະດີ</th>
                 <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
@@ -168,7 +171,7 @@ input[type=text] {
                include 'server/connect.php';
                $i=0;              
                @$start=$_POST['start'];    
-               $sql = "SELECT * FROM KHT_prisoner WHERE 1=1";
+               $sql = "SELECT * FROM KHT_prisoner";
                $query = sqlsrv_query( $conn, $sql );
 
              
@@ -179,45 +182,57 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?PrisonerID=<?PHP echo $result["PrisonerID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmRevise_List.php?PrisonerID=<?php echo $result['PrisonerID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
             
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["PrisonerID"]; ?></td>
+                <td ><?PHP echo $i; ?></td>
+                <td ><?PHP echo $result["PrisonerID"]; ?></td>
                 
                 <?php
                 $date=$result["Darrest"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td ><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
-                <td align='center'><?PHP echo $result["Name"]; ?></td>
-                <td align='center'><?PHP echo $result["Lastname"]; ?></td>
+                <td ><?PHP echo $result["Name"]; ?></td>
+                <td ><?PHP echo $result["Lastname"]; ?></td>
 
                 <?php
                 $date=$result["Birthday"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td ><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
 
-                <td align='center'><?PHP echo $result["Nationality"]; ?></td>
-                <td align='center'><?PHP echo $result["sex"]; ?></td>
-                <td align='center'><?PHP echo $result["Job"]; ?></td>
-                <td align='center'><?PHP echo $result["Village"]; ?></td>
-                <td align='center'><?PHP echo $result["District"]; ?></td>
-                <td align='center'><?PHP echo $result["Province"]; ?></td>
+                <td ><?PHP echo $result["Nationality"]; ?></td>
+                <td ><?PHP echo $result["sex"]; ?></td>
+                <td ><?PHP echo $result["Job"]; ?></td>
+                <td ><?PHP echo $result["Village"]; ?></td>
+                <td ><?PHP echo $result["District"]; ?></td>
+                <td ><?PHP echo $result["Province"]; ?></td>
 
-                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
-                <td align='center'><?PHP echo $result["Punish"]; ?></td>
-                <td align='center'><?PHP echo $result["Reform"]; ?></td>
-                <td align='center'><?PHP echo $result["Wrong"]; ?></td>
-                <td align='center'><?PHP echo $result["law_paid"]; ?></td>
+                <td ><?PHP echo $result["wrongdetail"]; ?></td>
+                <td ><?PHP echo $result["Punish"]; ?></td>
+                <td ><?PHP echo $result["Reform"]; ?></td>
+                <td ><?PHP echo $result["Wrong"]; ?></td>
+                <td ><?PHP echo $result["law_paid"]; ?></td>
 
 
-                <td align='center'><?PHP echo $result["law_beleft"]; ?></td>
-                <td align='center'><?PHP echo $result["P_Total"]; ?></td>
-                <td align='center'><?PHP echo $result["p_paid"]; ?></td>
-                <td align='center'><?PHP echo $result["P_beleft"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
+                <td ><?PHP echo $result["law_beleft"]; ?></td>
+                <td ><?PHP echo $result["P_Total"]; ?></td>
+                <td ><?PHP echo $result["p_paid"]; ?></td>
+                <td ><?PHP echo $result["P_beleft"]; ?></td>
+                <td ><?PHP echo $result["Remark"]; ?></td>
                 
 
                 
@@ -225,7 +240,7 @@ input[type=text] {
                 <?php
                 $date=$result["Pri_penMonth"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td ><?PHP echo date_format($date,'d/m/Y');?></td>
                
                
               </tr>

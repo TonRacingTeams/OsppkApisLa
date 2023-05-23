@@ -11,17 +11,19 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-				var $start=$("#start").val();
-        var $end=$("#end").val();
-        var $Item_ID=$("#Item_ID").val();
+				var start=$("#start").val();
+				var end=$("#end").val();
+        var Item_ID=$("#Item_ID").val();
+        var Case_ID=$("#Case_ID").val();
 
 
 
         //  alert('hellow');
 				$.post("search_frmlaw_bieb.php",{
 					start:start,
-          end:end,
-          Item_ID:Item_ID
+					end:end,
+          Item_ID:Item_ID,
+          Case_ID:Case_ID
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -83,10 +85,7 @@ input[type=text] {
           <div class="row">
             <!-- Datatables -->
             <div class="col-lg-12">
-              
-
-            
-            <form action="app/add_frmLaw_labieb.php" name="frmAdd" method="POST" enctype='multipart/form-data'>
+            <!-- <form action="app/add_frmLaw_labieb.php" name="frmAdd" method="POST" enctype='multipart/form-data'> -->
             <div class="card mb-0" style='border: 2px solid #057c0c; border-radius: 8px;'>
              <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
@@ -172,14 +171,21 @@ input[type=text] {
 
 
                   <div class="col-lg-2">
-                   <lable>ເລກນັບ</lable>
+                   <lable>ລະຫັດກອງປະຊຸມສານ</lable>
                     <input type="text" class="form-control " id="Item_ID"   name="Item_ID" >	
+                  </div>
+
+
+                  <div class="col-lg-2">
+                   <lable>ລະຫັດຄະດີ</lable>
+                    <input type="text" class="form-control " id="Case_ID"   name="Case_ID" >	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmLaw_File_Labieb.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
 </div>
 
@@ -188,49 +194,45 @@ input[type=text] {
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
+                <table class='table table-bordered' style="width: 595%">
                 <thead>
                 <tr align='center'>
                
-                <th>ອັບໂຫຼດ</th>
+                <th>ໂຫຼດ</th>
                 <th>ແກ້ໄຂ</th>
                 <th>ລົບ</th>
-                <th>ລຳດັບ</th>
-                <th>ເລກທີກອງປະຊຸມ</th>
-                <th>ວັນເດືອນປີ </th>
-                <th>ຈຳນວນຜູ້ເຂົ້າຮ່ວມ</th>
-                <th>ຈຳນວນຄະດີຖະແຫຼງ</th>
-                <th>Cnt</th>
+                <th>ລະຫັດກອງປະຊຸມສານ</th>
+                <th>ວັນເດືອນປີເຂົ້າຮ່ວມປະຊູມ</th>
+                <th>ລະຫັດຄະດີ</th>
+                <th>ກ່ຽວເລື່ອງ</th>
+                <th>ໂຈດ</th>
+                <th>ຈຳເລີຍ</th>
+                <th>ບຸກຄົນທີສາມ</th>
+                <th>ຜູ້ຖະແຫຼງຕໍ່ສານ</th>
+                <th>ຜົນການຕັດສິນຂອງສານ </th>
+                
                 
                 </tr>
                 </thead>
                    
                 <?php
                include 'server/connect.php';  
-               $sql = "SELECT * FROM KHT_CanMeetingPh WHERE 1=1";
+
+               $i=0;
+
+
+               @$start=$_POST['start'];
+
+
+               $sql = "SELECT * FROM KHT_CanMeetingPh_Case";
                $query = sqlsrv_query( $conn, $sql );
 
              
                while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
                {
+
+                $i++;
                 ?>
 
                 <tbody id="users">
@@ -240,33 +242,42 @@ input[type=text] {
 
                 <td align='center'>
            
-                <a href="cv/<?PHP echo $result["File_Name"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
+                <a href="cv/<?PHP echo $result["Item_ID"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
            
                 </td>
 
                 <td align='center'>
            
-                <a href="pages/Update_Law_labieb.php?Law_ID=<?PHP echo $result["Law_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                <a href="pages/Update_Law_file.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                 
                 </td>
                 <td align='center'>
-                <a href="pages/Delete_frmlaw_labieb.php?Law_ID=<?php echo $result['Law_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                <a href="pages/Delete_frmlaw_files.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
                 </td>
 
 
-         
-                <td align='center'><?PHP echo $result["item_Cnt"]; ?></td>
-                <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
 
+                
+                
+                <td><?PHP echo $result["Item_ID"]; ?></td>
+                
 
                 <?php
                 $date=$result["Item_Date"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo date_format($date,'d/m/Y');?></td>
+
+
+                <td><?PHP echo $result["Case_ID"]; ?></td>
+                <td><?PHP echo $result["Problem"]; ?></td>
                 
-                <td align='center'><?PHP echo $result["Person_Cnt"]; ?></td>
-                <td align='center'><?PHP echo $result["Case_Cnt"]; ?></td>
-                <td align='center'><?PHP echo $result["Cnt"]; ?></td>
+                <td><?PHP echo $result["Request_Civil"]; ?></td>
+
+                <td><?PHP echo $result["Respond_Civil"]; ?></td>
+                <td><?PHP echo $result["Related_Pers"]; ?></td>
+                
+                <td><?PHP echo $result["Pers_Name"]; ?></td>
+                <td><?PHP echo $result["Solv_Name"]; ?></td>
 
 
                 
@@ -295,7 +306,7 @@ input[type=text] {
 
 
 
-                <div id='show' class="table-responsive p-10">
+                <!-- <div id='show' class="table-responsive p-10">
                 <table class='table table-bordered' style="width: 150%">
                 <thead>
                 <tr align='center'>
@@ -310,23 +321,23 @@ input[type=text] {
                 <th>ຜູ້ຖະແຫຼງຕໍ່ສານ</th>
                 <th>Cnt</th>
                 </tr>
-                </thead>
+                </thead> -->
                    
-                <?php
-               include 'server/connect.php';  
-               $sql = "SELECT * FROM KHT_CanMeetingPh_Case WHERE 1=1";
-               $query = sqlsrv_query( $conn, $sql );
+                <!-- <?php
+              //  include 'server/connect.php';  
+              //  $sql = "SELECT * FROM KHT_CanMeetingPh_Case WHERE 1=1";
+              //  $query = sqlsrv_query( $conn, $sql );
 
              
-               while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
-               {
+              //  while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
+              //  {
                 ?>
 
                 <tbody id="users">
-                <tr>
+                <tr> -->
             
          
-                <td align='center'><?PHP echo "i"; ?></td>
+                <!-- <td align='center'><?PHP echo "i"; ?></td>
                 <td align='center'><?PHP echo $result["Case_ID"]; ?></td>
                 <td align='center'><?PHP echo $result["Problem"]; ?></td>
                 <td align='center'><?PHP echo $result["Request_Civil"]; ?></td>
@@ -355,12 +366,12 @@ input[type=text] {
 
               </tr>
                 </tbody>
-                <?PHP
+               // <?PHP
             
-                } 
-                ?>
+               // } 
+               // ?>
                 </table>
-                </div>
+                </div> -->
 
 
 
@@ -382,7 +393,7 @@ input[type=text] {
 
 
                 
-                <div id='show' class="table-responsive p-10">
+                <!-- <div id='show' class="table-responsive p-10">
                 <table class='table table-bordered' style="width: 150%">
                 <thead>
                 <tr align='center'>
@@ -393,9 +404,9 @@ input[type=text] {
                 
                 <th>ລົບຂໍ້ມູນ</th>
                 </tr>
-                </thead>
+                </thead> -->
                    
-                <?php
+                <!-- <?php
                include 'server/connect.php';  
                $sql = "Select * from KHT_CanMeetingPh_Item";
                $query = sqlsrv_query( $conn, $sql );
@@ -438,7 +449,7 @@ input[type=text] {
             
                 } 
                 ?>
-                </table>
+                </table> -->
                 </div>
 
 

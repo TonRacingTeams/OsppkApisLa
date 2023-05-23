@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- ນັກໂທດຢາເສບຕິດທີ່ມີເງື່ອນໄຂສະເໜີໃຫ້ອະໄພຍະໂທດຜ່ອນໂທດ -->
+
 <head>
 
 <?php
@@ -15,6 +17,8 @@ include 'head.php';
 				var start=$("#start").val();
 				var end=$("#end").val();
         var narcotic_numberID=$("#narcotic_numberID").val();
+
+
      //   alert(start);
 				$.post("search_FrmMeeting1_list.php",{
 			  	start:start,
@@ -105,14 +109,15 @@ input[type=text] {
 
 
                   <div class="col-lg-2">
-                   <lable>ເລກນັບ</lable>
+                   <lable>ລະຫັດ</lable>
                     <input type="text" class="form-control " id="narcotic_numberID"   name="narcotic_numberID" >	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmMeeting1_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
@@ -120,30 +125,47 @@ input[type=text] {
                
                 
               <div id='show2' class="table-responsive p-10">
-                <table  class='table table-bordered' style="width: 120%">
+                <table  class='table table-bordered' style="width: 363%">
                 <thead>
                 <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
-                <th>ເລກນັບ</th>
-                <th>ວັນທີຖືກຈັບ</th>
+                <th>ລະຫັດ</th>
+                <th>ສະບັບເລກທີ</th>
+
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
-                <th>ວັນເດືອນປີເກີດ</th>
+                
                 <th>ອາຍຸເວລາກະທຳຜິດ</th>
                 <th>ສັນຊາດ</th>
                 <th>ເພດ</th>
-                <th>ອາຊີບ</th>
+                <th>ກ່ອນຖືກຈັບຕົວ(ອາຊີບ)</th>
                 <th>ບ້ານ</th>
                 <th>ເມືອງ</th>
                 <th>ແຂວງ</th>
+                <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
                 <th>ຂໍ້ຫາການເຮັດຜິດ</th>
+                <th>ລາຍລະອຽດການເຮັດຜິດ</th>
                 <th>ສານຕັດສີນລົງໂທດ</th>
-                <th>ຄ່າປັບໃໝ່(ຈຳນວນລວມ)</th>
-                <th>ຄ່າປັບໃໝ່(ຈ່າຍແລ້ວ)</th>
-                <th>ຄ່າປັບໃໝ່(ຜ່ອນ)</th>
-                <th>ຄ່າປັບໃໝ່(ຍັງເຫຼືອ)</th>
+                <th>ລົງວັນທີ</th>
+                <th>ໄດ້ຮັບການຜ່ອນໂທດ(ຈຳນວນຄັ້ງ)</th>
+                <th>ຈຳນວນປີ</th>
+                <th>ຈຳນວນເດືອນ</th>
+                <th>ປະຕິບັດໂທດແລ້ວຈັກປີ</th>
+                <th>ໂທດທີ່ຍັງເຫຼືອ</th>
+                <th>ປະເພດດັດສ້າງ</th>
+                <th>ອະໄພຍະໂທດປີ</th>
+
+
+                <th>ຄ່າປັບໄໝ(ສະກຸນເງີນ)</th>
+                <th>ຈຳນວນລວມ</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຍັງເຫຼືອ</th>
+                <th>ຈຳນວນຜ່ອນ</th>
+                <th>ເປີເຊັນຜ່ອນຄ່າປັບໄໝ</th>
                 <th>ໝາຍເຫດ</th>
-                <th>ວັນທີ່ຖືກໂອນ</th>
+                
                
                 </tr>
                 </thead>
@@ -152,7 +174,7 @@ input[type=text] {
                   include 'server/connect.php';
                   $i=0;  
                   @$start=$_POST['start'];
-                  $sql = "SELECT *FROM  KHT_narcotic_slacken WHERE 1=1";
+                  $sql = "SELECT * FROM  KHT_narcotic_slacken";
                   $query = sqlsrv_query( $conn, $sql );
                   while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
                 { 
@@ -160,21 +182,22 @@ input[type=text] {
 
                 <tbody id="tableId">
                 <tr id ="showitem">
+
+
+                <td>
+                        <a href="#?narcotic_numberID=<?PHP echo $result["narcotic_numberID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmMeeting1_List.php?narcotic_numberID=<?php echo $result['narcotic_numberID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["narcotic_numberID"]; ?></td>
-                <?php
-                $date=$result["narcotic_day_to_be_arrested"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
+                <td align='center'><?PHP echo $result["nemeral"]; ?></td>
                 <td align='center'><?PHP echo $result["narcotic_name"]; ?></td>
                 <td align='center'><?PHP echo $result["narcotic_lat"]; ?></td>
 
 
-                <?php
-                $date=$result["Birthday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
 
                 <td align='center'><?PHP echo $result["narcotic_false"]; ?></td>
@@ -184,118 +207,41 @@ input[type=text] {
                 <td align='center'><?PHP echo $result["narcotic_Village"]; ?></td>
                 <td align='center'><?PHP echo $result["narcotic_DistrictBorn"]; ?></td>
                 <td align='center'><?PHP echo $result["narcotic_ProvinceBorn"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["narcotic_charge"]; ?></td>
 
-                
-                <td align='center'><?PHP echo $result["narcotic_to_judge"]; ?></td>
-                <td align='center'><?PHP echo $result["total"]; ?></td>
-                <td align='center'><?PHP echo $result["paid"]; ?></td>
-                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["yat"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
-
-
-
-                <?php
-                $date=$result["Nar_penmoth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-              </tr>
-                </tbody>
-                <?PHP
-            
-                } 
-                ?>
-                </table>
-                </div>
-
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-
-              
-			  
-              <div class="mid">
-			         <div class="col-lg-12">
-                <div id='show1' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
-                <thead>
-                <tr align='center'>
-                <th>ລະຫັດ</th>
-                <th>ໝວດທີ</th>
-                <th>ມາດຕາການກະທຳຜິດ</th>
-                <th>ເນື້ອໃນ</th>
-                
-               
-                </tr>
-                </thead>
-
-
-
-
-                <?php
-                  include 'server/connect.php';
-                  $i=0;  
-                  @$start=$_POST['start'];
-                  $sql = "SELECT *FROM  KHT_narcotic_slacken WHERE 1=1";
-                  $query = sqlsrv_query( $conn, $sql );
-                  while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-                { 
-                ?>
-
-                <tbody id="tableId">
-                <tr id ="showitem">
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_numberID"]; ?></td>
                 <?php
                 $date=$result["narcotic_day_to_be_arrested"];
                 ?>
                 <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
 
-                <td align='center'><?PHP echo $result["narcotic_name"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_lat"]; ?></td>
-
-
+                <td align='center'><?PHP echo $result["narcotic_charge"]; ?></td>
+                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
+                <td align='center'><?PHP echo $result["narcotic_to_judge"]; ?></td>
+                
                 <?php
-                $date=$result["Birthday"];
+                $date=$result["install"];
                 ?>
                 <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
 
-
-                <td align='center'><?PHP echo $result["narcotic_false"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_NationNm"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_first_job_to_bearrested"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_DistrictBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_ProvinceBorn"]; ?></td>
+                <td align='center'><?PHP echo $result["items_time"]; ?></td>
+                <td align='center'><?PHP echo $result["items_year"]; ?></td>
+                <td align='center'><?PHP echo $result["items_Month"]; ?></td>
+                <td align='center'><?PHP echo $result["to_act_year"]; ?></td>
+                <td align='center'><?PHP echo $result["penalty_yet"]; ?></td>
+                <td align='center'><?PHP echo $result["Type_penalty"]; ?></td>
+                <td align='center'><?PHP echo $result["ApaiyaTol"]; ?></td>
                 
-                <td align='center'><?PHP echo $result["narcotic_charge"]; ?></td>
 
-                
-                <td align='center'><?PHP echo $result["narcotic_to_judge"]; ?></td>
+                <td align='center'><?PHP echo $result["rates"]; ?></td>
                 <td align='center'><?PHP echo $result["total"]; ?></td>
                 <td align='center'><?PHP echo $result["paid"]; ?></td>
-                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
                 <td align='center'><?PHP echo $result["yat"]; ?></td>
+                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
+                <td align='center'><?PHP echo $result["to_reduce_sentence"]; ?></td>
                 <td align='center'><?PHP echo $result["Remark"]; ?></td>
 
 
 
-                <?php
-                $date=$result["Nar_penmoth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
               </tr>
                 </tbody>
 
@@ -303,110 +249,6 @@ input[type=text] {
             
                 } 
                 ?>
-            
-                
-
-
-
-
-
-
-              </tr>
-                </tbody>
-                
-                </table>
-                </div>
-              </div>
-            </div>
-			
-			
-			
-			
-			<br><br>
-			
-
-
-		          <div class="row" id='show_data'>
-              <div class="col-lg-12">
-              <div id='show2' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
-                <thead>
-                <tr align='center'>
-                <th>ລະດັບ</th>
-                <th>ລະຫັດຄະດີ</th>
-                <th>ຖືກຫາວ່າ</th>
-                <th>ໂຈດທາງອາຍາ</th>
-                <th>ໂຈດທາງແພ່ງ</th>
-                <th>ຜູ້ຮັບຜິດຊອບທາງແພ່ງ</th>
-                <th>ຈຳເລີຍ</th>
-                <th>ຄຳອະພີພາກສາຂອງສານ</th>
-                <th>Cnt</th>
-                </tr>
-                </thead>
-                   
-                <?php
-                  include 'server/connect.php';
-                  $i=0;  
-                  @$start=$_POST['start'];
-                  $sql = "SELECT *FROM  KHT_narcotic_slacken WHERE 1=1";
-                  $query = sqlsrv_query( $conn, $sql );
-                  while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-                { 
-                ?>
-
-                <tbody id="tableId">
-                <tr id ="showitem">
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_numberID"]; ?></td>
-                <?php
-                $date=$result["narcotic_day_to_be_arrested"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-                <td align='center'><?PHP echo $result["narcotic_name"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_lat"]; ?></td>
-
-
-                <?php
-                $date=$result["Birthday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-
-                <td align='center'><?PHP echo $result["narcotic_false"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_NationNm"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_first_job_to_bearrested"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_DistrictBorn"]; ?></td>
-                <td align='center'><?PHP echo $result["narcotic_ProvinceBorn"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["narcotic_charge"]; ?></td>
-
-                
-                <td align='center'><?PHP echo $result["narcotic_to_judge"]; ?></td>
-                <td align='center'><?PHP echo $result["total"]; ?></td>
-                <td align='center'><?PHP echo $result["paid"]; ?></td>
-                <td align='center'><?PHP echo $result["in_debt"]; ?></td>
-                <td align='center'><?PHP echo $result["yat"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
-
-
-
-                <?php
-                $date=$result["Nar_penmoth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-              </tr>
-                </tbody>
-
-                <?PHP
-            
-                } 
-                ?>
-                </tr>
-                </tbody>
-               
                 </table>
             </div>
 

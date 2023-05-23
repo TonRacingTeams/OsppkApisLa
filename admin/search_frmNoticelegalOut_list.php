@@ -6,9 +6,11 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 100%">
                     <thead>
                     <tr align='center'>
+                    <th>ແກ້ໄຂ</th>
+                    <th>ລົບ</th>
                     <th>ລຳດັບ</th>
                         <th>ເລກທີເອກະສານ</th>
                         <th>ເລກທີຂາອອກ</th>
@@ -67,7 +69,19 @@ date_default_timezone_set("Asia/Bangkok");
 
 <tbody id="users">
                         <tr>
-                        <td align='center'><?PHP echo $i; ?></td>
+
+                        <td>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmNoticeLegalOut_List.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+
+                        <td align='center'><?PHP echo $result["item_Cnt"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_No"]; ?></td>
                         <?php

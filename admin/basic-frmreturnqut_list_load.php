@@ -24,7 +24,7 @@ include 'head.php';
 					start:start,
 					end:end,
           Order_No:Order_No,
-          Order_ID:Order_ID,
+          Order_ID:Order_ID
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -129,6 +129,7 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
+                    <a href="app/add_frmreturnqut_list_load.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                     </div>
                   </div>
 
@@ -140,9 +141,11 @@ input[type=text] {
 
 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 136%">
                     <thead>
                       <tr align='center'>
+                      <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                         <th>ລ/ດ</th>
                         <th>ລະຫັດເອກະສານ</th>
                         <th>ເລກທີຄຳສັ່ງ </th>
@@ -174,6 +177,17 @@ input[type=text] {
                     <tbody id="users">
 
                         <tr>
+
+
+                        <td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_frmtouqut-list.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
                         <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Order_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Order_No"]; ?></td>

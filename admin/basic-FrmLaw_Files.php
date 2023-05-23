@@ -212,7 +212,7 @@ input[type=text] {
                   
 
                   <div class="col-lg-2">
-                   <lable>ລຳດັບ</lable>
+                   <lable>ລະຫັດກອງປະຊຸມສານ</lable>
                     <input type="text" class="form-control " id="Item_ID"   name="Item_ID" >	
                   </div>
 
@@ -224,7 +224,7 @@ input[type=text] {
 
                 <div class="col-lg-2"><br>
                 <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
-                
+                <a href="app/add_Frmlaw_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                 </div>
                 </div>
                 </div><br>
@@ -232,49 +232,19 @@ input[type=text] {
                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- 1 -->
-
-
-
-
-<!-- 1 -->
-
-
-
-
-
-
-
-
-
-
-<!-- 2 -->
-
-
-
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 150%">
+                <table class='table table-bordered' style="width: 163%">
                 <thead>
-                <tr align='center'>
+                <tr>
                
 
 
-                <th>ໂຫຼດຂໍ້ມູນ</th>
+                <th>ໂຫຼດ</th>
                 <th>ແກ້ໄຂ</th>
                 <th>ລົບ</th>
-                <th>ລຳດັບ</th>
+                <th>ລະຫັດກອງປະຊຸມສານ</th>
+                <th>ວັນເດືອນປີເຂົ້າຮ່ວມປະຊູມ</th>
                 <th>ລະຫັດຄະດີ</th>
-                <th>ວັນທີ</th>
                 <th>ຖືກຫາວ່າ</th>
                 <th>ໂຈດທາງອາຍາ</th>
                 <th>ໂຈດທາງແພ່ງ</th>
@@ -282,6 +252,7 @@ input[type=text] {
                 <th>ຈຳເລີຍ</th>
                 <th>ຜົນການຕັດສິນຂອງສານ </th>
                 <th>ຜູ້ຖະແຫຼງຕໍ່ສານ</th>
+
                
                 </tr>
                 </thead>
@@ -290,7 +261,15 @@ input[type=text] {
                include 'server/connect.php';
                         
              
-               $sql = "SELECT * FROM KHT_CanMeetingAY_Case WHERE 1=1";
+               $sql = "SELECT * FROM KHT_CanMeetingAY_Case";
+
+
+              //  $sql = "SELECT Person_Cnt, Case_Cnt, Case_ID, Problem, Request_Crim, Request_Civil, Related_Pers, Solv_Name, Pers_Name
+              //  FROM KHT_CanMeetingAY
+              //  FULL JOIN KHT_CanMeetingAY_Case
+              //  ON KHT_CanMeetingAY.Item_ID = KHT_CanMeetingAY_Case.Item_ID;";
+
+
                $query = sqlsrv_query( $conn, $sql );
 
              
@@ -307,43 +286,44 @@ input[type=text] {
 
                 <td align='center'>
            
-                <a href="cv/<?PHP echo $result["File_Name"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
+                <a href="cv/<?PHP echo $result["Item_ID"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
            
                 </td>
 
                 <td align='center'>
            
-                <a href="pages/Update_Law_file.php?Law_ID=<?PHP echo $result["Law_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                <a href="pages/Update_Law_file.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                 
                 </td>
                 <td align='center'>
-                <a href="pages/Delete_frmlaw_files.php?Law_ID=<?php echo $result['Law_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                <a href="pages/Delete_frmlaw_files.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
                 </td>
 
 
 
-            
-                <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
-                <td align='center'><?PHP echo $result["Case_ID"]; ?></td>
+                
+                
+                <td><?PHP echo $result["Item_ID"]; ?></td>
                 
 
                 <?php
                 $date=$result["Item_Date"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
-                <td align='center'><?PHP echo $result["Problem"]; ?></td>
-                <td align='center'><?PHP echo $result["Request_Crim"]; ?></td>
-                <td align='center'><?PHP echo $result["Request_Civil"]; ?></td>
+                <td><?PHP echo $result["Case_ID"]; ?></td>
+                <td><?PHP echo $result["Problem"]; ?></td>
+                <td><?PHP echo $result["Request_Crim"]; ?></td>
+                <td><?PHP echo $result["Request_Civil"]; ?></td>
 
 
 
 
-                <td align='center'><?PHP echo $result["Respond_Civil"]; ?></td>
-                <td align='center'><?PHP echo $result["Related_Pers"]; ?></td>
-                <td align='center'><?PHP echo $result["Solv_Name"]; ?></td>
-                <td align='center'><?PHP echo $result["Pers_Name"]; ?></td>
+                <td><?PHP echo $result["Respond_Civil"]; ?></td>
+                <td><?PHP echo $result["Related_Pers"]; ?></td>
+                <td><?PHP echo $result["Solv_Name"]; ?></td>
+                <td><?PHP echo $result["Pers_Name"]; ?></td>
 
 
                 
@@ -355,29 +335,6 @@ input[type=text] {
                 ?>
                 </table>
                 </div>
-
-
-                <!-- 2 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ໂຄດເດີ່ມ -->
-              
-                
               
                 </div>
               <!-- ໂຄດເດີ່ມ -->

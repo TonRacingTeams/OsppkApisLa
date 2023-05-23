@@ -6,10 +6,12 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 236%">
                     <thead>
                     <tr align='center'>
-                    <th>No</th>
+                    <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
                 <th>ລະຫັດ</th>
                 <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
                 <th>ຊື່</th>
@@ -62,56 +64,68 @@ date_default_timezone_set("Asia/Bangkok");
 
 <tbody id="users">
                 <tr>
+
+                <td>
+                        <a href="#?DisID=<?PHP echo $result["DisID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmNoRevise_List.php?DisID=<?php echo $result['DisID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+
             
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["DisID"]; ?></td>
+                <td ><?PHP echo $i; ?></td>
+                <td ><?PHP echo $result["DisID"]; ?></td>
                 
                 <?php
                 $date=$result["Dreform"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                <td align='center'><?PHP echo $result["Name"]; ?></td>
-                <td align='center'><?PHP echo $result["LastName"]; ?></td>
+                <td ><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo $result["Name"]; ?></td>
+                <td><?PHP echo $result["LastName"]; ?></td>
 
                 <?php
                 $date=$result["Birthday"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
 
-                <td align='center'><?PHP echo $result["sex"]; ?></td>
-                <td align='center'><?PHP echo $result["Nationality"]; ?></td>
-                <td align='center'><?PHP echo $result["Job"]; ?></td>
-                <td align='center'><?PHP echo $result["Addhome"]; ?></td>
-                <td align='center'><?PHP echo $result["District"]; ?></td>
-                <td align='center'><?PHP echo $result["Province"]; ?></td>
+                <td><?PHP echo $result["sex"]; ?></td>
+                <td><?PHP echo $result["Nationality"]; ?></td>
+                <td><?PHP echo $result["Job"]; ?></td>
+                <td><?PHP echo $result["Addhome"]; ?></td>
+                <td><?PHP echo $result["District"]; ?></td>
+                <td><?PHP echo $result["Province"]; ?></td>
 
 
-                <td align='center'><?PHP echo $result["Judge"]; ?></td>
-                <td align='center'><?PHP echo $result["Datefor"]; ?></td>
+                <td><?PHP echo $result["Judge"]; ?></td>
+                <td><?PHP echo $result["Datefor"]; ?></td>
 
 
-                <td align='center'><?PHP echo $result["Wrong"]; ?></td>
-                <td align='center'><?PHP echo $result["parentdeposit"]; ?></td>
+                <td><?PHP echo $result["Wrong"]; ?></td>
+                <td><?PHP echo $result["parentdeposit"]; ?></td>
 
 
                 <?php
                 $date=$result["Dtimeups"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
 
 
-                <td align='center'><?PHP echo $result["Reform"]; ?></td>
+                <td><?PHP echo $result["Reform"]; ?></td>
 
 
 
                 <?php
                 $date=$result["Dis_penMonth"];
                 ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+                <td><?PHP echo date_format($date,'d/m/Y');?></td>
                
                
               </tr>

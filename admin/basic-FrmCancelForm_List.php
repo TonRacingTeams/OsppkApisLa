@@ -115,7 +115,8 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmCancelForm_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
 
                 </div><br>
@@ -123,11 +124,13 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 180%">
+                <table class='table table-bordered' style="width: 236%">
                 <thead>
                 <tr align='center'>
-                <th>No</th>
-                <th>ເລກນັບ</th>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
+                <th>ລະຫັດຄະດີ</th>
                 <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
@@ -169,7 +172,7 @@ input[type=text] {
                 include 'server/connect.php';
                 $i=0;              
                 @$start=$_POST['start'];    
-                $sql = "SELECT * FROM KHT_release WHERE 1=1";
+                $sql = "SELECT * FROM KHT_release";
                 $query = sqlsrv_query( $conn, $sql );
  
               
@@ -180,6 +183,19 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?releaseID=<?PHP echo $result["releaseID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmCancelForm_List.php?releaseID=<?php echo $result['releaseID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["releaseID"]; ?></td>

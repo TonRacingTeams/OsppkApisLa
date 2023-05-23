@@ -107,45 +107,66 @@ input[type=text] {
 
 
                   <div class="col-lg-2">
-                   <lable>ເລກນັບ</lable>
+                   <lable>ລະຫັດຄະດີ</lable>
                     <input type="text" class="form-control " id="ConvietID"   name="ConvietID" >	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmMeeting_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
                 </div>
                 
               <div id='show' class="table-responsive p-10">
-                <table  class='table table-bordered' style="width: 120%">
+                <table  class='table table-bordered' style="width: 236%">
                 <thead>
                 <tr align='center'>
-                <th>No</th>
-                <th>ເລກນັບ</th>
-                <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
-                <th>ຊື່</th>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
+                <th>ລະຫັດ</th>
+                <th>ຊື່ນັກໂທດ</th>
                 <th>ນາມສະກຸນ</th>
-
-                <th>ວັນເດືອນປີໝົດໂທດ</th>
-                <th>ອາຍຸເລາກະທຳຜິດ</th>
+                <th>ອາຍຸເວລາກະທຳຜິດ</th>
                 <th>ເພດ</th>
                 <th>ສັນຊາດ</th>
-                <th>ອາຊີບ</th>
+
+
+                <th>ກ່ອນຖືກ(ອາຊີບ)</th>
                 <th>ບ້ານ</th>
                 <th>ເມືອງ</th>
                 <th>ແຂວງ</th>
-                <th>ຂໍ້ຫາການກະທໍາຜິດ</th>
+
                 <th>ສານຕັດສິນລົງໂທດ</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນລວມ)</th>
-                <th>ຄ່າປັບໃໝ(ຈ່າຍແລ້ວ)</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນຜ່ອນ)</th>
-                <th>ຄ່າປັບໃໝ(ຍັງເຫຼືອ) </th>
+                <th>ຂໍ້ຫາການກະທຳຜິດ</th>
+                <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
+
+
+                <th>ໄດ້ຮັບການຜ່ອນໂທດ(ຈຳນວນຄັ້ງ)</th>
+                <th>ຈຳນວນປີ</th>
+                <th>ຈັກເດືອນ</th>
+                <th>ປະເພດດັດສ້າງ</th>
+
+
+                <th>ທາງແພ່ງ(ສະກຸນເງີນ)</th>
+                <th>ຈຳນວນລວມ</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຍັງເຫຼືອ</th>
+                <th>ວັນເດືອນປີໝົດໂທດ</th>
+
+
+
+
+                <th>ຄ່າປັບໄໝ(ຈຳນວນລວມ)</th>
+                <th>ຈ່າຍແລ້ວ</th>
+                <th>ຈຳນວນຜ່ອນ</th>
+                <th>ຍັງເຫຼືອ</th>
                 <th>ໝາຍເຫດ</th>
-                <th>ວັນທີ່ຖືກໂອນ</th>
+                
                 
                
                 </tr>
@@ -155,7 +176,7 @@ input[type=text] {
                   include 'server/connect.php';
                   $i=0;  
                   @$start=$_POST['start'];
-                  $sql = " SELECT * FROM KHT_Conviet_105 WHERE 1=1";
+                  $sql = " SELECT * FROM KHT_Conviet_105";
                   $query = sqlsrv_query( $conn, $sql );
                   while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
                 { 
@@ -165,20 +186,22 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?ConvietID=<?PHP echo $result["ConvietID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmMeeting_List.php?ConvietID=<?php echo $result['ConvietID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["ConvietID"]; ?></td>
-                <?php
-                $date=$result["Kok_Dtouch"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
                 <td align='center'><?PHP echo $result["Kok_Name"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_surname"]; ?></td>
 
-                <?php
-                $date=$result["Brithday"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
 
 
                 <td align='center'><?PHP echo $result["Kok_timemake"]; ?></td>
@@ -188,260 +211,43 @@ input[type=text] {
                 <td align='center'><?PHP echo $result["befor_Village"]; ?></td>
                 <td align='center'><?PHP echo $result["befor_District"]; ?></td>
                 <td align='center'><?PHP echo $result["befor_Province"]; ?></td>
-                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
+                
                 <td align='center'><?PHP echo $result["Kok_punish"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_wrong"]; ?></td>
+                <td align='center'><?PHP echo $result["wrongdetail"]; ?></td>
+
+
+                <?php
+                $date=$result["Kok_Dtouch"];
+                ?>
+                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
+
+                <td align='center'><?PHP echo $result["Con_count"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_year"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_month"]; ?></td>
+                <td align='center'><?PHP echo $result["Con_Datefor"]; ?></td>
+
+                <td align='center'><?PHP echo $result["rates"]; ?></td>
+                <td align='center'><?PHP echo $result["Total"]; ?></td>
+                <td align='center'><?PHP echo $result["Paid"]; ?></td>
+                <td align='center'><?PHP echo $result["Beleft"]; ?></td>
+                <?php
+                $date=$result["Brithday"];
+                ?>
+                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
                 <td align='center'><?PHP echo $result["Kok_Total"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Paid"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Slacken"]; ?></td>
                 <td align='center'><?PHP echo $result["Kok_Beleft"]; ?></td>
-                
-
-                <?php
-                $date=$result["Con_penMonth"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                
+                <td align='center'><?PHP echo $result["Remark"]; ?></td>
               </tr>
                 </tbody>
                 <?PHP
-            
                 } 
                 ?>
                 </table>
                 </div>
 
               </div>
-			  
-                                    <!-- ຕາຕະລາງທີ02 -->
-			  
-          <div class="mid" id='show_data'>
-            <div class="col-lg-10">
-              <div id='show1' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
-                <thead>
-                <tr align='center'>
-                <th>No</th>
-                <th>ເລກນັບ</th>
-                <th>ຊື່</th>
-                <th>ນາມສະກຸນ</th>
-                
-                <th>ອາຍຸເລາກະທຳຜິດ</th>
-                <th>ເພດ</th>
-                <th>ສັນຊາດ</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ອາຊີບ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ບ້ານ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ເມືອງ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ແຂວງ)</th>
-                <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
-                <th>ຂໍ້ຫາການກະທໍາຜິດ</th>
-                <th>ສານຕັດສິນລົງໂທດ</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນລວມ)</th>
-                <th>ຄ່າປັບໃໝ(ຈ່າຍແລ້ວ)</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນຜ່ອນ)</th>
-                <th>ຄ່າປັບໃໝ(ຍັງເຫຼືອ) </th>
-                <th>ໝາຍເຫດ</th>
-                
-               
-                </tr>
-                </thead>
-
-
-
-
-
-                 <?php
-                 include 'server/connect.php';
-                 $i=0;  
-                 @$start=$_POST['start'];
-                  $sql = "SELECT * FROM KHT_Conviet_105";
-                 $query = sqlsrv_query( $conn, $sql );
-                 while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-               { 
-                ?>
-
-
-
-
-                <tbody id="usersf">
-                <tr id="demo">
-
-
-
-
-
-                <tbody id="tableId">
-                <tr id ="showitem"> 
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["ConvietID"]; ?></td>
-                
-
-                <td align='center'><?PHP echo $result["Kok_Name"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_surname"]; ?></td>
-
-
-                <td align='center'><?PHP echo $result["Kok_timemake"]; ?></td>
-                <td align='center'><?PHP echo $result["kok_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_National"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_job"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_District"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_Province"]; ?></td>
-
-
-                <?php
-                $date=$result["Kok_Dtouch"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-                
-                <td align='center'><?PHP echo $result["Kok_wrong"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_punish"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Total"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Paid"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Slacken"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Beleft"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
-                
-              
-
-
-
-
-            
-                
-               </tr>
-                </tbody>
-
-
-
-
-
-                <?PHP
-            
-                } 
-               ?>
-
-
-                
-                </table>
-                    
-              </div>
-              </div>
-            </div> 
-			
-			            <!-------------------------------------- ຕາຕະລາງທີ02 ---------------------------------------------------------------------------------->
-			
-			
-			<br><br>
-			
-              <!---------------------------------- ຕາຕະລາງທີ03 ---------------------------------------------------------------------------------->
-
-		       <div class="row" id='show_data'>
-              <div class="col-lg-10">
-              <div id='show2' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
-                <thead>
-                <tr align='center'>
-                <th>No</th>
-                <th>ເລກນັບ</th>
-                <th>ຊື່</th>
-                <th>ນາມສະກຸນ</th>
-                
-                <th>ອາຍຸເລາກະທຳຜິດ</th>
-                <th>ເພດ</th>
-                <th>ສັນຊາດ</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ອາຊີບ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ບ້ານ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ເມືອງ)</th>
-                <th>ກ່ອນຖືກຈັບຕົວ(ແຂວງ)</th>
-                <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
-                <th>ຂໍ້ຫາການກະທໍາຜິດ</th>
-                <th>ສານຕັດສິນລົງໂທດ</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນລວມ)</th>
-                <th>ຄ່າປັບໃໝ(ຈ່າຍແລ້ວ)</th>
-                <th>ຄ່າປັບໃໝ(ຈຳນວນຜ່ອນ)</th>
-                <th>ຄ່າປັບໃໝ(ຍັງເຫຼືອ) </th>
-                <th>ໝາຍເຫດ</th>
-                
-               
-                </tr>
-                </thead>
-
-
-
-
-
-                <?php
-                 include 'server/connect.php';
-                 $i=0;  
-                 @$start=$_POST['start'];
-                  $sql = "SELECT * FROM KHT_Conviet_105";
-                 $query = sqlsrv_query( $conn, $sql );
-                 while ($result = sqlsrv_fetch_array($query,SQLSRV_FETCH_ASSOC))
-               { 
-               ?>
-
-
-
-
-                <tbody id="shows">
-                <tr id="demo">
-
-
-
-
-
-                 <tbody id="tableId">
-                <tr id ="showitem"> 
-                <td align='center'><?PHP echo $i; ?></td>
-                <td align='center'><?PHP echo $result["ConvietID"]; ?></td>
-                
-
-                <td align='center'><?PHP echo $result["Kok_Name"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_surname"]; ?></td>
-
-
-                <td align='center'><?PHP echo $result["Kok_timemake"]; ?></td>
-                <td align='center'><?PHP echo $result["kok_sex"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_National"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_job"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_Village"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_District"]; ?></td>
-                <td align='center'><?PHP echo $result["befor_Province"]; ?></td> 
-
-
-                 <?php
-                $date=$result["Kok_Dtouch"];
-                ?>
-                <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-
-                
-                <td align='center'><?PHP echo $result["Kok_wrong"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_punish"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Total"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Paid"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Slacken"]; ?></td>
-                <td align='center'><?PHP echo $result["Kok_Beleft"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
-                </tr>
-                </thead>
-                   
-                
-                
-                </tr>
-                </tbody>
-
-
-
-                <?PHP
-            
-               } 
-               ?>
-
-
-
-               
                 </table>
             </div> 
 

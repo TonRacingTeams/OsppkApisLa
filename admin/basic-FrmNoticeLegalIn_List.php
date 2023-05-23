@@ -20,7 +20,7 @@ include 'head.php';
 
         //  alert('hellow');
 
-				$.post("search_frmNoticelgalIn.php",{
+				$.post("search_frmNoticeLegalIn_List.php",{
 					start:aa,
 					end:bb,
           Order_ID:Order_ID,
@@ -123,16 +123,19 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmNoticeLegalIn_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 999%">
                 <thead>
                 <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
                 <th>ລະຫັດເອກະສານ</th>
                 <th>ເລກທີຄຳສັ່ງ</th>
@@ -149,7 +152,7 @@ input[type=text] {
                   
                   @$start=$_POST['start'];
                 
-                  $sql = "SELECT * FROM KHT_Save_Saksop WHERE 1=1";
+                  $sql = "SELECT * FROM KHT_Save_Saksop";
                 
                   $query = sqlsrv_query( $conn, $sql );
                   while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -160,6 +163,16 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmNoticelgalIn_List.php?Order_ID=<?php echo $result['Order_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["Order_ID"]; ?></td>

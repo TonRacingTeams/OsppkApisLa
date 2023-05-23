@@ -15,14 +15,16 @@ include 'head.php';
 				var aa=$("#start").val();
 				var bb=$("#end").val();
         var Item_ID=$("#Item_ID").val();
-        var ProvinceCode=$("#ProvinceCode").val();
+        var Item_IDNew=$("#Item_IDNew").val();
+        var Pers_Name=$("#Pers_Name").val();
 
         //  alert('hellow');
 				$.post("search_frmReportOut_List.php",{
 					start:aa,
 					end:bb,
           Item_ID:Item_ID,
-          ProvinceCode:ProvinceCode
+          Item_IDNew:Item_IDNew,
+          Pers_Name:Pers_Name
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -89,7 +91,7 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
 
                     <?php
@@ -100,7 +102,7 @@ input[type=text] {
                     value="<?php  echo date('Y-m-01');?>" > 
                    </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                    <lable>ຫາວັນທີເດືອນປີ</lable>
 
                    <?php
@@ -112,33 +114,51 @@ input[type=text] {
 
                    <div class="col-lg-2">
                    <lable>ລະຫັດຄະດີ</lable>
-                    <input type="text" class="form-control " id="Item_ID"   name="Item_ID" >	
+                    <input type="text" class="form-control " id="Item_ID"   name="Item_ID">	
                   </div>
 
                   <div class="col-lg-2">
-                   <lable>ເຂດ</lable>
-                    <input type="text" class="form-control " id="ProvinceCode"   name="ProvinceCode">	
+                   <lable>ລະຫັດຜູ້ຖືກຫາ</lable>
+                    <input type="text" class="form-control " id="Item_IDNew"   name="Item_IDNew">	
+                  </div>
+
+
+                  <div class="col-lg-3">
+                   <lable>ຊື່ ແລະ ນາມສະກຸນ</lable>
+                    <input type="text" class="form-control " id="Pers_Name"   name="Pers_Name">	
                   </div>
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmReportOut_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 100%">
+                <table class='table table-bordered' style="width: 136%">
                 <thead>
                 <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລຳດັບ</th>
                 <th>ລະຫັດຄະດີ</th>
-                <th>ວັນເດືອນປີ</th>
-                <th>ຊື່ຄະດີການກໍ່ອາຊະຍາກຳ</th>
-                <th>ຈຳນວນຜູ້ຖືກຫາ</th>
-                <th>ເຂດ</th>
+                <th>ລະຫັດຜູ້ຖືກຫາ</th>
+                <th>ວັນເດືອນປີກໍ່ອາສະຍາກຳ</th>
+                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
+                <th>ປະເພດ ແລະ ສະຖານການກະທຳຜີດ</th>
+                <th>ອາຍຸ</th>
+                <th>ເພດ</th>
+                <th>ອາຊີບ</th>
+                <th>ຊົນເຜົ່າ</th>
+                <th>ເຊື້ອຊາດ</th>
+                <th>ສັນຊາດ</th>
+                <th>ປະເທດ</th>
+                <th>ອຸປະກອນການໃຊ້ກະທຳຜິດ</th>
+                <th>ສາເຫດ</th>
                 
                 </tr>
                 </thead>
@@ -149,7 +169,7 @@ input[type=text] {
                
                @$start=$_POST['start'];
              
-               $sql = "SELECT * FROM KHT_Criminal WHERE 1=1";
+               $sql = "SELECT * FROM KHT_Criminal_Pers";
              
                $query = sqlsrv_query( $conn, $sql );
                while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -159,20 +179,40 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmReportOut_List.php?Order_ID=<?php echo $result['Order_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
+                <td align='center'><?PHP echo $result["Item_IDNew"]; ?></td>
+                
                 
                 <?php
                 $date=$result["Item_Date"];
                 ?>
                 <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
                 
+                <td align='center'><?PHP echo $result["Pers_Name"]; ?></td>
                 <td align='center'><?PHP echo $result["Problem"]; ?></td>
-                <td align='center'><?PHP echo $result["Pers_Cnt"]; ?></td>
-                
-                <td align='center'><?PHP echo $result["ProvinceCode"]; ?></td>
-                
+                <td align='center'><?PHP echo $result["Age"]; ?></td>
+                <td align='center'><?PHP echo $result["Gender"]; ?></td>
+                <td align='center'><?PHP echo $result["Professional"]; ?></td>
+                <td align='center'><?PHP echo $result["Race"]; ?></td>
+                <td align='center'><?PHP echo $result["Original"]; ?></td>
+                <td align='center'><?PHP echo $result["Nationallity"]; ?></td>
+                <td align='center'><?PHP echo $result["Country"]; ?></td>
+                <td align='center'><?PHP echo $result["Used_Tool"]; ?></td>
+                <td align='center'><?PHP echo $result["Resion"]; ?></td>
                 
                 
                 

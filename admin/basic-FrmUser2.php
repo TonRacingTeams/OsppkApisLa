@@ -13,9 +13,15 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-				var Usr_id=$("#Usr_id").val();
-				$.post("search_user.php",{
-					Usr_id:Usr_id
+				var Group_ID=$("#Group_ID").val();
+        var Group_No=$("#Group_No").val();
+        var Law_No=$("#Law_No").val();
+
+        //  alert('hellow');
+				$.post("search_user3.php",{
+					Group_ID:Group_ID,
+          Group_No:Group_No,
+          Law_No:Law_No
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -91,18 +97,34 @@ input[type=text] {
 
                   <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
     
-                  <input type="text" class="form-control" id="Usr_id"  placeholder="ປ້ອນລະຫັດຜູ້ນຳໃຊ້"  name="Usr_id">
+                  <input type="text" class="form-control" id="Group_ID"  placeholder="ປ້ອນລະຫັດໝວດ"  name="Group_ID">
                 </div>
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Group_No"  placeholder="ປ້ອນໝວດ"  name="Group_No">
+                </div>
+
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Law_No"  placeholder="ປ້ອນລະຫັດມາດຕາ"  name="Law_No">
+                </div>
+
+
+
+
                 <div class="col-lg-3"><br>
                 <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
-                <a href="app/add_frmUser.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                <a href="app/add_Frm_User2.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                 
               </div>
-
-
-               
-
-
 
                 </div>
                 </div><br>
@@ -110,23 +132,26 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 136%">
                 <thead>
                 <tr align='center'>
+
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລະຫັດໝວດ</th>
                 <th>ໝວດ</th>
                 <th>ລາຍກການກຳທຳຜິດ</th>
                 <th>ລະຫັດມາດຕາ</th>
                 <th>ມາດຕາ</th>
                 <th>ກ່ຽວກັບມາດຕາ</th>
-                <th>ຈຳນວນຂໍ້ຂັດແຍ່ງ</th>
+                <th>ໝາຍເຫດ</th>
                
                 </tr>
                 </thead>
                    
                 <?php
                  include 'server/connect.php';  
-                 $sql = "SELECT * FROM KHT_Rpt_SumByLaws Order by Law_ID";
+                 $sql = "SELECT * FROM KHT_Rpt_SumByLaws";
                  $query = sqlsrv_query( $conn, $sql );
                  while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
                  { 
@@ -134,23 +159,26 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+                <td align='center'>
+           
+                <a href="pages/Form_update_useer2.php?Group_ID=<?PHP echo $result["Group_ID"];?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                
+              </td>
+                <td align='center'>
+                <a href="pages/Delete_user2.php?Group_ID=<?php echo $result['Group_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                </td>
             
          
                 
                 <td><?PHP echo $result["Group_ID"]; ?></td>
                 <td><?PHP echo $result["Group_No"]; ?></td>
                 <td><?PHP echo $result["Group_name"]; ?></td>
-                <td><?PHP echo $result["Law_ID"]; ?></td>
+                
                 <td><?PHP echo $result["Law_No"]; ?></td>
                 <td><?PHP echo $result["Law_Name"]; ?></td>
                 <td><?PHP echo $result["Quantity"]; ?></td>
-                <td align='center'>
-           
-                <a href="pages/Form_update_useer.php?Usr_id=<?PHP echo $result["Usr_id"];?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
-                
-              </td>
-                <td align='center'>
-                <a href="pages/Delete_user.php?Usr_id=<?php echo $result['Usr_id']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                <td >
                 </td>
               </tr>
                 </tbody>

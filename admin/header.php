@@ -25,7 +25,7 @@
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded"> 
-            <a class="collapse-item" href="basic-cancel-list.php"><B>ຂໍ້ມູນສຳນັກງານ</B></a>    
+            <a class="collapse-item" href="basic-FrmCancel_List.php"><B>ຂໍ້ມູນສຳນັກງານ</B></a>    
             <a class="collapse-item" href="basic-returnin-list.php"><B>ລາຍການຜູ້ໃຊ້ໂປຣແກຣມ</B></a> 
             <a class="collapse-item" href="basic-FrmTouIn_List.php"><B>ການປ່ຽນລະຫັດຜ່ານ</B></a> 
             <a class="collapse-item" href="basic-FrmChaPasw_List.php"><B>ກົດໝາຍ</B></a> 
@@ -183,7 +183,7 @@
         <div id="collapseTable5" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded"> 
             <a class="collapse-item" href="basic-FrmDecision_List.php"><B>ບັນຊີຜູ້ຖືກຫາທັງໝົດ</B></a>  
-            <a class="collapse-item" href="basic-FrmNoAGaint_List.php"><B>ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂ້ແລ້ວ</B></a>  
+            <a class="collapse-item" href="basic-FrmNoAGaint_List.php"><B>ບັນຊີຜູ້ຖຶກຫາທີ່ສຳນວນຄະດີໄດ້ແກ້ໄຂແລ້ວ</B></a>  
             <a class="collapse-item" href="basic-FrmAGaint_List.php"><B>ບັນຊີຜູ້ຖືກດັດສ້າງທັງໝົດ</B></a>    
             <a class="collapse-item" href="basic-FrmNoRevise_List.php"><B>ບັນຜູ້ຖຶກດັດສ້າງທີ່ຖຶກປ່ອຍຕົວ</B></a> 
             <a class="collapse-item" href="basic-FrmRevise_List.php"><B>ບັນຊີນັກໂທດທັງໝົດ</B></a>
@@ -332,8 +332,8 @@
             <a class="collapse-item" href="basic-LawsInsert2.php"><B>ສັງລວມການຕິດຕາມຄະດີທີ່ສັ່ງຟ້ອງຕໍ່ຄະນະສານຄະດີອາຍາ</B></a>
             <a class="collapse-item" href="basic-LawsInsert3.php"><B>ສັງລວມການຕິດຕາມຄະດີຢູ່ຄະນະສານຄະດີແພ່ງ, ການຄ້າ, ຄອບຄົວ ແລະ ເດັກ</B></a>
             <a class="collapse-item" href="basic-LawsInsert4.php"><B>ຄຳຖະແຫຼງຄະດີອາຍາ</B></a>
-            <a class="collapse-item" href="basic-LawsInsert5.php"><B>ຄຳຖະແຫຼງຄະດີອຄຳຖະແຫຼ່ງຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກາຍາ</B></a>
-            <a class="collapse-item" href="basic-LawsInsert6.php"><B>ຄຳຖະແຫລງຄະດີແພ່ງທີ່ໄອຍະການປະຊາຊົນເປັນໂຈດ</B></a>
+            <a class="collapse-item" href="basic-LawsInsert5.php"><B>ຄຳຖະແຫຼ່ງຄະດີແພ່ງ,ການຄ້າ,ຄອບຄົວ ແລະ ເດັກ</B></a>
+            <a class="collapse-item" href="basic-LawsInsert6.php"><B>ຄຳຖະແຫຼ່ງຄະດີແພ່ງທີ່ໄອຍະການປະຊາຊົນເປັນໂຈດ</B></a>
           
           </div>
         </div>

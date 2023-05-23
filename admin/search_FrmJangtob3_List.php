@@ -6,10 +6,12 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 1536%">
                     <thead>
 
                     <tr align='center'>
+                    <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                         <th>ລ/ດ</th>
                         <th>ລະຫັດເອກະສານ</th>
                         <th>ເລກທີຄຳສັ່ງ</th>
@@ -47,7 +49,7 @@ date_default_timezone_set("Asia/Bangkok");
 
 
                 $i=1;
-                $sql = "SELECT * FROM Khet_NoSubmeang WHERE 1=1 $btw $d";
+                $sql = "SELECT * FROM Khet_NoSubmeang WHERE 1=1 $btw $d $b";
                 $query = sqlsrv_query( $conn, $sql );
 
 

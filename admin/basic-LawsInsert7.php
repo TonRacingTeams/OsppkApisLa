@@ -14,8 +14,14 @@ include 'head.php';
     //  alert('hellow');
 			$("#search").click(function(){
 				var Law_ID=$("#Law_ID").val();
-				$.post("search_lawslnsert.php",{
-					Law_ID:Law_ID
+        var Law_Name=$("#Law_Name").val();
+        var Law_NmE=$("#Law_NmE").val();
+
+        //  alert('hellow');
+				$.post("search_lawslnsert7.php",{
+					Law_ID:Law_ID,
+          Law_Name:Law_Name,
+          Law_NmE:Law_NmE
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -78,25 +84,71 @@ input[type=text] {
                 <div class="input-group">
                   <div class="col-lg-3">
 
-                  <lable>ຄົ້ນຫາລະຫັດ</lable>
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
     
-                  <input type="text" class="form-control" id="Law_ID"  placeholder="ຄົ້ນຫາລະຫັດ"  name="Law_ID">
+                  <input type="text" class="form-control" id="Law_ID"  placeholder="ປ້ອນລະຫັດ"  name="Law_ID">
                 </div>
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Law_Name"  placeholder="ປ້ອນຊື່ກົດໝາຍ  (ພາສາລາວ)"  name="Law_Name">
+                </div>
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Law_NmE"  placeholder="ປ້ອນຊື່ກົດໝາຍ (ພາສາອັງກິດ)"  name="Law_NmE">
+                </div>
+
+                
+                  
+                <div class="col-lg-2"><br>
+                    <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
+                    <a href="app/add_FrmLawsInsert7.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                    </div>
+               
+                </div>
+                <!-- </div>
+                </form>
+                </div><br>
+
+                </div><br>
+
+
+
+
+             <div class="card mb-0">
+             <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                
+
+
+             
+                
+
+
+
                 <div class="col-lg-3"><br>
-                <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
-                </div>
-                </div>
+                <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button> -->
+                
+                <!-- </div>
+                </div> -->
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 100%">
                 <thead>
                 <tr align='center'>
-                <th>ລຳດັບ</th>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ເລກລະຫັດ</th>
-                <th>ຊື່ເອກະສານ  (ພາສາລາວ)</th>
+                <th>ຊື່ເອກະສານ (ພາສາລາວ)</th>
                 <th>ຊື່ເອກະສານ (ພາສາອັງກິດ)</th>
                 <th>ຊື່ file</th>
               
@@ -106,7 +158,7 @@ input[type=text] {
                    
                 <?php
                  include 'server/connect.php';  
-                 $sql = "SELECT * FROM KHT_Law_Labieb WHERE 1=1";
+                 $sql = "SELECT * FROM KHT_Law_Labieb";
                  $query = sqlsrv_query( $conn, $sql );
   
                
@@ -116,8 +168,18 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td align='center'>
+      
+      <a href="pages/Update_FrmLawsInsert7.php?Law_ID=<?PHP echo $result["Law_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+      
+      </td>
+      <td align='center'>
+      <a href="pages/Delete_FrmLawsInsert7.php?Law_ID=<?php echo $result['Law_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+      </td>
               
-                <td><?PHP echo $i; ?></td>
+                
                 <td><?PHP echo $result["Law_ID"]; ?></td>
                 <td><?PHP echo $result["Law_Name"]; ?></td>
                 <td><?PHP echo $result["Law_NmE"]; ?></td>

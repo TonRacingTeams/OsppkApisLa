@@ -12,7 +12,7 @@ include '../head.php';
     $Item_ID = array($_GET["Item_ID"]);
 
 	include '../server/connect.php';
-	$sql = "DELETE FROM Cri_ReQuestTrueIn WHERE Item_ID = ? ";
+	$sql = "DELETE FROM KHT_AppInAY WHERE Item_ID = ? ";
 	
 
 	$stmt = sqlsrv_query( $conn, $sql, $Item_ID);
@@ -21,7 +21,7 @@ include '../head.php';
 	}
 	else
 	{
-		echo "<script>alert('ລົບຂໍ້ມູນສຳເລັດ!'); location.href='../basic-frmrequesttrueIn_List.php';</script>";
+		echo "<script>alert('ລົບຂໍ້ມູນສຳເລັດ!'); location.href='../basic-requestin-List.php';</script>";
 	}
 
 	sqlsrv_close($conn);

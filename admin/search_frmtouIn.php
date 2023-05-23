@@ -3,56 +3,52 @@
     
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 350%">
+                <table class='table table-bordered' style="width: 100%">
                     <thead>
                     <tr align='center'>
-                        <th>ລຳດັບ</th>
-                        <th>ລະຫັດຄະດີ</th>
-                        <th>ເລກທີຂາເຂົ້າ</th>
-                        <th>ວັນເດືອນປີເຂົ້າ</th>
-                        <th>ເລກທີສຳນວນ</th>
-                        <th>ວ.ດ.ປ ລົງສຳນວນ</th>
-                        <th>ເຫດຜົນໃນການທວງ</th>
-                        <th>ສະຖານການກະທຳຜິດ</th>
-                        <th>ໂຈດທາງອາຍາ</th>
-                        <th>ໂຈດທາງແພ່ງ</th>
-                        <th>ຈຳເລີຍ</th>
-                        <th>ໜ່ວຍງານຮັບຜິດຊອບ</th>
-                        <th>ພະນັກງານຮັບຜິດຊອບ</th>  
-                        <th>ແກ້ໄຂຂໍ້ມູນ</th>
-                        <th>ລົບຂໍ້ມູນ</th>
+                    <th>ລຳດັບ</th>
+                        <th>ລະຫັດໝວດ</th>
+                        <th>ໝວດ</th>
+                        <th>ລະຫັດມາດຕາ</th>
+                        <th>ມາດຕາ</th>
+                        <th>ຈຳນວນ</th>
+                        <th>ເລືອກ</th>
                       </tr>
                 </thead>
                    
                 <?php
                 include 'server/connect.php';
-                $start=$_POST['start'];
-                $end=$_POST['end'];
-                $Item_No=$_POST['Item_No'];
-                $Item_sam=$_POST['Item_sam'];
+                // $start=$_POST['start'];
+                // $end=$_POST['end'];
+                $Group_ID=$_POST['Group_ID'];
+                $Group_No=$_POST['Group_No'];
+                $Law_ID=$_POST['Law_ID'];
+                $Law_No=$_POST['Law_No'];
             
               
-              
-
-
                 
-                if($start=="" or $end==""){$btw="";}
-                else{ $btw="and Cri_TouIn.Last_Update between '$start' and '$end'";}
+                // if($start=="" or $end==""){$btw="";}
+                // else{ $btw="and Cri_TouIn.Last_Update between '$start' and '$end'";}
 
 
-              
+                if($Group_ID==""){$a="";}
+                else{ $a="and (KHT_LawItem.Group_ID like N'%$Group_ID%' or KHT_LawItem.Group_ID like N'$Group_ID%')";}
 
-                if($Item_No==""){$b="";}
-                else{ $b="and (Cri_TouIn.Item_No like N'%$Item_No%' or Cri_TouIn.Item_No like N'$Item_No%')";}
+                if($Group_No==""){$b="";}
+                else{ $b="and (KHT_LawItem.Group_No like N'%$Group_No%' or KHT_LawItem.Group_No like N'$Group_No%')";}
 
-                if($Item_sam==""){$d="";}
-                else{ $d="and (Cri_TouIn.Item_sam like N'%$Item_sam%' or Cri_TouIn.Item_sam like N'$Item_sam%')";}
+
+                if($Law_ID==""){$c="";}
+                else{ $c="and (KHT_LawItem.Law_ID like N'%$Law_ID%' or KHT_LawItem.Law_ID like N'$Law_ID%')";}
+
+                if($Law_No==""){$d="";}
+                else{ $d="and (KHT_LawItem.Law_No like N'%$Law_No%' or KHT_LawItem.Law_No like N'$Law_No%')";}
 
                
 
 
                 $i=1;
-                $sql = "select *from Cri_TouIn where 1=1 $btw $b $d order by Cri_TouIn.item_Cnt asc";
+                $sql = "SELECT * FROM KHT_LawItem WHERE 1=1 $a $b $c $d";
                 $query = sqlsrv_query( $conn, $sql );
 
                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -60,38 +56,18 @@
                   $i++;
                 ?>
 
-                    <tbody>
-
+<tbody id="users">
                     <tr>
-                        <td align='center'><?PHP echo $result["item_Cnt"]; ?></td>
-                        <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
-                        <td align='center'><?PHP echo $result["Item_No"]; ?></td>
-                        <?php
-                        $date=$result["Item_Date"];
-                        ?>
-                        <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
-                        <td align='center'><?PHP echo $result["Item_sam"]; ?></td>
-                        <?php
-                        $datse=$result["Last_Update"];
-                        ?>
-                      <td align='center'><?PHP echo date_format($datse,'d/m/Y');?></td>
-                      <td><?PHP echo $result["Problem"]; ?></td>
-                      <td align='center'><?PHP echo $result["Hadpon"]; ?></td>
-                      <td><?PHP echo $result["Request_Crim"]; ?></td>
-                      <td><?PHP echo $result["Request_Civil"]; ?></td>
-                      <td><?PHP echo $result["Related_Pers"]; ?></td>
-                      <td><?PHP echo $result["Dept_Respond"]; ?></td>
-                      <td><?PHP echo $result["Staff_Respond"]; ?></td>
-                     
-                      <td align='center'>
-           
-                      <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <td align='center'><?PHP echo $result["Group_ID"]; ?></td>
+                        <td align='center'><?PHP echo $result["Group_No"]; ?></td>
+                        <td align='center'><?PHP echo $result["Law_ID"]; ?></td>
+                        <td align='center'><?PHP echo $result["Law_No"]; ?></td>
+                        
+                      <td><?PHP echo $result["Law_Name"]; ?></td>
+                      <td><?PHP echo $result["Cnt"]; ?></td>
+                      <td><?PHP echo $result["Choose"]; ?></td>
                       
-                      </td>
-                      <td align='center'>
-                      <a href="pages/delete_frmtouIn.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
-                      </td>
-
+                     
                     
                     </tr>
                     </tbody>

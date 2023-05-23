@@ -6,11 +6,13 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 236%">
                     <thead>
                     <tr align='center'>
-                    <th>No</th>
-                <th>ລະຫັດ</th>
+                    <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລຳດັບ</th>
+                <th>ລະຫັດຄະດີ</th>
                 <th>ຖືກຈັບຕົວວັນເດືອນປີ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
@@ -60,6 +62,18 @@ date_default_timezone_set("Asia/Bangkok");
 
 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?TotalID=<?PHP echo $result["TotalID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmNoCancelForm_List.php?TotalID=<?php echo $result['TotalID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["TotalID"]; ?></td>
@@ -89,10 +103,10 @@ date_default_timezone_set("Asia/Bangkok");
                 <td align='center'><?PHP echo $result["To_wrong"]; ?></td>
                 <td align='center'><?PHP echo $result["whyhurt"]; ?></td>
                 <td align='center'><?PHP echo $result["camp"]; ?></td>
-                <td align='center'><?PHP echo $result["Remark"]; ?></td>
+                
                 <td align='center'><?PHP echo $result["addrese"]; ?></td>
                 <td align='center'><?PHP echo $result["hotpital"]; ?></td>
-                
+                <td align='center'><?PHP echo $result["Remark"]; ?></td>
                 
                
                

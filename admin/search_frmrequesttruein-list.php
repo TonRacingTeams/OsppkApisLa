@@ -3,10 +3,13 @@
     
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 724%">
                     <thead>
                     <tr align='center'>
-                    <th>ລຳດັບ</th>
+
+                        <th>ແກ້ໄຂ</th>
+                        <th>ລົບ</th>
+                        <th>ລຳດັບ</th>
                         <th>ລຳດັບ</th>
                         <th>ເລກທີເອກະສານ</th>
                         <th>ເລກທີຂາເຂົ້າ</th>
@@ -59,6 +62,20 @@
                     <tbody>
 
                     <tr>
+
+
+                    <td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_frmrequesttrueIn.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
+
+
                     <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_No"]; ?></td>
@@ -76,12 +93,7 @@
                         <td><?PHP echo $result["Cnt"]; ?></td>
                         
                  
-                        <td align='center'>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
-                        </td>
-                        <td align='center'>
-                        <a href="pages/delete_frmrequesttrueIn.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
-                        </td>
+                        
                     </tr>
                     </tbody>
                     <?php

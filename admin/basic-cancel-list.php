@@ -14,20 +14,19 @@ include 'head.php';
 
 <script>
 		$(function(){
-
-  //    alert(start);
+    //  alert('hellow');
 			$("#search").click(function(){
+				var Office_ID=$("#Office_ID").val();
+        var Office_Name=$("#Office_Name").val();
+        var Address1=$("#Address1").val();
+        var Address1E=$("#Address1E").val();
 
-				var start=$("#start").val();
-				var end=$("#end").val();
-        var Item_No=$("#Item_No").val();
-        var Doc_No=$("#Doc_No").val();
-     //   alert(start);
-				$.post("search_cancel.php",{
-			  	start:start,
-					end:end,
-          Item_No:Item_No,
-          Doc_No:Doc_No
+        //  alert('hellow');
+				$.post("search_cancle3.php",{
+					Office_ID:Office_ID,
+          Office_Name:Office_Name,
+          Address1:Address1,
+          Address1E:Address1E
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -55,6 +54,12 @@ input[type=text] {
  border: 1px solid #2764f1;
  border-radius: 8px;
 }
+
+.button1 {
+  background-color: #4CAF50; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
 </style>
 
 
@@ -70,14 +75,14 @@ input[type=text] {
       <div id="content">
         <!-- TopBar -->
         <?php include('navbar.php')?>
-
-     
+        <!-- Topbar -->
+        <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h5><B>ຂໍ້ມູນສຳນັກງານ</B></h5>
+            <h5><B>ຕາມໝວດ ແລະ ມາດຕາການກະທຳຜິດ</B></h5>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item"><B>ຂໍ້ມູນສຳນັກງານ</B></li>
+              <li class="breadcrumb-item"><B>ຕາມໝວດ ແລະ ມາດຕາການກະທຳຜິດ</B></li>
             
             </ol>
           </div>
@@ -85,104 +90,108 @@ input[type=text] {
 
           
           
+
+
+          
           <div class="row">
             <!-- Datatables -->
             <div class="col-lg-12">
-              <div class="card mb-0" style='border: 2px solid #8640bf; border-radius: 8px;'>
+              
+            <div class="card mb-0" style='border: 2px solid #057c0c; border-radius: 8px;'>
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
                   <div class="col-lg-3">
-                   <lable><B>ຂໍ້ມູນແຕ່ວັນທີປີ</B></lable>
-
-                    <?php
-                     @$start=$_POST['start'];
-                    ?>
-
-                    <input type="date" class="form-control " id="start"   name="start" 
-                    value="<?php  echo date('Y-m-01');?>" > 
-                   </div>
-
-                    <div class="col-lg-3">
-                   <lable><B>ຫາວັນທີເດືອນປີ</B></lable>
-
-                   <?php
-                     @$end=$_POST['end'];
-
-                    ?>
-                  <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
-                 
-                  </div>
-
-                   <div class="col-lg-2">
-                   <lable><B>ເລກທີຂາເຂົ້າ</B></lable>
-                    <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
-                  </div>
-
-                  <div class="col-lg-2">
-                   <lable><B>ເລກທີສຳນວນ</B></lable>
-                    <input type="text" class="form-control " id="Doc_No"   name="Doc_No">	
-                  </div>
+                  <lable>ຄົ້ນຫາລະຫັດ</lable>
+    
+                  <input type="text" class="form-control" id="Office_ID"  placeholder="ປ້ອນລະຫັດ"  name="Office_ID">
+                </div>
 
 
-                    <div class="col-lg-2"><br>
-                    <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    <a href="app/add_FrmCancelIn_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
-                   
-                   
-                  </div>
-                  </div>
+                <div class="col-lg-3">
+                  <lable>ຊື່ສຳນັກງານ</lable>
+    
+                  <input type="text" class="form-control" id="Office_Name"  placeholder="ປ້ອນຊື່ສຳນັກງານ"  name="Office_Name">
+                </div>
+
+                <div class="col-lg-3">
+
+                  <lable>ທີ່ຢູ່ 1</lable>
+    
+                  <input type="text" class="form-control" id="Address1E"  placeholder="ປ້ອນທີ່ຢູ່ 1"  name="Address1E">
+                </div>
+
+                <div class="col-lg-3">
+
+                  <lable>Address 1</lable>
+    
+                  <input type="text" class="form-control" id="Law_No"  placeholder="Address1"  name="Law_No">
+                </div>
 
 
+                <div class="col-lg-3"><br>
+                <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
+                <a href="app/add_FrmCancel3.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                
+              </div>
+
+                </div>
                 </div><br>
 
                 </div>
                 
-                
+
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 163%">
                 <thead>
-                <tr>
-                <th>ເລກນັບ</th>
-                <th>ລະຫັດຄະດີ</th>
-                <th>ເລກທີຂາເຂົ້າ</th>
-                <th>ວັນທີເດືອນປີ</th>
-                <th>ເລກທີສຳນວນ</th>
-                <th>ວ.ດ.ປ ລົງສຳນວນ</th>
-                <th>ສະຖານການກະທຳຜິດ</th>
-                <th>ໂຈດທາງອາຍາ</th>
-                <th>ໂຈດທາງແພ່ງ</th>
-                <th>ຈຳເລີຍ</th>
-                <th>ພະແນກຮັບຜິດຊອຍ</th>
-                <th>ພະນັກງານຮັບຜິດຊອບ</th>
-                <th>ແກ້ໄຂຂໍ້ມູນ</th>
-                <th>ລົບຂໍ້ມູນ</th>
+                <tr align='center'>
+
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
+                <th>ລະຫັດ</th>
+                <th>ຊື່ສຳນັກງານ</th>
+                <th>ທີ່ຢູ່ 1</th>
+                <th>Address 1</th>
+                <th>ທີ່ຢູ່ 2</th>
+                <th>Address 2</th>
+                <th>ໂທລະສັບ</th>
+                <th>Fax</th>
+                <th>ອີເມວ</th>
+                <th>Website</th>
+                <th>ທີ່</th>
+                <th>Singned At</th>
+                <th>ລົງລາຍເຊັນ</th>
+                <th>Signature</th>
+               
                 </tr>
                 </thead>
                    
                 <?php
-                include 'server/connect.php';
-                $i=0;  
-              
-             
-              
-                @$start=$_POST['start'];
-              
-                $sql = " SELECT * FROM KHT_Office WHERE 1=1";
-                $query = sqlsrv_query( $conn, $sql );
-
-              
-                while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
-                {
-                  $i++;
+                 include 'server/connect.php';  
+                 $sql = "SELECT * FROM KHT_Office";
+                 $query = sqlsrv_query( $conn, $sql );
+                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
+                 { 
                 ?>
 
                 <tbody id="users">
-                <tr>  
-                <td><?php echo $result["Office_ID"];?></td>          
-                <td><?PHP echo $result["Office_Name"]; ?></td>
-                <td><?PHP echo $result["Office_NameE"]; ?></td>
+                <tr>
 
+                <td align='center'>
+           
+           <a href="pages/Form_Cancle_List.php?Office_ID=<?PHP echo $result["Office_ID"];?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+           
+         </td>
+           <td align='center'>
+           <a href="pages/Delete_Cancle_List.php?Office_ID=<?php echo $result['Office_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+           </td>
+            
+         
+                
+                <td><?PHP echo $result["Office_ID"]; ?></td>
+                <td><?PHP echo $result["Office_Name"]; ?></td>
+                
+                
                 <td><?PHP echo $result["Address1"]; ?></td>
                 <td><?PHP echo $result["Address1E"]; ?></td>
                 <td><?PHP echo $result["Address2"]; ?></td>
@@ -202,32 +211,29 @@ input[type=text] {
 
 
 
-                <td align='center'>
-                <a href="pages/from_update_cancel.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
-                </td>
-                <td align='center'>
-                <a href="pages/delete_canecl.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
-                </td>
+
               </tr>
                 </tbody>
-                <?php
-              
-                  }
-                  ?>
+                <?PHP
+            
+                } 
+                ?>
                 </table>
                 </div>
-                
+
 
 
               </div>
             </div>
           </div>
-     
+
+
+
+
+
+
         </div>
-        <!---Container Fluid-->
-     
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>ພັດທະນາໂດຍ:ບໍລິສັດ ເອພີໄອເອັສ ຈຳກັດ &copy; <script> document.write(new Date().getFullYear()); </script>
@@ -236,10 +242,13 @@ input[type=text] {
           </div>
         </div>
       </footer>
+
+      </div>
       <!-- Footer -->
-      </div>
-      </div>
-  
+      <!-- Footer -->
+   </div>
+  </div>
+
   <!-- Scroll to top -->
  <?php
  include 'head.php';
@@ -249,3 +258,7 @@ input[type=text] {
 </body>
 
 </html>
+
+
+
+

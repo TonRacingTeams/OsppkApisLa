@@ -13,9 +13,15 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-				var Law_No=$("#Law_No").val();
-				$.post("search_grouplaws.php",{
-					Law_No:Law_No
+				var Law_ID=$("#Law_ID").val();
+        var Law_Name=$("#Law_Name").val();
+        var Law_NmE=$("#Law_NmE").val();
+
+        //  alert('hellow');
+				$.post("search_grouplaws3.php",{
+					Law_ID:Law_ID,
+          Law_Name:Law_Name,
+          Law_NmE:Law_NmE
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -83,25 +89,65 @@ input[type=text] {
                 <div class="input-group">
                   <div class="col-lg-3">
 
-                  <lable>ຄົ້ນຫາມາດຕາ</lable>
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
     
-                  <input type="text" class="form-control" id="Law_No"  placeholder="ຄົ້ນຫາມາດຕາ"  name="Law_No">
+                  <input type="text" class="form-control" id="Law_ID"  placeholder="ປ້ອນລະຫັດ"  name="Law_ID">
                 </div>
-                <div class="col-lg-3"><br>
-                <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Law_Name"  placeholder="ປ້ອນຊື່ກົດໝາຍ  (ພາສາລາວ)"  name="Law_Name">
                 </div>
+
+
+                <div class="col-lg-3">
+
+                  <lable>ຄົ້ນຫາຂໍ້ມູນ</lable>
+    
+                  <input type="text" class="form-control" id="Law_NmE"  placeholder="ປ້ອນຊື່ກົດໝາຍ (ພາສາອັງກິດ)"  name="Law_NmE">
                 </div>
+
+
+
+                <div class="col-lg-2"><br>
+                    <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
+                    <a href="app/add_FrmGroup3_Laws.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                    </div>
+                    
+                </div>
+                <!-- </form>
+                </div><br>
+
+                </div><br>
+
+
+
+
+             <div class="card mb-0">
+             <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                
+
+
+             
+                
+                </div> -->
+                
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 100%">
                 <thead>
                 <tr align='center'>
-                <th>ລຳດັບ</th>
+                
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ເລກລະຫັດ</th>
-                <th>ຊື່ກົດໝາຍ  (ພາສາລາວ)</th>
+                <th>ຊື່ກົດໝາຍ (ພາສາລາວ)</th>
                 <th>ຊື່ກົດໝາຍ (ພາສາອັງກິດ)</th>
                 <th>ຊື່ file</th>
                 
@@ -111,7 +157,7 @@ input[type=text] {
                    
                 <?php
                  include 'server/connect.php';  
-                 $sql = "SELECT * FROM KHT_Law_files WHERE 1=1";
+                 $sql = "SELECT * FROM KHT_Law_files";
                  $query = sqlsrv_query( $conn, $sql );
   
                
@@ -123,13 +169,22 @@ input[type=text] {
                 <tr>
 
 
-                <td><?PHP echo $i; ?></td>
+                <td align='center'>
+      
+           <a href="pages/Update_FrmGroup3_Laws3.php?Law_ID=<?PHP echo $result["Law_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+           
+           </td>
+           <td align='center'>
+           <a href="pages/Delete_FrmGroup3_Laws.php?Law_ID=<?php echo $result['Law_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+           </td>
+
+
+                
                 <td><?PHP echo $result["Law_ID"]; ?></td>
                 <td><?PHP echo $result["Law_Name"]; ?></td>
+                
+                <td><?PHP echo $result["Law_NmE"]; ?></td>
                 <td><?PHP echo $result["File_Name"]; ?></td>
-                <td><?PHP echo $result["Law_ID"]; ?></td>
-                <td><?PHP echo $result["Law_No"]; ?></td>
-                <td><?PHP echo $result["Law_Name"]; ?></td>
               </tr>
                 </tbody>
                 <?PHP

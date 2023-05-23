@@ -3,9 +3,11 @@
     
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 250%">
+                <table class='table table-bordered' style="width: 136%">
                     <thead>
                     <tr align='center'>
+                    <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                     <th>ລ/ດ</th>
                         <th>ລະຫັດເອກະສານ</th>
                         <th>ເລກທີຄຳສັ່ງ </th>
@@ -45,7 +47,7 @@
 
 
                 $i=1;
-                $sql = "SELECT * FROM KHT_Orders WHERE 1=1 $btw $d ";
+                $sql = "SELECT * FROM KHT_Orders WHERE 1=1 $btw $b $d ";
                 $query = sqlsrv_query( $conn, $sql );
 
                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
@@ -56,6 +58,16 @@
 <tbody id="users">
 
 <tr>
+
+<td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_frmtouqut-list.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
 <td align='center'><?PHP echo $i; ?></td>
 <td align='center'><?PHP echo $result["Order_ID"]; ?></td>
 <td align='center'><?PHP echo $result["Order_No"]; ?></td>

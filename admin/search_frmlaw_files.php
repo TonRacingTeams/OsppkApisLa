@@ -4,16 +4,16 @@
 
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 120%">
+                <table class='table table-bordered' style="width: 163%">
                     <thead>
-                    <tr align='center'>
+                    <tr>
                
-                <th>ໂຫຼດຂໍ້ມູນ</th>
+                    <th>ໂຫຼດ</th>
                 <th>ແກ້ໄຂ</th>
                 <th>ລົບ</th>
-                <th>ລຳດັບ</th>
+                <th>ລະຫັດກອງປະຊຸມສານ</th>
+                <th>ວັນເດືອນປີເຂົ້າຮ່ວມປະຊູມ</th>
                 <th>ລະຫັດຄະດີ</th>
-                <th>ວັນທີ</th>
                 <th>ຖືກຫາວ່າ</th>
                 <th>ໂຈດທາງອາຍາ</th>
                 <th>ໂຈດທາງແພ່ງ</th>
@@ -59,26 +59,29 @@
                 <tr>
 
 
+                
+           
                 <td align='center'>
            
-                <a href="cv/<?PHP echo $result["File_Name"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
+                <a href="cv/<?PHP echo $result["Item_ID"]; ?> " class="btn btn-primary" onclick=" return confirm('ທານຕ້ອງການດາວໂຫລດເອກະສານນີ້ແທ້ ຫຼື ບໍ..?')" ><i class="fas fa-download fa-sm"></i> </a>
            
                 </td>
 
                 <td align='center'>
            
-                <a href="pages/Update_Law_file.php?Law_ID=<?PHP echo $result["Law_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                <a href="pages/Update_Law_file.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                 
                 </td>
                 <td align='center'>
-                <a href="pages/Delete_frmlaw_files.php?Law_ID=<?php echo $result['Law_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                <a href="pages/Delete_frmlaw_files.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
                 </td>
 
 
-            
-                <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
-                <td align='center'><?PHP echo $result["Case_ID"]; ?></td>
 
+                
+                
+                <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
+                
 
                 <?php
                 $date=$result["Item_Date"];
@@ -86,9 +89,11 @@
                 <td align='center'><?PHP echo date_format($date,'d/m/Y');?></td>
 
 
+                <td align='center'><?PHP echo $result["Case_ID"]; ?></td>
                 <td align='center'><?PHP echo $result["Problem"]; ?></td>
                 <td align='center'><?PHP echo $result["Request_Crim"]; ?></td>
                 <td align='center'><?PHP echo $result["Request_Civil"]; ?></td>
+
 
                 <td align='center'><?PHP echo $result["Respond_Civil"]; ?></td>
                 <td align='center'><?PHP echo $result["Related_Pers"]; ?></td>

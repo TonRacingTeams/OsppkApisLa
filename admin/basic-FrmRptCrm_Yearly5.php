@@ -11,32 +11,17 @@ include 'head.php';
 <script>
 		$(function(){
 
-       $('.radio').change(function() {
-             $('#select2').prop('disabled', !$(this).is('.ປະຈຳງວດ'));
-             $('#select3').prop('disabled', !$(this).is('.ລວມງວດ'));
-         });
-
-
-         $('.radios').change(function() {
-             $('#select1').prop('disabled', !$(this).is('.ລາຍເດືອນ'));
-             $('#select2').prop('enable', !$(true).is('.ປະຈຳງວດ'));
-             $('#select3').prop('disabled', !$(this).is('.ລວມງວດ'));
-         }
-         );
-
-         $('.louie').change(function() {
-             $('#select1').prop('disabled', !$(this).is('.ລາຍເດືອນ'));
-             $('#select2').prop('disabled', !$(true).is('.ປະຈຳງວດ'));
-             $('#select3').prop('enable', !$(this).is('.ລວມງວດ'));
-         }
-         );
-
-
+//  alert('hellow');
         $("#search").click(function(){
-				var start=$("#start").val();
+				// var start=$("#start").val();
+
+        var Year_Data=$("#Year_Data").val();
   
-				$.post("search_years.php",{
-					start:start
+        //  alert('hellow');
+				$.post("search_years5.php",{
+					//start:start
+
+          Year_Data:Year_Data
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -98,71 +83,21 @@ input[type=text] {
           
           <div class="row">
             <!-- Datatables -->
-            <div class="col-lg-20">
+            <div class="col-lg-12">
               <div class="card mb-0" style='border: 2px solid #8640bf; border-radius: 8px;'>
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
                 <div class="col-lg-3">
-
-                <lable>ຄົ້ນຫາຕາມປີ</lable>
-
-                <input type="text" class="form-control" id="start"   name="start"   value="<?php  echo date('Y');?>" >
-
-                </div>
-
-                <div class="col-lg-2">
-                <input type="radio" class="radio" name="type">
-                   <lable>ລາຍເດືອນ</lable>
-                    <select  type="text" id="select1" class="form-control">	
-                    <option value="0">ທັງໝົດ</option>
-                    <option value="M1">ເດືອນ 1</option>
-                    <option value="M2">ເດືອນ 2</option>
-                    <option value="M3">ເດືອນ 3</option>
-                    <option value="M4">ເດືອນ 4</option>
-                    <option value="M5">ເດືອນ 5</option>
-                    <option value="M6">ເດືອນ 6</option>
-                    <option value="M7">ເດືອນ 7</option>
-                    <option value="M8">ເດືອນ 8</option>
-                    <option value="M9">ເດືອນ 9</option>
-                    <option value="M10">ເດືອນ 10</option>
-                    <option value="M11">ເດືອນ 11</option>
-                    <option value="M12">ເດືອນ 12</option>
-
-                    </select>
+                   <lable>ປີ</lable>
+                    <input type="text" class="form-control " id="Year_Data"   name="Year_Data">	
                   </div>
-
-                   <div class="col-lg-2">
-                   <input type="radio" name="type" class="radios" value="1">
-                   <lable>ປະຈຳງວດ</lable>
-                    <select  type="text" class="form-control " id="select2" name="select2" >	
-                    <option value="0">ທັງໝົດ</option>
-                    <option value="1">ງວດ 1 (ເດືອນ 1-3)</option>
-                    <option value="2">ງວດ 2 (ເດືອນ 4-6)</option>
-                    <option value="3">ງວດ 3 (ເດືອນ 7-9)</option>
-                    <option value="4">ງວດ 4 (ເດືອນ 10-12)</option>
-                    
-                    </select>
-                  </div>
-
-                  <div class="col-lg-2">
-                  <input type="radio" class="louie"  name="type" >
-                  <lable>ລວມງວດ</lable>
-                 
-                   
-                    <select  type="text" class="form-control " id="select3"   name="select3" >	
-                    <option value="0">ໝົດປີ</option>
-                    <option value="1">ເດືອນ 3</option>
-                    <option value="2">ເດືອນ 6</option>
-                    <option value="3">ເດືອນ 9</option>
-                  
-                    </select>
-                  </div>
+                
 
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                   
+                    <a href="app/add_FrmRptCrm_Yearly5.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
                     </div>
                   </div>
 
@@ -172,12 +107,17 @@ input[type=text] {
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 130%">
+                <table class='table table-bordered' style="width: 100%">
                 <thead>
                 <tr>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
+                <th>ລະຫັດ</th>
                 <th>ເລກນັບ</th>
                 <th>ລາຍການຂໍ້ມູນ</th>
+                <th>ຈຳນວນຍອດຂ້າງມາ</th>
+                <th>ປີ</th>
                 
                
                 </tr>
@@ -186,7 +126,7 @@ input[type=text] {
                 <?php
                 include 'server/connect.php';
                 $i=0;  
-                $d = date("Y"); 
+                // $d = date("Y"); 
                 $sql = "SELECT * FROM Khet_Open";
                 $query = sqlsrv_query( $conn, $sql );
 
@@ -198,11 +138,26 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>  
-                <td align='center'><?PHP echo $i; ?></td>
+
+
+
+                <td>
+                <a href="pages/Update_FrmRptCrm_Yearly5.php?Prov_ID=<?PHP echo $result["Prov_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+           
+                </td>
+                <td align='center'>
+                <a href="pages/Delete_FrmRptCrm_Yearly5.php?Prov_ID=<?php echo $result['Prov_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                </td>
+
+
+
+                        <td align='center'><?PHP echo $i; ?></td>
+                        <td align='center'><?PHP echo $result["Prov_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Order_No"]; ?></td>
-                        <td align='center'><?PHP echo $result["Description"]; ?></td>
+                        <td><?PHP echo $result["Description"]; ?></td>
                         
                         <td align='center'><?PHP echo $result["Quantity"]; ?></td>
+                        <td align='center'><?PHP echo $result["Year_Data"]; ?></td>
 
                
 

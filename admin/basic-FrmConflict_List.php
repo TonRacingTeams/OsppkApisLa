@@ -14,16 +14,19 @@ include 'head.php';
      // alert(start);
 			$("#search").click(function(){
 
-				var start=$("#start").val();
-				var end=$("#end").val();
-        var Item_No=$("#Item_No").val();
-        var Item_sam=$("#Item_sam").val();
+				// var start=$("#start").val();
+				// var end=$("#end").val();
+        var Law_ID=$("#Law_ID").val();
+        var Law_Name=$("#Law_Name").val();
+
+
      //   alert(start);
-				$.post("search_frmtouIn.php",{
-					start:start,
-					end:end,
-          Item_No:Item_No,
-          Item_sam:Item_sam
+				$.post("search_frmtouIn2.php",{
+					// start:start,
+					// end:end,
+          
+          Law_ID:Law_ID,
+          Law_Name:Law_Name
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -92,35 +95,36 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                  <div class="col-lg-3">
-                   <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
+                  <!-- <div class="col-lg-3">
+                   <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable> -->
 
-                    <?php
+                    <!-- <?php
                      @$start=$_POST['start'];
-                    ?>
+                    ?> -->
 
-                    <input type="date" class="form-control " id="start"   name="start" 
+                    <!-- <input type="date" class="form-control " id="start"   name="start" 
                     value="<?php  echo date('Y-m-01');?>" > 
-                   </div>
+                   </div> -->
 
-                    <div class="col-lg-3">
-                   <lable>ຫາວັນທີເດືອນປີ</lable>
+                    <!-- <div class="col-lg-3">
+                   <lable>ຫາວັນທີເດືອນປີ</lable> -->
 
-                   <?php
+                   <!-- <?php
                      @$end=$_POST['end'];
-                    ?>
-                  <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
+                    ?> -->
+                  <!-- <input type="date" class="form-control " id="end"   name="end"   value="<?php   $a_date = date('Y-m-d');  echo date('Y-m-t', strtotime($a_date));?>" >	
                  
-                  </div>
-
-                   <div class="col-lg-2">
-                   <lable>ເລກທີຂາເຂົ້າ</lable>
-                    <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
-                  </div>
+                  </div> -->
 
                   <div class="col-lg-2">
-                   <lable>ເລກທີສຳນວນ</lable>
-                    <input type="text" class="form-control " id="Item_sam"   name="Item_sam">	
+                   <lable>ລະຫັດມາດຕາ</lable>
+                    <input type="text" class="form-control " id="Law_ID"   name="Law_ID">	
+                  </div>
+
+
+                  <div class="col-lg-5">
+                   <lable>ມາດຕາ</lable>
+                    <input type="text" class="form-control " id="Law_Name"   name="Law_Name">	
                   </div>
 
 
@@ -137,7 +141,7 @@ input[type=text] {
 
 
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 300%">
+                  <table class='table table-bordered' style="width: 100%">
                     <thead>
                       <tr align='center'>
                         <th>ລຳດັບ</th>
@@ -158,7 +162,7 @@ input[type=text] {
                
               
               
-                $sql = "SELECT * FROM KHT_Laws WHERE 1=1";
+                $sql = "SELECT * FROM KHT_Laws";
                 $query = sqlsrv_query( $conn, $sql );
 
               

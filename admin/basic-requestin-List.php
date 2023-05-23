@@ -2,10 +2,12 @@
 <html lang="en">
   
 <head>
+
+
 <?php
 include 'head.php';
 ?>
-</head>
+
 
 
 
@@ -21,12 +23,13 @@ include 'head.php';
 				var end=$("#end").val();
        var Item_No=$("#Item_No").val();
         var Item_ID=$("#Item_ID").val();
+
      //   alert(start);
 				$.get("search_requestin.php",{
 					start:start,
 					end:end,
           Item_No:Item_No,
-          Item_ID:Item_ID,
+          Item_ID:Item_ID
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -57,6 +60,8 @@ input[type=text] {
 </style>
 
 
+</head>
+
 <body id="page-top">
 
   <div id="wrapper">
@@ -84,7 +89,7 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                 
                 <div class="input-group">
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີເດືອນປີ</lable>
 
                     <?php
@@ -95,7 +100,7 @@ input[type=text] {
                     value="<?php  echo date('Y-m-01');?>" > 
                    </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                    <lable>ຫາວັນທີເດືອນປີ</lable>
 
                    <?php
@@ -105,22 +110,23 @@ input[type=text] {
                  
                   </div>
 
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                    <lable>ລະຫັດຄະດີ</lable>
                     <input type="text" class="form-control " id="Item_ID"   name="Item_ID">	
                   </div>
 
-                   <div class="col-lg-2">
+                   <div class="col-lg-3">
                    <lable>ເລກທີຂາເຂົ້າ</lable>
-                    <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
+                    <input type="text" class="form-control " id="Item_No"   name="Item_No">	
                   </div>
 
                   
 
 
-                    <div class="col-lg-2"><br>
-                    <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    <a href="#" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  <div class="col-lg-2"><br>
+                <button class="btn btn-primary" id="search" type="button"><i class="fas fa-search fa-sm"></i> </button>
+                <a href="app/add_requestin-List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+
                    
                   </div>
                   </div>
@@ -130,10 +136,12 @@ input[type=text] {
                 </div>
 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 200%">
+                <table class='table table-bordered' style="width: 163%">
 
                     <thead>
                       <tr align='center'>
+                      <th>ແກ້ໄຂ</th>
+                      <th>ລົບ</th>
                         <th>ລຳດັບ</th>
                         <th>ລະຫັດຄະດີ</th>
                         <th>ເລກທີຂາເຂົ້າ</th>
@@ -168,7 +176,7 @@ input[type=text] {
                  @$start=$_POST['start'];
               
               
-                $sql = "SELECT * FROM KHT_AppInAY  WHERE 1=1 ";
+                $sql = "SELECT * FROM KHT_AppInAY";
                 $query = sqlsrv_query( $conn, $sql );
 
               
@@ -182,6 +190,17 @@ input[type=text] {
                     <tbody id="users">
 
                         <tr>
+
+
+                        <td align='center'>
+                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_requestin-List.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
                         <td align='center'><?PHP echo $i; ?></td>
                         <td align='center'><?PHP echo $result["Item_ID"]; ?></td>
                         <td align='center'><?PHP echo $result["Item_No"]; ?></td>

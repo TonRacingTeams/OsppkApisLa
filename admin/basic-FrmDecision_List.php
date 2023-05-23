@@ -15,13 +15,17 @@ include 'head.php';
 				var start=$("#start").val();
 				var end=$("#end").val();
         var numberID=$("#numberID").val();
+        var Alleged_Name=$("#Alleged_Name").val();
+        var Alleged_latname=$("#Alleged_latname").val();
 
         //  alert('hellow');
       
 				$.post("search_frmDecision_list.php",{
 					start:start,
 					end:end,
-          numberID:numberID
+          numberID:numberID,
+          Alleged_Name:Alleged_Name,
+          Alleged_latname:Alleged_latname
         
 				},
 				function(output){
@@ -110,8 +114,18 @@ input[type=text] {
 
 
                   <div class="col-lg-2">
-                   <lable>ເລກນັບ</lable>
+                   <lable>ລະຫັດຄະດີ</lable>
                     <input type="text" class="form-control " id="numberID"   name="numberID" >	
+                  </div>
+
+                  <div class="col-lg-2">
+                   <lable>ຊື່</lable>
+                    <input type="text" class="form-control " id="Alleged_Name"   name="Alleged_Name" >	
+                  </div>
+
+                  <div class="col-lg-2">
+                   <lable>ນາມສະກຸນ</lable>
+                    <input type="text" class="form-control " id="Alleged_latname"   name="Alleged_latname" >	
                   </div>
 
 
@@ -120,18 +134,21 @@ input[type=text] {
 
                     <div class="col-lg-2"><br>
                     <button   class="btn btn-primary" id="search"><i class="fas fa-search fa-sm"></i> </button>
-                    </div>
+                    <a href="app/add_FrmDecision_List.php" class="btn btn-success"><i class="fas fa-plus fa-sm"></i> </a>
+                  </div>
                   </div>
                 </div><br>
 
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 180%">
+                <table class='table table-bordered' style="width: 136%">
                 <thead>
-                <tr>
+                <tr align='center'>
+                <th>ແກ້ໄຂ</th>
+                <th>ລົບ</th>
                 <th>ລ/ດ</th>
-                <th>ເລກນັບ</th>
+                <th>ລະຫັດຄະດີ</th>
                 <th>ວັນເດືອນປີຖືກຈັບຕົວ</th>
                 <th>ຊື່</th>
                 <th>ນາມສະກຸນ</th>
@@ -157,7 +174,7 @@ input[type=text] {
               
                 @$start=$_POST['start'];
               
-                $sql = "SELECT *FROM  KHT_alleged WHERE 1=1";
+                $sql = "SELECT *FROM  KHT_alleged";
                 $query = sqlsrv_query( $conn, $sql );
                 while($result = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC))
                 {
@@ -166,6 +183,18 @@ input[type=text] {
 
                 <tbody id="users">
                 <tr>
+
+
+                <td>
+                        <a href="#?numberID=<?PHP echo $result["numberID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        </td>
+                        <td align='center'>
+                        <a href="pages/delete_FrmDecision_List.php?numberID=<?php echo $result['numberID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        </td>
+
+
+
+
             
                 <td align='center'><?PHP echo $i; ?></td>
                 <td align='center'><?PHP echo $result["numberID"]; ?></td>
