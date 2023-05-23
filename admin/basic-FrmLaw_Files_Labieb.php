@@ -173,7 +173,7 @@ input[type=text] {
 
                   <div class="col-lg-2">
                    <lable>ເລກນັບ</lable>
-                    <input type="text" class="form-control " id="ConvietID"   name="ConvietID" >	
+                    <input type="text" class="form-control " id="Item_ID"   name="Item_ID" >	
                   </div>
 
 
