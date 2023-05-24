@@ -31,26 +31,6 @@ include 'head.php';
 		});
 	</script>
 
-
-
-
-
-<script>
-		$(function(){
-    //  alert('hellow');
-			$("#search").click(function(){
-				var Law_ID=$("#Law_ID").val();
-				$.post("search_frmlaw_files.php",{
-					Law_ID:Law_ID
-				},
-				function(output){
-					$("#show").html(output).slideDown();
-				});
-			});
-		});
-	</script>
-
-
 <style>
 thead
 {
@@ -395,19 +375,368 @@ input[type=text] {
             </ol>
           </div>
 
-         
 
 
 
-          <div class="row">
-            <div class="col-lg-6">
+
+
+
+
+
+
+
+          
+            
+        
+
+
+<?php
+include '../server/connect.php';
+$Item_ID=$_GET['Item_ID'];
+$sql="SELECT * FROM KHT_AppInAY WHERE Item_ID='$Item_ID' ";
+//echo "SELECT * FROM KHT_AppInAY WHERE Item_ID='$Item_ID'";
+$result=sqlsrv_query($conn,$sql);
+$row=sqlsrv_fetch_array($result);
+?>
+
+
+
+    <!-- <div class=" h3 text-center alert alert-primary mb-4 mt-4" role="alert">ແກ້ໄຂຂໍ້ມູນລູກຄ້າ</div>
+    <form method="POST" action="update_requestin-List.php"> -->
+
+
+
+    <div class="row">
+            <div class="col-lg-4">
               <!-- Form Basic -->
               <div class="card mb-4">
                
                  <div class="card-body">
+
+    
+    <div class="form-group">
+    <label>ລະຫັດຄະດີ:</label>
+        <input type="text" name="Item_ID" class="form-control" readonly value=<?=$Item_ID?>><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ເລກທີຂາເຂົ້າ:</label>
+        <input type="text" name="Item_No" class="form-control" value="<?php echo $row['Item_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນເດືອນປີເຂົ້າ:</label>
+        <input type="date" name="Item_Date" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+
+
+        <div class="form-group">
+        <label>ເລກທີ່ສຳນວນ:</label>
+        <input type="text" name="Sam_No" class="form-control" value="<?php echo $row['Sam_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີ່ລົງສຳນວນ:</label>
+        <input type="date" name="Item_Date_sam" class="form-control" readonly value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <!-- <div class="form-group">
+        <label>ໂຈດທາງອາຍາ:</label>
+        <input type="text" name="Request_Crim" class="form-control" value="<?php echo $row['Request_Crim']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ຈຳເລີຍ:</label>
+        <input type="text" name="Related_Pers" class="form-control" value="<?php echo $row['Related_Pers']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໂຈດທາງແພ່ງ:</label>
+        <input type="text" name="Respond_Civil" class="form-control" value="<?php echo $row['Respond_Civil']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ບຸກຄົນທີສາມ:</label>
+        <input type="text" name="Request_Civil" class="form-control" value="<?php echo $row['Request_Civil']?>"><br>    
+        </div>
+
+        <div class="form-group">
+        <label>ຖືກຫາວ່າ:</label>
+        <input type="text" name="Problem" class="form-control" value="<?php echo $row['Problem']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີກັກຕົວ:</label>
+        <input type="date" name="Kung" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີປ່ອຍຕົວພາງ:</label>
+        <input type="date" name="Poy" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ສະຖານທີ່ກັກຂັງ:</label>
+        <input type="text" name="sathan" class="form-control" value="<?php echo $row['sathan']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໜ່ວຍງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Dept_Respond" class="form-control" value="<?php echo $row['Dept_Respond']?>"><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ພະນັກງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Staff_Respond" class="form-control" value="<?php echo $row['Staff_Respond']?>"><br>
+        </div> -->
+        <!-- </div> -->
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////2//// -->
+
+            <div class="col-lg-4">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+               
+                 <div class="card-body">
+
+    
+    <!-- <div class="form-group">
+    <label>ລະຫັດຄະດີ:</label>
+        <input type="text" name="Item_ID" class="form-control" readonly value=<?=$Item_ID?>><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ເລກທີຂາເຂົ້າ:</label>
+        <input type="text" name="Item_No" class="form-control" value="<?php echo $row['Item_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນເດືອນປີເຂົ້າ:</label>
+        <input type="date" name="Item_Date" class="form-control" value="<?=$row['date']?>"><br>
+
+
+        <div class="form-group">
+        <label>ເລກທີ່ສຳນວນ:</label>
+        <input type="text" name="Sam_No" class="form-control" value="<?php echo $row['Sam_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີ່ລົງສຳນວນ:</label>
+        <input type="date" name="Item_Date_sam" class="form-control" readonly value="<?php echo $row['date']?>"><br>
+        </div> -->
+
+        <div class="form-group">
+        <label>ໂຈດທາງອາຍາ:</label>
+        <input type="text" name="Request_Crim" class="form-control" value="<?php echo $row['Request_Crim']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ຈຳເລີຍ:</label>
+        <input type="text" name="Related_Pers" class="form-control" value="<?php echo $row['Related_Pers']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໂຈດທາງແພ່ງ:</label>
+        <input type="text" name="Respond_Civil" class="form-control" value="<?php echo $row['Respond_Civil']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ບຸກຄົນທີສາມ:</label>
+        <input type="text" name="Request_Civil" class="form-control" value="<?php echo $row['Request_Civil']?>"><br>    
+        </div>
+
+        <div class="form-group">
+        <label>ຖືກຫາວ່າ:</label>
+        <input type="text" name="Problem" class="form-control" value="<?php echo $row['Problem']?>"><br>
+        </div>
+
+        <!-- <div class="form-group">
+        <label>ວັນທີກັກຕົວ:</label>
+        <input type="date" name="Kung" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີປ່ອຍຕົວພາງ:</label>
+        <input type="date" name="Poy" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ສະຖານທີ່ກັກຂັງ:</label>
+        <input type="text" name="sathan" class="form-control" value="<?php echo $row['sathan']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໜ່ວຍງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Dept_Respond" class="form-control" value="<?php echo $row['Dept_Respond']?>"><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ພະນັກງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Staff_Respond" class="form-control" value="<?php echo $row['Staff_Respond']?>"><br>
+        </div> -->
+
+
+<!-- <div>
+
+<input type="submit" value="Update" class="btn btn-success">
+        <td><a href="../basic-requestin-List.php" class="btn btn-danger">Cancle</a></td>
+  
+</div> -->
+<!-- </div> -->
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////3// -->
+
+<div class="col-lg-4">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+               
+                 <div class="card-body">
+
+    
+    <!-- <div class="form-group">
+    <label>ລະຫັດຄະດີ:</label>
+        <input type="text" name="Item_ID" class="form-control" readonly value=<?=$Item_ID?>><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ເລກທີຂາເຂົ້າ:</label>
+        <input type="text" name="Item_No" class="form-control" value="<?php echo $row['Item_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນເດືອນປີເຂົ້າ:</label>
+        <input type="date" name="Item_Date" class="form-control" value="<?=$row['date']?>"><br>
+
+
+        <div class="form-group">
+        <label>ເລກທີ່ສຳນວນ:</label>
+        <input type="text" name="Sam_No" class="form-control" value="<?php echo $row['Sam_No']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີ່ລົງສຳນວນ:</label>
+        <input type="date" name="Item_Date_sam" class="form-control" readonly value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໂຈດທາງອາຍາ:</label>
+        <input type="text" name="Request_Crim" class="form-control" value="<?php echo $row['Request_Crim']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ຈຳເລີຍ:</label>
+        <input type="text" name="Related_Pers" class="form-control" value="<?php echo $row['Related_Pers']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໂຈດທາງແພ່ງ:</label>
+        <input type="text" name="Respond_Civil" class="form-control" value="<?php echo $row['Respond_Civil']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ບຸກຄົນທີສາມ:</label>
+        <input type="text" name="Request_Civil" class="form-control" value="<?php echo $row['Request_Civil']?>"><br>    
+        </div>
+
+        <div class="form-group">
+        <label>ຖືກຫາວ່າ:</label>
+        <input type="text" name="Problem" class="form-control" value="<?php echo $row['Problem']?>"><br>
+        </div> -->
+
+        <div class="form-group">
+        <label>ວັນທີກັກຕົວ:</label>
+        <input type="date" name="Kung" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ວັນທີປ່ອຍຕົວພາງ:</label>
+        <input type="date" name="Poy" class="form-control" value="<?php echo $row['date']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ສະຖານທີ່ກັກຂັງ:</label>
+        <input type="text" name="sathan" class="form-control" value="<?php echo $row['sathan']?>"><br>
+        </div>
+
+        <div class="form-group">
+        <label>ໜ່ວຍງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Dept_Respond" class="form-control" value="<?php echo $row['Dept_Respond']?>"><br>
+        </div>
+
+
+        <div class="form-group">
+        <label>ພະນັກງານຮັບຜິດຊອບ:</label>
+        <input type="text" name="Staff_Respond" class="form-control" value="<?php echo $row['Staff_Respond']?>"><br>
+        </div>
+
+
+<div>
+
+<input type="submit" value="Update" class="btn btn-success">
+        <td><a href="../basic-requestin-List.php" class="btn btn-danger">Cancle</a></td>
+  
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+    </form>
+    </div>
+    </div>
+        </div>
+
+         
+
+
+
+          <!-- <div class="row">
+            <div class="col-lg-6"> -->
+              <!-- Form Basic -->
+              <!-- <div class="card mb-4">
+               
+                 <div class="card-body"> -->
                   <!--<form action="saved_it_users_crm.php" name="frmAdd" method="POST"> -->
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="Item_ID">ລະຫັດຄະດີ</label>
                       <input type="text" class="form-control" id="Item_ID" name="Item_ID" aria-describedby="Item_ID" required>
                     </div>
@@ -502,7 +831,7 @@ input[type=text] {
                 
                  </div> 
               </div>
-            </div>
+            </div> -->
     
 
             <!-- <div class="col-lg-6">
@@ -637,6 +966,39 @@ window.onload = function() {
 
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

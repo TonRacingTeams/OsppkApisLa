@@ -98,7 +98,7 @@ input[type=text] {
                 <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
                     
                 <div class="input-group">
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
 
                     <?php
@@ -109,7 +109,7 @@ input[type=text] {
                     value="<?php  echo date('Y-m-01');?>" > 
                    </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                    <lable>ຫາວັນທີເດືອນປີ</lable>
 
                    <?php
@@ -124,13 +124,13 @@ input[type=text] {
                     <input type="text" class="form-control " id="Item_ID"   name="Item_ID">	
                   </div>
 
-                   <div class="col-lg-4">
+                   <div class="col-lg-2">
                    <lable>ເລກທີຂາອອກ</lable>
                     <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
                   </div>
 
 
-                  <div class="col-lg-5">
+                  <div class="col-lg-2">
                    <lable>ເລກທີຂາເຂົ້າ</lable>
                     <input type="text" class="form-control " id="In_No"   name="In_No" >	
                   </div>
@@ -198,7 +198,7 @@ input[type=text] {
 
 
                         <td align='center'>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_frmreturnqut_List.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_frmreturnqut_list.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

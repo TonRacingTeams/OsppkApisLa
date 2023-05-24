@@ -106,7 +106,7 @@ input[type=text] {
                 
 
                 <div class="input-group">
-                  <div class="col-lg-3">
+                  <div class="col-lg-2">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
 
                     <?php
@@ -117,7 +117,7 @@ input[type=text] {
                     value="<?php  echo date('Y-m-01');?>" > 
                    </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                    <lable>ຫາວັນທີເດືອນປີ</lable>
 
                    <?php
@@ -133,12 +133,12 @@ input[type=text] {
                   </div>
 
 
-                  <div class="col-lg-4">
+                  <div class="col-lg-2">
                    <lable>ເລກທີຂາອອກ</lable>
                     <input type="text" class="form-control " id="Item_No"   name="Item_No" >	
                   </div>
 
-                  <div class="col-lg-5">
+                  <div class="col-lg-2">
                    <lable>ເລກທີຂາເຂົ້າ</lable>
                     <input type="text" class="form-control " id="In_No"   name="In_No" >	
                   </div>
@@ -159,7 +159,7 @@ input[type=text] {
 
                 </div>
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 1000%">
+                  <table class='table table-bordered' style="width: 936%">
                     <thead>
                       <tr align='center'>
                       <th>ແກ້ໄຂ</th>
@@ -210,7 +210,7 @@ input[type=text] {
 
                         <td align='center'>
            
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_rmcancelqut-list.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         
                         </td>
                         <td align='center'>
@@ -251,9 +251,9 @@ input[type=text] {
                         <td><?PHP echo $result["Staff_Respond"]; ?></td> 
                         <td><?PHP echo $result["Cnt"]; ?></td>
                         
-                        <td>
+                        <!-- <td>
 
-                        </td>
+                        </td> -->
 
                       </tr>
 

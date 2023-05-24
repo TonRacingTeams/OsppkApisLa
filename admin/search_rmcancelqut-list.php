@@ -3,7 +3,7 @@
     
 
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 1000%">
+                <table class='table table-bordered' style="width: 936%">
                     <thead>
                     <tr align='center'>
                     <th>ແກ້ໄຂ</th>
