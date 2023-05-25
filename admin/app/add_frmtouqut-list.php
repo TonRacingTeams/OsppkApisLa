@@ -420,21 +420,22 @@ input[type=text] {
                     </div>
                    
 
-                    <div class="form-group">
-                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
-                      <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
-                    </div>
+                    
 
 
                     <div class="form-group">
                       <label for="In_No">ເລກທີຂາເຂົ້າ</label>
                       <input type="text" class="form-control" id="In_No" name="In_No" required>
                     </div>
-                   
 
                     <div class="form-group">
-                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
-                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
+                      <label for="Referno">ລະຫັດເອກະສານຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="Referno" name="Referno" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
+                      <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
                     </div>
 
           
@@ -447,6 +448,11 @@ input[type=text] {
                     <div class="form-group">
                       <label for="Request_Pers">ເຈົ້າຂອງຄຳຮ້ອງ</label>
                       <input type="text" class="form-control" id="Request_Pers" name="Request_Pers" required>
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
+                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
                     </div>
                    
 
@@ -467,9 +473,9 @@ input[type=text] {
                     </div>
 
                     <div class="form-group">
-                      <label for="Cnt">Cnt</label>
-                      <input type="text" class="form-control" id="Cnt" name="Cnt" required>
-                    </div>
+                      <label for="Send_To">ບ່ອນສົ່ງ</label>
+                      <input type="text" class="form-control" id="Send_To" name="Send_To" required>
+                    </div> -->
 
                     
                   
@@ -485,7 +491,76 @@ input[type=text] {
                 <div class="card-body">
                  
                     <div class="form-group">
-                      <label for="Usr_nm">ຊື່ຜູ້ໃຊ້</label>
+
+
+                    <!-- <div class="form-group">
+                      <label for="Item_ID">ເລກທີເອກະສານ</label>
+                      <input type="text" class="form-control" id="Item_ID" name="Item_ID" aria-describedby="Item_ID" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Item_No">ເລກທີຂາອອກ</label>
+                      <input type="text" class="form-control" id="Item_No" name="Item_No" required>
+                    </div>
+                   
+
+                    
+
+
+                    <div class="form-group">
+                      <label for="In_No">ເລກທີຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="In_No" name="In_No" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Referno">ລະຫັດເອກະສານຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="Referno" name="Referno" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
+                      <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
+                    </div>
+                    
+          
+                    <div class="form-group">
+                      <label for="Request_Type">ປະເພດຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Type" name="Request_Type" aria-describedby="Request_Type" required>
+                    </div>
+                   
+
+                    <div class="form-group">
+                      <label for="Request_Pers">ເຈົ້າຂອງຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Pers" name="Request_Pers" required>
+                    </div> -->
+
+                    <div class="form-group">
+                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
+                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
+                    </div>
+                   
+
+                    <div class="form-group">
+                      <label for="Remark">ໝວດການກະທຳຜິດ</label>
+                      <input type="text" class="form-control" id="Remark" name="Remark" required>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="Dept_Respond">ໜ່ວຍງານຮັບຜິດຊອຍ</label>
+                      <input type="text" class="form-control" id="Dept_Respond" name="Dept_Respond" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Staff_Respond">ພະນັກງານຮັບຜິດຊອບ</label>
+                      <input type="text" class="form-control" id="Staff_Respond" name="Staff_Respond" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Send_To">ບ່ອນສົ່ງ</label>
+                      <input type="text" class="form-control" id="Send_To" name="Send_To" required>
+                    </div>
+                      <!-- <label for="Usr_nm">ຊື່ຜູ້ໃຊ້</label>
                       <input type="text" class="form-control" id="Usr_nm" name="Usr_nm" required>
                     </div>
                    
@@ -522,7 +597,7 @@ input[type=text] {
                         <input type="checkbox" class="custom-control-input" id="Delete_bit" name = "Delete_bit" onclick="Delete()"   
                         >
                         <label class="custom-control-label" for="Delete_bit">ລົບຂໍ້ມູນ</label>
-                      </div>
+                      </div> -->
 
                     </div> 
 

@@ -159,9 +159,9 @@ input[type=text] {
                         <th>ວັນທີກັກຕົວ</th>
                         <th>ວັນທີປ່ອຍຕົວພາງ</th>
                         <th>ສະຖານທີ່ກັກຂັງ</th>
-                        <th>ໜ່ວຍງານຮັບຜິດຊອບ</th>
+                        <th>ກົດໝາຍອື່ນ</th>
                         <th>ພະນັກງານຮັບຜິດຊອບ</th>
-                        
+                        <th>ພະນັກງານຮັບຜິດຊອບ</th>
 
                       </tr>
                     </thead>
@@ -227,6 +227,7 @@ input[type=text] {
                         <td align='center'><?PHP echo $result["Poy"]; ?></td>
 
                         <td align='center'><?PHP echo $result["sathan"]; ?></td>
+                        <td align='center'><?PHP echo $result["Remark"]; ?></td>
                         <td align='center'><?PHP echo $result["Dept_Respond"]; ?></td>
                         <td align='center'><?PHP echo $result["Staff_Respond"]; ?></td>
 

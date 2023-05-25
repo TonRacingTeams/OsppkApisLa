@@ -8,22 +8,6 @@ include 'head.php';
 ?>
 
 
-<script>
-		$(function(){
-    //  alert('hellow');
-			$("#search").click(function(){
-				var Law_ID=$("#Law_ID").val();
-				$.post("search_frmlaw_files.php",{
-					Law_ID:Law_ID
-				},
-				function(output){
-					$("#show").html(output).slideDown();
-				});
-			});
-		});
-	</script>
-
-
 <style>
 thead
 {
@@ -361,15 +345,23 @@ input[type=text] {
 
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h5>ຟອມເພີ່ມສຳນວນຄະດີອາຍາ</h5>
+            <h5>ຟອມເພີ່ມຄຳຮ້ອງຄະດີອາຍາ</h5>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">ຟອມເພີ່ມສຳນວນຄະດີອາຍາ</li>
+              <li class="breadcrumb-item active" aria-current="page">ຟອມເພີ່ມຄຳຮ້ອງຄະດີອາຍາ</li>
             </ol>
           </div>
 
          
 
+<?php
+include '../server/connect.php';
+$Item_ID=$_GET['Item_ID'];
+$sql="SELECT * FROM KHT_ReQuestOut WHERE Item_ID='$Item_ID' ";
+//echo "SELECT * FROM KHT_AppInAY WHERE Item_ID='$Item_ID'";
+$result=sqlsrv_query($conn,$sql);
+$row=sqlsrv_fetch_array($result);
+?>
 
 
           <div class="row">
@@ -381,105 +373,69 @@ input[type=text] {
                   <!--<form action="saved_it_users_crm.php" name="frmAdd" method="POST"> -->
 
                     <div class="form-group">
-                      <label for="Item_ID">ລະຫັດຄະດີ</label>
+                      <label for="Item_ID">ເລກທີເອກະສານ</label>
                       <input type="text" class="form-control" id="Item_ID" name="Item_ID" aria-describedby="Item_ID" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="Item_No">ເລກທີຂາເຂົ້າ</label>
+                      <label for="Item_No">ເລກທີຂາອອກ</label>
                       <input type="text" class="form-control" id="Item_No" name="Item_No" required>
                     </div>
                    
 
                     <div class="form-group">
-                      <label for="Item_Date">ວັນເດືອນປີເຂົ້າ</label>
+                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
                       <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
                     </div>
 
-                    <div class="form-group">
-                      <label for="Sam_No">ເລກທີ່ສຳນວນ</label>
-                      <input type="text" class="form-control" id="Sam_No" name="Sam_No" required>
-                    </div>
-
-
-
-
-					<div class="form-group">
-                      <label for="Item_Date_sam">ວັນທີ່ລົງສຳນວນ</label>
-                      <input type="text" class="form-control" id="Item_Date_sam" name="Item_Date_sam" aria-describedby="Item_Date_sam" required>
-                    </div>
 
                     <div class="form-group">
-                      <label for="Request_Crim">ໂຈດທາງອາຍາ</label>
-                      <input type="text" class="form-control" id="Request_Crim" name="Request_Crim" required>
+                      <label for="In_No">ເລກທີຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="In_No" name="In_No" required>
                     </div>
                    
 
                     <div class="form-group">
-                      <label for="Related_Pers">ຈຳເລີຍ</label>
-                      <input type="text" class="form-control" id="Related_Pers" name="Related_Pers" required>
+                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
+                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
                     </div>
 
+          
                     <div class="form-group">
-                      <label for="Respond_Civil">ໂຈດທາງແພ່ງ</label>
-                      <input type="text" class="form-control" id="Respond_Civil" name="Respond_Civil" required>
-                    </div>
-
-
-
-					<div class="form-group">
-                      <label for="Request_Civil">ບຸກຄົນທີສາມ</label>
-                      <input type="text" class="form-control" id="Request_Civil" name="Request_Civil" aria-describedby="Request_Civil" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Problem">ຖືກຫາວ່າ</label>
-                      <input type="text" class="form-control" id="Problem" name="Problem" required>
+                      <label for="Request_Type">ປະເພດຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Type" name="Request_Type" aria-describedby="Request_Type" required>
                     </div>
                    
 
                     <div class="form-group">
-                      <label for="Kung">ວັນທີກັກຕົວ</label>
-                      <input type="text" class="form-control" id="Kung" name="Kung" required>
+                      <label for="Request_Pers">ເຈົ້າຂອງຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Pers" name="Request_Pers" required>
                     </div>
+                   
 
                     <div class="form-group">
-                      <label for="Poy">ວັນທີປ່ອຍຕົວພາງ</label>
-                      <input type="text" class="form-control" id="Poy" name="Poy" required>
-                    </div>
-
-
-					<div class="form-group">
-                      <label for="sathan">ສະຖານທີ່ກັກຂັງ</label>
-                      <input type="text" class="form-control" id="sathan" name="sathan" aria-describedby="sathan" required>
-                    </div>
-
-
-
-                    <div class="form-group">
-                      <label for="Remark">ໜ່ວຍງານຮັບຜິດຊອບ</label>
+                      <label for="Remark">ໝວດການກະທຳຜິດ</label>
                       <input type="text" class="form-control" id="Remark" name="Remark" required>
                     </div>
 
 
-
                     <div class="form-group">
-                      <label for="Dept_Respond">ໜ່ວຍງານຮັບຜິດຊອບ</label>
+                      <label for="Dept_Respond">ໜ່ວຍງານຮັບຜິດຊອຍ</label>
                       <input type="text" class="form-control" id="Dept_Respond" name="Dept_Respond" required>
                     </div>
-                   
 
                     <div class="form-group">
-                      <label for="Dept_Respond">ພະນັກງານຮັບຜິດຊອບ</label>
-                      <input type="text" class="form-control" id="Dept_Respond" name="Dept_Respond" required>
+                      <label for="Staff_Respond">ພະນັກງານຮັບຜິດຊອບ</label>
+                      <input type="text" class="form-control" id="Staff_Respond" name="Staff_Respond" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Cnt">Cnt</label>
+                      <input type="text" class="form-control" id="Cnt" name="Cnt" required>
                     </div>
 
                     
-                  <div class="form-grop">
-                  <button type="submit" class="btn btn-primary">ບັນທືກ</button>
-                   
-                   <a href='../basic-requestin-List.php' class="btn btn-danger">ຍົກເລີກ</a>
-                  </div>
+                  
                    
                 
                  </div> 
@@ -487,7 +443,7 @@ input[type=text] {
             </div>
     
 
-            <!-- <div class="col-lg-6">
+            <div class="col-lg-6">
               <div class="card mb-4">     
                 <div class="card-body">
                  
@@ -531,12 +487,16 @@ input[type=text] {
                         <label class="custom-control-label" for="Delete_bit">ລົບຂໍ້ມູນ</label>
                       </div>
 
-                    </div>         
+                    </div> 
+
+                    <button type="submit" class="btn btn-primary">ບັນທືກ</button>
+                   
+                    <a href='../basic-frmtouqut-list.php' class="btn btn-danger">ຍົກເລີກ</a>
                   </form>
                 </div>
               </div>
           
-            </div> -->
+            </div>
           </div>
 
 

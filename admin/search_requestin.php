@@ -25,6 +25,7 @@
                         <th>ວັນທີກັກຕົວ</th>
                         <th>ວັນທີປ່ອຍຕົວພາງ</th>
                         <th>ສະຖານທີ່ກັກຂັງ</th>
+                        <th>ກົດໝາຍອື່ນ</th>
                         <th>ໜ່ວຍງານຮັບຜິດຊອບ</th>
                         <th>ພະນັກງານຮັບຜິດຊອບ</th>
                         
@@ -108,6 +109,7 @@
                         <td align='center'><?PHP echo $result["Poy"]; ?></td>
 
                         <td align='center'><?PHP echo $result["sathan"]; ?></td>
+                        <td align='center'><?PHP echo $result["Remark"]; ?></td>
                         <td align='center'><?PHP echo $result["Dept_Respond"]; ?></td>
                         <td align='center'><?PHP echo $result["Staff_Respond"]; ?></td>
 
