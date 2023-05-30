@@ -189,7 +189,7 @@ input[type=text] {
 
 
                 <td>
-                        <a href="#?ConvietID=<?PHP echo $result["ConvietID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmMeeting_List.php?ConvietID=<?PHP echo $result["ConvietID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_FrmMeeting_List.php?ConvietID=<?php echo $result['ConvietID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

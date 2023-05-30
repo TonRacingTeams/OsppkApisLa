@@ -12,15 +12,15 @@ include 'head.php';
 		$(function(){
     //  alert('hellow');
 			$("#search").click(function(){
-        var start=$("#start").val();
-				var end=$("#end").val();
-        var PrisonerID=$("#PrisonerID").val();
+        var aa=$("#start").val();
+				var bb=$("#end").val();
+        var TotalID=$("#TotalID").val();
 
 
-				$.post("search_FrmRevise_List.php",{
+				$.post("search_FrmCancelForm_list.php",{
 					start:start,
 					end:end,
-          PrisonerID:PrisonerID
+          TotalID:TotalID
 				},
 				function(output){
 					$("#show").html(output).slideDown();
@@ -386,14 +386,22 @@ input[type=text] {
 
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h5>ຟອມເພີ່ມບັນຊີນັກໂທດທັງໝົດ</h5>
+            <h5>ຟອມເພີ່ມນັກໂທດ, ຜູ້ຖືກດັດສ້າງ ແລະ ຜູ້ຖືກຫາ ເຈັບເປັນໄດ້ຮັບການປິ່ນປົວ</h5>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">ຟອມເພີ່ມບັນຊີນັກໂທດທັງໝົດ</li>
+              <li class="breadcrumb-item active" aria-current="page">ຟອມເພີ່ມນັກໂທດ, ຜູ້ຖືກດັດສ້າງ ແລະ ຜູ້ຖືກຫາ ເຈັບເປັນໄດ້ຮັບການປິ່ນປົວ</li>
             </ol>
           </div>
 
          
+          <?php
+include '../server/connect.php';
+$TotalID=$_GET['TotalID'];
+$sql="SELECT * FROM KHT_Totals WHERE TotalID='$TotalID' ";
+//echo "SELECT * FROM KHT_AppInAY WHERE Item_ID='$Item_ID'";
+$result=sqlsrv_query($conn,$sql);
+$row=sqlsrv_fetch_array($result);
+?>
 
 
 
@@ -406,136 +414,226 @@ input[type=text] {
                   <!--<form action="saved_it_users_crm.php" name="frmAdd" method="POST"> -->
 
                     <div class="form-group">
-                      <label for="PrisonerID">ລະຫັດຄະດີ</label>
-                      <input type="text" class="form-control" id="PrisonerID" name="PrisonerID" aria-describedby="PrisonerID" required>
+                      <label for="TotalID">ລະຫັດຄະດີ</label>
+                      <input type="text" name="TotalID" class="form-control" readonly value=<?=$TotalID?>><br>
                     </div>
                    
 
                     <div class="form-group">
-                      <label for="Darrest">ຖືກຈັບຕົວວັນເດືອນປີ</label>
-                      <input type="text" class="form-control" id="Darrest" name="Darrest" required>
+                      <label for="Takebody">ຖືກຈັບຕົວວັນເດືອນປີ</label>
+                      <input type="date" name="Takebody" class="form-control" value="<?php echo $row['date']?>"><br>
                     </div>
 
 
                     <div class="form-group">
                       <label for="Name">ຊື່</label>
-                      <input type="text" class="form-control" id="Name" name="Name" required>
+                      <input type="text" name="Name" class="form-control" value="<?php echo $row['Name']?>"><br>
                     </div>
+                   
+
           
                     <div class="form-group">
-                      <label for="Lastname">ນາມສະກຸນ</label>
-                      <input type="text" class="form-control" id="Lastname" name="Lastname" required>
+                      <label for="LastName">ນາມສະກຸນ</label>
+                      <input type="text" name="LastName" class="form-control" value="<?php echo $row['LastName']?>"><br>
                     </div>
                    
 
                     <div class="form-group">
                       <label for="Birthday">ວັນເດືອນປີເກີດ</label>
-                      <input type="text" class="form-control" id="Birthday" name="Birthday" required>
+                      <input type="date" name="Birthday" class="form-control" value="<?php echo $row['date']?>"><br>
                     </div>
 
 
                     <div class="form-group">
-                      <label for="Nationality">ສັນຊາດ</label>
-                      <input type="text" class="form-control" id="Nationality" name="Nationality" required>
+                      <label for="Sex">ເພດ</label>
+                      <input type="text" name="Sex" class="form-control" value="<?php echo $row['Sex']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Nation">ສັນຊາດ</label>
+                      <input type="text" name="Nation" class="form-control" value="<?php echo $row['Nation']?>"><br>
                     </div>
 
 
                     <div class="form-group">
-                      <label for="sex">ເພດ</label>
-                      <input type="text" class="form-control" id="sex" name="sex" required>
+                      <label for="Job">ກ່ອນຖືກຈັບຕົວ(ອາຊີບ)</label>
+                      <input type="text" name="Job" class="form-control" value="<?php echo $row['Job']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="addhome">ກ່ອນຖືກຈັບຕົວ(ບ້ານ)</label>
+                      <input type="text" name="addhome" class="form-control" value="<?php echo $row['addhome']?>"><br>
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label for="District">ກ່ອນຖືກຈັບຕົວ(ເມືອງ)</label>
+                      <input type="text" name="District" class="form-control" value="<?php echo $row['District']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Province">ກ່ອນຖືກຈັບຕົວ(ແຂວງ)</label>
+                      <input type="text" name="Province" class="form-control" value="<?php echo $row['Province']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="To_wrong">ຂໍ້ຫາການກະທຳຜິດ</label>
+                      <input type="text" name="To_wrong" class="form-control" value="<?php echo $row['To_wrong']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="whyhurt">ເຈັບເປັນຫຍັງ</label>
+                      <input type="text" name="whyhurt" class="form-control" value="<?php echo $row['whyhurt']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="camp">ຄ້າຍຄຸມຂັງ</label>
+                      <input type="text" name="camp" class="form-control" value="<?php echo $row['camp']?>"><br>
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label for="hotpital">ໂຮງໝໍ</label>
+                      <input type="text" name="hotpital" class="form-control" value="<?php echo $row['hotpital']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="addrese">ຢູ່ບ້ານ</label>
+                      <input type="text" name="addrese" class="form-control" value="<?php echo $row['addrese']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="Remark">ໝາຍເຫດ</label>
+                      <input type="text" name="Remark" class="form-control" value="<?php echo $row['Remark']?>"><br>
+                    </div> -->
+
+                    
+                 </div> 
+              </div>
+            </div>
+    
+
+
+            <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <div class="col-lg-6">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+               
+                 <div class="card-body">
+                  <!--<form action="saved_it_users_crm.php" name="frmAdd" method="POST"> -->
+
+                    <!-- <div class="form-group">
+                      <label for="TotalID">ລະຫັດຄະດີ</label>
+                      <input type="text" name="TotalID" class="form-control" readonly value=<?=$TotalID?>><br>
                     </div>
                    
 
                     <div class="form-group">
-                      <label for="Job">ອາຊີບ</label>
-                      <input type="text" class="form-control" id="Job" name="Job" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Village">ບ້ານ</label>
-                      <input type="text" class="form-control" id="Village" name="Village" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="District">ເມືອງ</label>
-                      <input type="text" class="form-control" id="District" name="District" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Province">ແຂວງ</label>
-                      <input type="text" class="form-control" id="Province" name="Province" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="wrongdetail">ຂໍ້ຫາການກະທຳຜິດ</label>
-                      <input type="text" class="form-control" id="wrongdetail" name="wrongdetail" required>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="Punish">ສານຕັດສີນລົງໂທດ</label>
-                      <input type="text" class="form-control" id="Punish" name="Punish" required>
+                      <label for="Takebody">ຖືກຈັບຕົວວັນເດືອນປີ</label>
+                      <input type="date" name="Takebody" class="form-control" value="<?php echo $row['date']?>"><br>
                     </div>
 
 
                     <div class="form-group">
-                      <label for="Reform">ປະເພດດັດສ້າງ</label>
-                      <input type="text" class="form-control" id="Reform" name="Reform" required>
+                      <label for="Name">ຊື່</label>
+                      <input type="text" name="Name" class="form-control" value="<?php echo $row['Name']?>"><br>
+                    </div>
+                   
+
+          
+                    <div class="form-group">
+                      <label for="LastName">ນາມສະກຸນ</label>
+                      <input type="text" name="LastName" class="form-control" value="<?php echo $row['LastName']?>"><br>
+                    </div>
+                   
+
+                    <div class="form-group">
+                      <label for="Birthday">ວັນເດືອນປີເກີດ</label>
+                      <input type="date" name="Birthday" class="form-control" value="<?php echo $row['date']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="Sex">ເພດ</label>
+                      <input type="text" name="Sex" class="form-control" value="<?php echo $row['Sex']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="Wrong">ທາງແພ່ງ(ຈຳນວນລວມ)</label>
-                      <input type="text" class="form-control" id="Wrong" name="Wrong" required>
+                      <label for="Nation">ສັນຊາດ</label>
+                      <input type="text" name="Nation" class="form-control" value="<?php echo $row['Nation']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="Job">ກ່ອນຖືກຈັບຕົວ(ອາຊີບ)</label>
+                      <input type="text" name="Job" class="form-control" value="<?php echo $row['Job']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="law_paid">ວັນເດືອນປີໝົດກຳນົດ</label>
-                      <input type="text" class="form-control" id="law_paid" name="law_paid" required>
+                      <label for="addhome">ກ່ອນຖືກຈັບຕົວ(ບ້ານ)</label>
+                      <input type="text" name="addhome" class="form-control" value="<?php echo $row['addhome']?>"><br>
+                    </div> -->
+
+                    <div class="form-group">
+                      <label for="District">ກ່ອນຖືກຈັບຕົວ(ເມືອງ)</label>
+                      <input type="text" name="District" class="form-control" value="<?php echo $row['District']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="law_beleft">ທາງແພ່ງ(ຈ່າຍແລ້ວ)</label>
-                      <input type="text" class="form-control" id="law_beleft" name="law_beleft" required>
+                      <label for="Province">ກ່ອນຖືກຈັບຕົວ(ແຂວງ)</label>
+                      <input type="text" name="Province" class="form-control" value="<?php echo $row['Province']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="P_Total">ຄ່າປັບໃໝ(ຈຳນວນລວມ)</label>
-                      <input type="text" class="form-control" id="P_Total" name="P_Total" required>
+                      <label for="To_wrong">ຂໍ້ຫາການກະທຳຜິດ</label>
+                      <input type="text" name="To_wrong" class="form-control" value="<?php echo $row['To_wrong']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="p_paid">ທາງແພ່ງ(ຈ່າຍແລ້ວ)</label>
-                      <input type="text" class="form-control" id="p_paid" name="p_paid" required>
+                      <label for="whyhurt">ເຈັບເປັນຫຍັງ</label>
+                      <input type="text" name="whyhurt" class="form-control" value="<?php echo $row['whyhurt']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="camp">ຄ້າຍຄຸມຂັງ</label>
+                      <input type="text" name="camp" class="form-control" value="<?php echo $row['camp']?>"><br>
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label for="hotpital">ໂຮງໝໍ</label>
+                      <input type="text" name="hotpital" class="form-control" value="<?php echo $row['hotpital']?>"><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="P_beleft">ທາງແພ່ງ(ຍັງເຫຼືອ)</label>
-                      <input type="text" class="form-control" id="P_beleft" name="P_beleft" required>
+                      <label for="addrese">ຢູ່ບ້ານ</label>
+                      <input type="text" name="addrese" class="form-control" value="<?php echo $row['addrese']?>"><br>
                     </div>
+
 
                     <div class="form-group">
                       <label for="Remark">ໝາຍເຫດ</label>
-                      <input type="text" class="form-control" id="Remark" name="Remark" required>
+                      <input type="text" name="Remark" class="form-control" value="<?php echo $row['Remark']?>"><br>
                     </div>
 
-                    <div class="form-group">
-                      <label for="Pri_penMonth">ວັນທີ່ຖືກໂອນ</label>
-                      <input type="text" class="form-control" id="Pri_penMonth" name="Pri_penMonth" required>
-                    </div>
 
+                    <div>
+                    <input type="submit" value="Update" class="btn btn-success">
+        <td><a href="../basic-FrmNoCancelForm_List.php" class="btn btn-danger">Cancle</a></td>
+  
+</div>
+
+                    
                  </div> 
               </div>
             </div>
-
-
-
-            <!-- /////////////////////////////////////////////////////////////////////// -->
-    
-
-
-
-
-            
-
 
 
 
@@ -588,7 +686,7 @@ input[type=text] {
 
                     <button type="submit" class="btn btn-primary">ບັນທືກ</button>
                    
-                    <a href='../basic-FrmRevise_List.php' class="btn btn-danger">ຍົກເລີກ</a> -->
+                    <a href='../basic-FrmNoCancelForm_List.php' class="btn btn-danger">ຍົກເລີກ</a> -->
                   </form>
                 </div>
               </div>

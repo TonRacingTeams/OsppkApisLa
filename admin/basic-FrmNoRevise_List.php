@@ -177,7 +177,7 @@ input[type=text] {
 
 
                 <td>
-                        <a href="#?DisID=<?PHP echo $result["DisID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmNoRevise_List.php?DisID=<?PHP echo $result["DisID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_FrmNoRevise_List.php?DisID=<?php echo $result['DisID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

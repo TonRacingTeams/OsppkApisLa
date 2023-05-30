@@ -186,7 +186,7 @@ input[type=text] {
 
 
                 <td>
-                        <a href="#?releaseID=<?PHP echo $result["releaseID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmCancelForm_List.php?releaseID=<?PHP echo $result["releaseID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_FrmCancelForm_List.php?releaseID=<?php echo $result['releaseID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
