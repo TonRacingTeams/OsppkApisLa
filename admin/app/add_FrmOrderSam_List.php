@@ -443,7 +443,7 @@ input[type=text] {
             </div>
     
 
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
               <div class="card mb-4">     
                 <div class="card-body">
                  
@@ -491,7 +491,7 @@ input[type=text] {
 
                     <button type="submit" class="btn btn-primary">ບັນທືກ</button>
                    
-                    <a href='../basic-FrmOrderSam_List.php' class="btn btn-danger">ຍົກເລີກ</a>
+                    <a href='../basic-FrmOrderSam_List.php' class="btn btn-danger">ຍົກເລີກ</a> -->
                   </form>
                 </div>
               </div>

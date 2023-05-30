@@ -6,7 +6,7 @@
 date_default_timezone_set("Asia/Bangkok");
 ?>
              <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 2036%">
+                <table class='table table-bordered' style="width: 1536%">
                     <thead>
 
                      <tr align='center'>

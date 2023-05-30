@@ -437,13 +437,19 @@ input[type=text] {
                       <input type="text" class="form-control" id="Description" name="Description" required>
                     </div>
 
+                    <div>
+                    <button type="submit" class="btn btn-primary">ບັນທືກ</button>
+                   
+                   <a href='../basic-FrmJangtob2_List.php' class="btn btn-danger">ຍົກເລີກ</a>
+                    </div>
+
                 
                  </div> 
               </div>
             </div>
     
 
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
               <div class="card mb-4">     
                 <div class="card-body">
                  
@@ -469,12 +475,12 @@ input[type=text] {
                         <input type="checkbox" class="custom-control-input" id="Write_bit" name = "Write_bit" onclick="Write_bitf()">
                         <label class="custom-control-label" for="Write_bit">ຂຽນ</label>
                       </div>
+
+
+
+
+
                       
-
-
-
-
-
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="Edit_bit" name = "Edit_bit" onclick="Edit_bits()"   
                         >
@@ -487,11 +493,7 @@ input[type=text] {
                         <label class="custom-control-label" for="Delete_bit">ລົບຂໍ້ມູນ</label>
                       </div>
 
-                    </div> 
-
-                    <button type="submit" class="btn btn-primary">ບັນທືກ</button>
-                   
-                    <a href='../basic-FrmJangtob2_List.php' class="btn btn-danger">ຍົກເລີກ</a>
+                    </div>  -->
                   </form>
                 </div>
               </div>

@@ -26,7 +26,7 @@ include 'head.php';
 					start:start,
 					end:end,
           Order_ID:Order_ID,
-          Order_No:Order_No,
+          Order_No:Order_No
         
 				},
 				function(output){
@@ -170,7 +170,7 @@ input[type=text] {
                 
                 @$start=$_POST['start'];
               
-                $sql = "SELECT * FROM KHT_Order_No_Time  WHERE 1=1";
+                $sql = "SELECT * FROM KHT_Order_No_Time";
                 $query = sqlsrv_query( $conn, $sql );
 
               
@@ -184,10 +184,10 @@ input[type=text] {
 
 
                         <td>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmJangtob7_List.php?Order_ID=<?PHP echo $result["Order_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
-                        <a href="pages/delete_FrmJangtob7_List.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        <a href="pages/delete_FrmJangtob7_List.php?Order_ID=<?php echo $result['Order_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
                         </td>
 
 

@@ -7,50 +7,6 @@
 include 'head.php';
 ?>
 
-
-<script>
-		$(function(){
-    //  alert('hellow');
-			$("#search").click(function(){
-				var start=$("#start").val();
-				var end=$("#end").val();
-        var Order_ID=$("#Order_ID").val();
-        var Order_No=$("#Order_No").val();
-
-
-				$.post("search_frmreviseorders-list.php",{
-					start:start,
-					end:end,
-          Order_ID:Order_ID,
-          Order_No:Order_No
-				},
-				function(output){
-					$("#show").html(output).slideDown();
-				});
-			});
-		});
-	</script>
-
-
-
-
-
-<!-- <script>
-		$(function(){
-    //  alert('hellow');
-			$("#search").click(function(){
-				var Law_ID=$("#Law_ID").val();
-				$.post("search_frmlaw_files.php",{
-					Law_ID:Law_ID
-				},
-				function(output){
-					$("#show").html(output).slideDown();
-				});
-			});
-		});
-	</script> -->
-
-
 <style>
 thead
 {

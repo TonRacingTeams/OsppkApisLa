@@ -145,7 +145,7 @@ input[type=text] {
 
                 </div>
                 <div id='show' class="table-responsive p-10">
-                  <table class='table table-bordered' style="width: 2036%">
+                  <table class='table table-bordered' style="width: 1536%">
                     <thead>
                       <tr align='center'>
                       <th>ແກ້ໄຂ</th>
@@ -182,10 +182,10 @@ input[type=text] {
 
 
                         <td align='center'>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmSanod_List.php?Order_ID=<?PHP echo $result["Order_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
-                        <a href="pages/delete_FrmSanod_List.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
+                        <a href="pages/delete_FrmSanod_List.php?Order_ID=<?php echo $result['Order_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
                         </td>
 
 

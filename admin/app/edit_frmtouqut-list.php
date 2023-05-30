@@ -372,44 +372,50 @@ $row=sqlsrv_fetch_array($result);
                  <div class="card-body">
                   <!--<form action="saved_it_users_crm.php" name="frmAdd" method="POST"> -->
 
-                    <div class="form-group">
-                      <label for="Item_ID">ເລກທີເອກະສານ</label>
-                      <input type="text" class="form-control" id="Item_ID" name="Item_ID" aria-describedby="Item_ID" required>
+                  <div class="form-group">
+                      <label>ເລກທີເອກະສານ</label>
+                      <input type="text" name="Item_ID" class="form-control" readonly value=<?=$Item_ID?>><br>
                     </div>
 
                     <div class="form-group">
-                      <label for="Item_No">ເລກທີຂາອອກ</label>
-                      <input type="text" class="form-control" id="Item_No" name="Item_No" required>
+                      <label>ເລກທີຂາອອກ</label>
+                      <input type="text" name="Item_No" class="form-control" value="<?php echo $row['Item_No']?>"><br>
                     </div>
                    
 
-                    <div class="form-group">
-                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
-                      <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
-                    </div>
+                    
 
 
                     <div class="form-group">
                       <label for="In_No">ເລກທີຂາເຂົ້າ</label>
-                      <input type="text" class="form-control" id="In_No" name="In_No" required>
+                      <input type="text" name="In_No" class="form-control" value="<?php echo $row['In_No']?>"><br>
                     </div>
-                   
 
                     <div class="form-group">
-                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
-                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
+                      <label for="Referno">ລະຫັດເອກະສານຂາເຂົ້າ</label>
+                      <input type="text" name="Referno" class="form-control" value="<?php echo $row['Referno']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
+                      <input type="date" name="Item_Date" class="form-control" value="<?php echo $row['date']?>"><br>
                     </div>
 
           
                     <div class="form-group">
                       <label for="Request_Type">ປະເພດຄຳຮ້ອງ</label>
-                      <input type="text" class="form-control" id="Request_Type" name="Request_Type" aria-describedby="Request_Type" required>
+                      <input type="text" name="Request_Type" class="form-control" value="<?php echo $row['Request_Type']?>"><br>
                     </div>
                    
 
                     <div class="form-group">
                       <label for="Request_Pers">ເຈົ້າຂອງຄຳຮ້ອງ</label>
-                      <input type="text" class="form-control" id="Request_Pers" name="Request_Pers" required>
+                      <input type="text" name="Request_Pers" class="form-control" value="<?php echo $row['Request_Pers']?>"><br>
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
+                      <input type="text" class="form-control" id="Solv_Name" name="Solv_Name" required>
                     </div>
                    
 
@@ -430,9 +436,9 @@ $row=sqlsrv_fetch_array($result);
                     </div>
 
                     <div class="form-group">
-                      <label for="Cnt">Cnt</label>
-                      <input type="text" class="form-control" id="Cnt" name="Cnt" required>
-                    </div>
+                      <label for="Send_To">ບ່ອນສົ່ງ</label>
+                      <input type="text" class="form-control" id="Send_To" name="Send_To" required>
+                    </div> -->
 
                     
                   
@@ -447,51 +453,85 @@ $row=sqlsrv_fetch_array($result);
               <div class="card mb-4">     
                 <div class="card-body">
                  
+                     <!-- <div class="form-group">
+                      <label for="Item_ID">ເລກທີເອກະສານ</label>
+                      <input type="text" class="form-control" id="Item_ID" name="Item_ID" aria-describedby="Item_ID" required>
+                    </div>
+
                     <div class="form-group">
-                      <label for="Usr_nm">ຊື່ຜູ້ໃຊ້</label>
-                      <input type="text" class="form-control" id="Usr_nm" name="Usr_nm" required>
+                      <label for="Item_No">ເລກທີຂາອອກ</label>
+                      <input type="text" class="form-control" id="Item_No" name="Item_No" required>
                     </div>
                    
+
+                    
+
+
                     <div class="form-group">
-                      <label for="UsrPermit">ສິດໃຊ້ໂປຣແກຣມ</label>
-                      <select class="form-control" id="UsrPermit" name = "UsrPermit" >
-                      <option value="Administrator">Administrator</option>
-                      <option value="User">User</option>
-                      <option value="Visitor">Visitor</option>
-                      </select>
+                      <label for="In_No">ເລກທີຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="In_No" name="In_No" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Referno">ລະຫັດເອກະສານຂາເຂົ້າ</label>
+                      <input type="text" class="form-control" id="Referno" name="Referno" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Item_Date">ວັນເດືອນປີອອກ</label>
+                      <input type="text" class="form-control" id="Item_Date" name="Item_Date" required>
+                    </div>
+                    
+          
+                    <div class="form-group">
+                      <label for="Request_Type">ປະເພດຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Type" name="Request_Type" aria-describedby="Request_Type" required>
                     </div>
                    
-                      
+
                     <div class="form-group">
-                     <label>ການໃຫ້ສິດທິ</label>
+                      <label for="Request_Pers">ເຈົ້າຂອງຄຳຮ້ອງ</label>
+                      <input type="text" class="form-control" id="Request_Pers" name="Request_Pers" required>
+                    </div> -->
 
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="Write_bit" name = "Write_bit" onclick="Write_bitf()">
-                        <label class="custom-control-label" for="Write_bit">ຂຽນ</label>
-                      </div>
-                      
-
-
-
-
-
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="Edit_bit" name = "Edit_bit" onclick="Edit_bits()"   
-                        >
-                        <label class="custom-control-label" for="Edit_bit">ແກ້ໄຂຂໍ້ມູນ</label>
-                      </div>
-
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="Delete_bit" name = "Delete_bit" onclick="Delete()"   
-                        >
-                        <label class="custom-control-label" for="Delete_bit">ລົບຂໍ້ມູນ</label>
-                      </div>
-
-                    </div> 
-
-                    <button type="submit" class="btn btn-primary">ບັນທືກ</button>
+                    <div class="form-group">
+                      <label for="Solv_Name">ລັກສະນະການແກ້ໄຂ</label>
+                      <input type="text" name="Solv_Name" class="form-control" value="<?php echo $row['Solv_Name']?>"><br>
+                    </div>
                    
-                    <a href='../basic-frmtouqut-list.php' class="btn btn-danger">ຍົກເລີກ</a>
+
+                    <div class="form-group">
+                      <label for="Remark">ໝວດການກະທຳຜິດ</label>
+                      <input type="text" name="Remark" class="form-control" value="<?php echo $row['Remark']?>"><br>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="Dept_Respond">ໜ່ວຍງານຮັບຜິດຊອຍ</label>
+                      <input type="text" name="Dept_Respond" class="form-control" value="<?php echo $row['Dept_Respond']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Staff_Respond">ພະນັກງານຮັບຜິດຊອບ</label>
+                      <input type="text" name="Staff_Respond" class="form-control" value="<?php echo $row['Staff_Respond']?>"><br>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Send_To">ບ່ອນສົ່ງ</label>
+                      <input type="text" name="Send_To" class="form-control" value="<?php echo $row['Send_To']?>"><br>
+                    </div>
+
+
+                    <div>
+
+<input type="submit" value="Update" class="btn btn-success">
+<td><a href="../basic-frmtouqut-list.php" class="btn btn-danger">Cancle</a></td>
+
+</div>
+</div>
+</div>
+</div>
+</div>
                   </form>
                 </div>
               </div>

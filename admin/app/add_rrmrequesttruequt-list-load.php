@@ -437,13 +437,19 @@ input[type=text] {
                       <input type="text" class="form-control" id="Description" name="Description" required>
                     </div>
 
+                    <div>
+                    <button type="submit" class="btn btn-primary">ບັນທືກ</button>
+                   
+                   <a href='../basic-rrmrequesttruequt-list-load.php' class="btn btn-danger">ຍົກເລີກ</a>
+                    </div>
+
                 
                  </div> 
               </div>
             </div>
     
 
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
               <div class="card mb-4">     
                 <div class="card-body">
                  
@@ -491,7 +497,7 @@ input[type=text] {
 
                     <button type="submit" class="btn btn-primary">ບັນທືກ</button>
                    
-                    <a href='../basic-rrmrequesttruequt-list-load.php' class="btn btn-danger">ຍົກເລີກ</a>
+                    <a href='../basic-rrmrequesttruequt-list-load.php' class="btn btn-danger">ຍົກເລີກ</a> -->
                   </form>
                 </div>
               </div>

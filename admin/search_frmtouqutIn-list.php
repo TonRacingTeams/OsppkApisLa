@@ -21,7 +21,7 @@
                         <th>ໜ່ວຍງານຮັບຜິດຊອບ</th>
                         <th>ພະນັກງານຮັບຜິດຊອບ</th>
                         <th>ບ່ອນສົ່ງ</th>
-                        <th>Cnt</th>
+                        
                       </tr>
                 </thead>
                    
@@ -97,7 +97,7 @@
                         <td><?PHP echo $result["Dept_Respond"]; ?></td>
                         <td><?PHP echo $result["Staff_Respond"]; ?></td>
                         <td><?PHP echo $result["Send_To"]; ?></td>
-                        <td><?PHP echo $result["Cnt"]; ?></td>
+                        
 
                         
                   
