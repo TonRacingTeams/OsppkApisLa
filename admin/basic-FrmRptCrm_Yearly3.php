@@ -197,7 +197,7 @@ input[type=text] {
 
            <td align='center'>
       
-           <a href="pages/Update_FrmRptCrm_Yearly3.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+           <a href="app/edit_FrmRptCrm_Yearly3.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
            
            </td>
            <td align='center'>

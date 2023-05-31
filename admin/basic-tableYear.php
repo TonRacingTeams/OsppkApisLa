@@ -113,6 +113,14 @@ input[type=text] {
 
 
                 <div class="row">
+
+
+                <div class="col-lg-12">
+              <div class="card mb-0" style='border: 2px solid #8640bf; border-radius: 8px;'>
+                <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+
+
+
                 <div class="input-group">
                   <div class="col-lg-3">
                    <lable>ຂໍ້ມູນແຕ່ວັນທີປີ</lable>
@@ -153,8 +161,13 @@ input[type=text] {
                 </div><br>
 
                 </div>
+
+
+
+
+
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 336%">
+                <table class='table table-bordered' style="width: 323%">
 
                 
           
@@ -192,7 +205,7 @@ input[type=text] {
 
 
                       <td>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_tableYear_List.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_tableYear_ListList.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

@@ -132,11 +132,11 @@ input[type=text] {
                   </div>
 
                 </div><br>
-
+                ￼
                 </div>
                 
                 <div id='show' class="table-responsive p-10">
-                <table class='table table-bordered' style="width: 336%">
+                <table class='table table-bordered' style="width: 259%">
                 <thead>
                 <tr align='center'>
                 <th>ແກ້ໄຂ</th>
@@ -192,7 +192,7 @@ input[type=text] {
 
 
                 <td>
-                        <a href="#?sentenceID=<?PHP echo $result["sentenceID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmMeeting_Return1_List.php?sentenceID=<?PHP echo $result["sentenceID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_FrmMeeting_Return1_List.php?sentenceID=<?php echo $result['sentenceID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

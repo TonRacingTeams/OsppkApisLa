@@ -156,9 +156,9 @@ input[type=text] {
                     <thead>
                       <tr>
 
-                      <th>ແກ້ໄຂ</th>
+                        <th>ແກ້ໄຂ</th>
                         <th>ລົບ</th>
-                      <th>ລຳດັບ</th>
+                        <th>ລຳດັບ</th>
                         <th>ລະຫັດແບບຟອມ</th>
                         <th>ເລກທີຄຳຖະແຫຼງ</th>
                         <th>ວັນເດືອນປີ </th>
@@ -184,7 +184,7 @@ input[type=text] {
                       <tr>
 
                       <td>
-                        <a href="#?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_tableYear3_List.php?Item_ID=<?PHP echo $result["Item_ID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_tableYear3_List.php?Item_ID=<?php echo $result['Item_ID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>

@@ -185,7 +185,7 @@ input[type=text] {
 
 
                 <td>
-                        <a href="#?narcotic_numberID=<?PHP echo $result["narcotic_numberID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
+                        <a href="app/edit_FrmMeeting1_List.php?narcotic_numberID=<?PHP echo $result["narcotic_numberID"]; ?>" class="btn btn-success"><i class="fas fa-edit fa-sm"></i> </a>
                         </td>
                         <td align='center'>
                         <a href="pages/delete_FrmMeeting1_List.php?narcotic_numberID=<?php echo $result['narcotic_numberID']?>" class="btn btn-danger"  onclick=" return confirm('ທານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ..?')"><i class="fas fa-trash fa-sm"></i></a>
